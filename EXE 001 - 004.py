@@ -25,11 +25,10 @@ print(int(n1)+int(n2))
 
 #Desafio 004:
 Mostrar o tipo primitivo:
-a = input('Digite Algo:')
-print('O tipo primitivo da sua resposta é', type(a))
-print('O tipo primitivo da sua resposta é {}'.format(type(a)))
---- O tipo primitivo da sua resposta é <type 'str'>
-Informações:
-print('O valor é um número?', a.isnumeric())
-print('O valor é um alfabeto?', a.isalpha())
-print('O valor é um alfa-número?', a.isalnum())
+a = input('Digite Algo: ')
+print('>>> O tipo primitivo da sua resposta é {}'.format(type(a)))
+### --- O tipo primitivo da sua resposta é <type 'str'>
+## Informações:
+print('O valor [{}] é um número?'.format(a.isnumeric()))
+print('O valor [{}] é um alfabeto?'.format(a.isalpha()))
+print('O valor [{}] é um alfa-número?'.format(a.isalnum()))
