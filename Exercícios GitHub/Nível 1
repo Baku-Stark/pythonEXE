@@ -1,0 +1,75 @@
+Utilizar "print" e "input"
+
+print('Olá, Mundo!!')
+
+nome = input('Digite seu nome \nr: ')
+print('Seja bem-vindo ao Python, {}!!!'.format(nome))
+
+_________________________________________________________________________
+Somar e Subtrair
+
+num1 = int(input('Digite o 1° número: '))
+num2 = int(input('Digite o 2° número: '))
+soma = num1 + num2
+print('')
+print('Adição: {}'.format(soma)) 
+
+if num1 > num2:
+	sub = num1 - num2
+	print('Subtração: {}'.format(sub))
+else:
+	sub = num2 - num1
+	print('Subtração: {}'.format(sub))
+
+_________________________________________________________________________
+Mostrar o tipo primitivo:
+
+a = input('Digite Algo: ')
+print('>>> O tipo primitivo da sua resposta é {}'.format(type(a)))
+### --- O tipo primitivo da sua resposta é <type 'str'>
+## Informações:
+print('O valor [{}] é um número?'.format(a.isnumeric()))
+print('O valor [{}] é um alfabeto?'.format(a.isalpha()))
+print('O valor [{}] é um alfa-número?'.format(a.isalnum()))
+
+_________________________________________________________________________
+Faça um programa que leia um número inteiro e mostre na tela seu sucessor e seu antecessor
+
+num = int(input('Registre um número: '))
+print('')
+antecessor = num - 1
+sucessor = num + 1
+print('-' *30)
+print('''O Sucessor de {} é: {}
+O Antecessor de {} é: {}'''.format(num, sucessor, num, antecessor))
+print('-' *30)
+
+_________________________________________________________________________
+Crie um algoritmo que leia um número e mostre seu dobro, triplo e raiz quadrada.
+
+num = int(input('Registre número: '))
+dobro = num *2
+triplo = num *3
+rq = num **(0.5)
+print('')
+print('-=' *30)
+print('''Dobro: {}
+Triplo: {}
+Raiz Quadrada: {:.0f}'''.format(dobro, triplo, rq))
+print('-=' *30)
+
+_________________________________________________________________________
+Escreva um programa que um valor em metros e o exiba convertido em 
+centímetros e milímetros.
+
+num = float(input('Registre um comprimento (metros) \nr: '))
+cm = num *100
+ml = num *1000
+print('')
+print('-=' *30)
+print('--- Comprimento selecionado: {:.0f}'.format(num))
+print('''Centímetros: {:.0f} --- multiplique por 100
+Milímetros: {:.0f} ---	multiplique por 1000'''.format(cm, ml))
+
+_________________________________________________________________________
+
