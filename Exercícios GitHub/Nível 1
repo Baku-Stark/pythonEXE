@@ -72,4 +72,58 @@ print('''Centímetros: {:.0f} --- multiplique por 100
 Milímetros: {:.0f} ---	multiplique por 1000'''.format(cm, ml))
 
 _________________________________________________________________________
+Tabuada
 
+print('-=' *30)
+print('--- TABUADA ---')
+print('-=' *30)
+print('')
+num = int(input('>>> Escolha um número \nr: '))
+print('')
+print('-' *30)
+print('--- Numerador: {}'.format(num))
+for n in xrange(1, 11):
+	multi = num * n
+	print('{} x {} = {}'.format(num, n, multi))
+print('-' *30)
+
+_________________________________________________________________________
+Conversão
+
+UR$1,00 = R$4,70
+1 Real/BRL (790) = 0,2126528 Dólar dos Estados Unidos/USD (220) /divisão por 4,70
+1 Dólar dos Estados Unidos/USD (220) = 4,7025001 Real/BRL (790) *multiplicação por 4,70
+
+valor = float(input('>>> Digite o valor (Real): '))
+conversao_dolar = valor / 4.70
+print('')
+print('-=' *30)
+print('--- Conversão para Dólar ---')
+print('>>  UR${:.2f}'.format(conversao_dolar))
+print('-=' *30)
+_________________________________________________________________________
+Pintando A Parede (QUADRADO e RETANGULO) A = b x a
+
+alt = float(input('Selecione a ALTURA: '))
+larg = float(input('Selecione a LARGURA: '))
+area = larg * alt
+print('')
+print('=-' *30)
+print('Altura: {} --- Largura: {}'.format(alt, larg))
+tinta = area / 2
+print('Será nenecessário {}L de tinta para pintar uma parede de {}m² de área.'.format(tinta, area))
+print('=-' *30)
+_________________________________________________________________________
+Caclular Desconto (5%)
+
+produto = str(input('>>> Nome do produto: \nr: '))
+pewant = float(input('>>> Preço do produto \nr: '))
+desconto = pewant - (pewant * 5/100)
+print('')
+print('')
+print('--' *30)
+print('--- Total')
+print('')
+print('>>> {}'.format(produto))
+print('>>> Seu desconto é de: {:.2f}.'.format(desconto))
+print('--' *30)
