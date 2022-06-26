@@ -114,7 +114,7 @@ tinta = area / 2
 print('Será nenecessário {}L de tinta para pintar uma parede de {}m² de área.'.format(tinta, area))
 print('=-' *30)
 _________________________________________________________________________
-Caclular Desconto (5%)
+Calcular Desconto (5%)
 
 produto = str(input('>>> Nome do produto: \nr: '))
 pewant = float(input('>>> Preço do produto \nr: '))
