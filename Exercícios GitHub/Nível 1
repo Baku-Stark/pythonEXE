@@ -252,4 +252,5 @@ lista = [num1, num2, num3, num4]
 escolha = shuffle(lista)
 print('A ordem da apresentação... {}!!'.format(lista))
 print('-' *30)
+
 _________________________________________________________________________
