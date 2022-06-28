@@ -360,3 +360,96 @@ print('''>>> Seu primeiro nome é: {}
 print('-=' *30)
 
 _________________________________________________________________________
+Escreva um programa que faça o computador “pensar” em um 
+número inteiro entre 0 e 5 e peça para o usuário tentar descobrir qual foi o 
+número escolhido pelo computador. O programa deverá escrever na tela se o 
+usuário venceu ou perdeu.
+
+from random import randint
+from time import sleep
+
+print('-=' *30)
+print('--- JOGO DA ADIVINHAÇÃO!!! ---')
+print('-=' *30)
+print('')
+computador = randint(0, 5)
+print('COMPUTADOR: Já pensei em um número... Tente adivinhar!')
+print('')
+jogador = int(input('>>> Escolha um número de 0 à 5: '))
+print('')
+print('Processando resultado...')
+sleep(1)
+print('')
+print('-' *30)
+if jogador == computador:
+	print('>>> \033[1;32mVocê acertou!!!\033[m')
+else:
+	print('>>> \033[1;31mVocê errou na adivinhação...\033[m')
+print('-' *30)
+
+_________________________________________________________________________
+Crie um programa que leia a velocidade de um carro. 
+Se ele ultrapassar 80Km/h, mostre uma mensagem dizendo que ele foi multado. 
+A multa vai custar R$7,00 por cada Km acima do limite.
+
+from time import sleep
+
+registro = int(input('-- Registre a velocidade -- \nr [Km/h]: '))
+print('')
+print('-' *30)
+if registro < 80:
+	print('>>> O registro está sendo efetuado...')
+	sleep(1)
+	print('O motorista não possui nenhuma multa!!!')
+else:
+	print('>>> O registro está sendo efetuado...')
+	sleep(1)
+	limite = registro - 80
+	multa = limite * 7
+	print('')
+	print('''Ultrapassou o limite!!!
+	\033[1;34m--- Sua multa: R${:.2f}\033[m'''.format(multa))
+print('-' *30)
+
+_________________________________________________________________________
+Crie um programa que leia um número inteiro e mostre na 
+tela se ele é PAR ou ÍMPAR.
+
+numr = int(input('Digite um número: '))
+print('')
+num = numr % 2
+if num == 0:
+	print('O número é PAR!!')
+else:
+	print('O número é ÍMPAR')
+
+_________________________________________________________________________
+Desenvolva um programa que pergunte a distância de uma 
+viagem em Km. Calcule o preço da passagem, cobrando R$0,50 por Km para viagens 
+de até 200Km e R$0,45 parta viagens mais longas.
+
+print('=-' *30)
+print('--- TAM VIAGENS ---')
+print('=-' *30)
+print('')
+dist = float(input('>>> Registre a distância [Km]: '))
+print('')
+if dist <= 200:
+	resultado = dist *0.50
+	print('Custo da passagem (CURTA): R${:.2f}'.format(resultado))
+if dist > 200:
+	resultado_longa = dist *0.45
+	print('Custo da passagem (LONGA): R${:.2f}'.format(resultado_longa))
+
+_________________________________________________________________________
+Faça um programa que leia um ano qualquer e mostre se ele 
+é bissexto.
+
+ano = int(input('Escolha o ano: '))
+print('')
+if ano % 4 == 0 and ano  % 100 != 0 or ano % 400 == 0:
+	print('O ano {} é BISSEXTO'.format(ano))
+else:
+	print('O ano {} não é BISSEXTO'.format(ano)) 
+
+_________________________________________________________________________
