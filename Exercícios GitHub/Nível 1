@@ -453,3 +453,61 @@ else:
 	print('O ano {} não é BISSEXTO'.format(ano)) 
 
 _________________________________________________________________________
+Faça um programa que leia três números e mostre qual é o 
+maior e qual é o menor.
+
+num1 = int(input('Escolha o 1° número \nr:'))
+print('')
+num2 = int(input('Escolha o 2° número \nr:'))
+print('')
+num3 = int(input('Escolha o 3° número \nr:'))
+print('')
+print('-=' *30)
+print('\033[1;34m--- Resultado Dos Dados ---\033[m')
+print('')
+if num1 > num2 and num1 > num3:
+	maior = num1
+if num2 > num1 and num2 > num3:
+	maior = num2
+if num3 > num1 and num3 > num2:
+	maior = num3
+print('>>> O maior número é o {}.'.format(maior))
+if num1 < num2 and num1 < num3:
+	menor = num1
+if num2 < num1 and num2 < num3:
+	menor = num2
+if num3 < num1 and num3 < num2:
+	menor = num3
+print('>>> O menor número é o {}.'.format(menor))
+print('-=' *30)
+
+_________________________________________________________________________
+Escreva um programa que pergunte o salário de um 
+funcionário e calcule o valor do seu aumento. Para salários superiores a 
+R$1250,00, calcule um aumento de 10%. Para os inferiores ou iguais, o aumento é 
+de 15%.
+
+salario = float(input('Salário R$'))
+print('')
+if salario > 1250.00:
+	aumento_sup = salario + (salario * 10/100)
+	print('O aumento superior será de 10%: R${:.2f}'.format(aumento_sup))
+else:
+	aumento_inf = salario + (salario * 15/100)
+	print('O aumento inferior será de 15%: R${:.2f}'.format(aumento_inf))
+
+_________________________________________________________________________
+Desenvolva um programa que leia o comprimento de três retas
+e diga ao usuário se elas podem ou não formar um triângulo.
+
+r1 = float(input('Registre a 1ª reta \nr: '))
+print('')
+r2 = float(input('Registre a 2ª reta \nr: '))
+print('')
+r3 = float(input('Registre a 3ª reta \nr: '))
+print('')
+if r1 < r2 + r3 and r2 < r1 + r3 and r3 < r1 + r2:
+	print('---> Os segmentos podem criar um triângulo!!')
+else:
+	print('ERRO!!! Nenhma das retas consegue formar um triângulo.')
+_________________________________________________________________________
