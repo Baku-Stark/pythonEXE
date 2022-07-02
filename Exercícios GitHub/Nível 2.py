@@ -152,3 +152,78 @@ elif media_final >= 20.0:
 print('-=' *30)
 
 _________________________________________________________________________
+A Confederação Nacional de Natação precisa de um programa 
+que leia o ano de nascimento de um atleta e mostre sua categoria, de acordo 
+com a idade:
+
+– Até 9 anos: MIRIM
+
+– Até 14 anos: INFANTIL
+
+– Até 19 anos: JÚNIOR
+
+– Até 25 anos: SÊNIOR
+
+– Acima de 25 anos: MASTER
+
+import datetime 
+print('-=' *30)
+print('--- PROGRAMA DE NATAÇÃO ---')
+print('-=' *30)
+print('')
+print('TABELA DE IDADE')
+print('''
+[MIRIM] ------- 9  anos
+[INFANTIL] ---- 14 anos 
+[JÚNIOR] ------ 19 anos
+[SÊNIOR] ------ 25 anos
+[MASTER] ------ 25 anos >
+	''')
+currentDateTime = datetime.datetime.now()
+date = currentDateTime.date()
+year = date.strftime("%Y")
+#print('Current Year -> {}'.format(year))
+year_ano = int(year)
+print('')
+nome = str(input('Nome Do(a) Aluno(a) \nr: '))
+print('')
+print('[Data De Nascimento]')
+dia = int(input('	Dia: '))
+mes = int(input('	Mês: '))
+ano = int(input('	Ano: '))
+idade = year_ano - ano
+print('')
+print('	Idade do(a) aluno(a): {} anos.'.format(idade))
+print('')
+print('-=' *30)
+if idade == 9 or idade < 13:
+	print('{} está na classe: MIRIM.'.format(nome))
+	print('--- Informações ---')
+	print('– {}/{}/{}'.format(dia, mes, ano))
+	print('– Até 9 anos: MIRIM')
+
+elif idade == 14 or idade < 18:
+	print('{} está na classe: INFANTIL.'.format(nome))
+	print('--- Informações ---')
+	print('– {}/{}/{}'.format(dia, mes, ano))
+	print('– Até 14 anos: INFANTIL')
+
+elif idade == 19 or idade < 25:
+	print('{} está na classe: JÚNIOR.'.format(nome))
+	print('--- Informações ---')
+	print('– {}/{}/{}'.format(dia, mes, ano))
+	print('– Até 19 anos: JÚNIOR')
+
+elif idade == 25:
+	print('{} está na classe: SÊNIOR.'.format(nome))
+	print('--- Informações ---')
+	print('– {}/{}/{}'.format(dia, mes, ano))
+	print('– Até 25 anos: SÊNIOR')
+
+elif idade > 25:
+	print('{} está na classe: MASTER.'.format(nome))
+	print('--- Informações ---')
+	print('– {}/{}/{}'.format(dia, mes, ano))
+	print('– Acima de 25 anos: MASTER')
+
+print('-=' *30)
