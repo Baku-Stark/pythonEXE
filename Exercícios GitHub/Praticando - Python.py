@@ -34,6 +34,7 @@ print('')
 media_2 = bim3 + bim4
 print('')
 print('-=' *30)
+
 media_final = media_1 + media_2
 print('A média do primeiro semestre: {:.1f}'.format(media_1))
 print('A média do segundo semestre: {:.1f}'.format(media_2))
