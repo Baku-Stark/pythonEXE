@@ -34,7 +34,6 @@ print('')
 media_2 = bim3 + bim4
 print('')
 print('-=' *30)
-
 media_final = media_1 + media_2
 print('A média do primeiro semestre: {:.1f}'.format(media_1))
 print('A média do segundo semestre: {:.1f}'.format(media_2))
@@ -59,7 +58,6 @@ area = 3.14 * raio
 print('')
 print('>>> A área do círculo é de {:.1f}m²'.format(area))
 
-_________________________________________________________________________
 _________________________________________________________________________
 Faça um Programa que calcule a área de um quadrado, em seguida mostre o dobro 
 desta área para o usuário. 
@@ -190,6 +188,72 @@ elif sexo == 'F':
 	print('--- FEMININO ---')
 	peso = (62.1 * altura) - 44.7
 	print('>>> Seu peso é de: {}kg'.format(peso))
+print('-=' *30)
+
+_________________________________________________________________________
+João Papo-de-Pescador, homem de bem, comprou um microcomputador para controlar 
+o rendimento diário de seu trabalho. Toda vez que ele traz um peso de peixes 
+maior que o estabelecido pelo regulamento de pesca do estado de 
+São Paulo (50 quilos) deve pagar uma multa de R$4,00 por quilo excedente. 
+João precisa que você faça um programa que leia a variável peso (peso de peixes) 
+e calcule o excesso. Gravar na variável excesso a quantidade de quilos além do 
+limite e na variável multa o valor da multa que João deverá pagar. 
+Imprima os dados do programa com as mensagens adequadas. 
+
+nome_peixe = str(input('Nome Do Peixe: '))
+print('')
+peso_peixe = float(input('Peso Do Peixo \nKG: '))
+print('')
+print('-=' *30)
+print('TOTAL')
+print('Peso Do {} vale: {:.1f} KG'.format(nome_peixe, peso_peixe))
+print('')
+if peso_peixe > 50.0:
+	print('O peso excedeu!!!')
+	total = peso_peixe - 50.0
+	tot_multa = total * 4
+	print('>>> Valor da multa: R${:.2f}'.format(tot_multa))
+else:
+	print('Peso Ideal!!!')
+	print('>>> Não há multa.')
+print('-=' *30)
+
+_________________________________________________________________________
+Faça um Programa que pergunte quanto você ganha por hora e o número de horas 
+trabalhadas no mês. Calcule e mostre o total do seu salário no referido mês, 
+sabendo-se que são descontados 11% para o Imposto de Renda, 8% para o INSS e 
+5% para o sindicato, faça um programa que nos dê:
+
+    salário bruto.
+    quanto pagou ao INSS.
+    quanto pagou ao sindicato.
+    o salário líquido.
+    calcule os descontos e o salário líquido, conforme a tabela abaixo
+
+nome = str(input('Nome Do Usuário: '))
+print('')
+salario_hora = float(input('Ganho Por Hora R$'))
+print('')
+trab_hora = int(input('Horas Trabalhadas (mês) \nr:'))
+salario = salario_hora * trab_hora
+print('')
+print('-=' *30)
+print('DADOS')
+print('')
+print('> {}'.format(nome))
+print('> Salário: R${:.2f}'.format(salario))
+print('---')
+ir = salario - (salario * 11/100)
+print('> IMPOSTO (11%): R${:.2f}'.format(ir))
+print('---')
+inss = ir - (ir * 8/100)
+print('> INSS (8%): R${:.2f}'.format(inss))
+print('---')
+sind = inss - (inss * 5/100)
+print('> Sindicato (5%): R${:.2f}'.format(sind))
+print('---')
+salario_liq = sind
+print('>>> Salário Liquido: R${:.2f}'.format(salario_liq))
 print('-=' *30)
 
 _________________________________________________________________________
