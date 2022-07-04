@@ -227,3 +227,158 @@ elif idade > 25:
 	print('– Acima de 25 anos: MASTER')
 
 print('-=' *30)
+
+_________________________________________________________________________
+Refaça o DESAFIO 35 dos triângulos, 
+acrescentando o recurso de mostrar que tipo de triângulo será formado:
+
+– EQUILÁTERO: todos os lados iguais
+
+– ISÓSCELES: dois lados iguais, um diferente
+
+– ESCALENO: todos os lados diferentes
+
+resultado = True
+r1 = float(input('Registre a 1ª reta \nr: '))
+print('')
+r2 = float(input('Registre a 2ª reta \nr: '))
+print('')
+r3 = float(input('Registre a 3ª reta \nr: '))
+print('')
+if r1 < r2 + r3 and r2 < r1 + r3 and r3 < r1 + r2:
+	print('---> Os segmentos podem criar um triângulo!!')
+else:
+	print('ERRO!!! Nenhma das retas consegue formar um triângulo.')
+	resultado = False
+print('')
+if resultado == False:
+	print('-=' *30)
+	print('O triângulo do usuário é:')
+	print('>>> SOLUÇÃO INVÁLIDA!!!')
+	print('-=' *30)
+else:
+	print('-=' *30)
+	print('--- Formação do Triângulo ---')
+	print('''
+	[EQUILÁTERO] - Todos os lados iguais
+
+	[ISÓSCELES] -- Dois lados iguais, um diferente
+
+	[ESCALENO] --- Todos os lados diferentes''')
+	print('')
+	print('O triângulo do usuário é:')
+	if r1 == r2 == r3:
+		print('EQUILÁTERO: Todos os lados iguais')
+	elif r1 == r2 or r1 == r3 or r2 == r3:
+		print('>>> ISÓSCELES: Dois lados iguais, um diferente')
+	else:
+		print('>>> ESCALENO: Todos os lados diferentes.')
+	print('-=' *30)
+
+_________________________________________________________________________
+Desenvolva uma lógica que leia o peso e a altura de uma 
+pessoa, calcule seu Índice de Massa Corporal (IMC) e mostre seu status, de 
+acordo com a tabela abaixo:
+
+– IMC abaixo de 18,5: Abaixo do Peso
+
+– Entre 18,5 e 25: Peso Ideal
+
+– 25 até 30: Sobrepeso
+
+– 30 até 40: Obesidade
+
+– Acima de 40: Obesidade Mórbida 
+
+---- imc = peso / (alt ** 2) kg/m²
+
+nome = str (input('Digite seu nome \nr: '))
+print('')
+peso = float (input('Digite seu peso [Kg] \nr: '))
+print('')
+altura = float (input('Digite sua altura [metros] \nr: '))
+print('')
+imc = peso / (altura ** 2)
+print('-=' *30)
+print('''
+IMC abaixo de 18,5: Abaixo do Peso
+
+Entre 18,5 e 25: Peso Ideal
+
+25 até 30: Sobrepeso
+
+30 até 40: Obesidade
+
+Acima de 40: Obesidade Mórbida''')
+print('.')
+print('.')
+print('.')
+print('.')
+print('--- Dados Do Usuário ---')
+if imc < 18.5:
+	print('[Abaixo do Peso]')
+elif imc == 18.5 and imc < 25:
+	print('[Peso Ideal]')
+elif imc == 25 and imc < 30:
+	print('[Sobrepeso]')
+elif imc == 30 and imc <= 40:
+	print('[Obesidade]')
+elif imc > 40:
+	print('[Obesidade Mórbida]')
+print('>>> O IMC de {} está em: {:.1f}km/g²'.format(nome, imc))
+print('-=' *30)
+
+_________________________________________________________________________
+Elabore um programa que calcule o valor a ser pago por um 
+produto, considerando o seu preço normal e condição de pagamento:
+
+– à vista dinheiro/cheque: 10% de desconto
+
+– à vista no cartão: 5% de desconto
+
+– em até 2x no cartão: preço formal 
+
+– 3x ou mais no cartão: 20% de juros
+
+print('-=' *15)
+print('=== LOJA FREITAS ===')
+print('-=' *15)
+print('')
+produto = float(input('Preço Do Produto \nr: '))
+print('')
+select = int(input('''
+- Escolha Do Pagamento: 
+[ 1 ] -- Dinheiro/Cheque 
+[ 2 ] -- Cartão
+
+r: '''))
+print('')
+print('-=' *30)
+print('TOTAL')
+print('')
+if select == 1:
+	total_10 = produto - (produto * 10/100)
+	print('À vista dinheiro/cheque: 10% de desconto')
+	print('>>> Preço Do Produto: R${:.2f}'.format(total_10))
+elif select == 2:
+	print('Cartão De Crédio!')
+	print('')
+	parcela = int(input('- Parcelamento: '))
+	print('')
+	if parcela == 0 or parcela == 1:
+		total_5 = produto - (produto * 5/100)
+		print('À vista no cartão: 5% de desconto')
+		print('>>> Preço Do Produto: R${:.2f}'.format(total_5))
+	elif parcela == 2:
+		tot_normal = produto / 2
+		print('Em até 2x no cartão: preço formal')
+		print('>>> Produto: R${:.2f}'.format(tot_normal))
+	elif parcela >= 3:
+		total_parcela = produto / parcela
+		tot_parcela = total_parcela - (total_parcela * 20/100)
+		print('3x ou mais no cartão: 20% de juros')
+		print('>>> Preço Do Produto: R${:.2f}'.format(tot_parcela))
+else:
+	print('ERRO! Nenhuma opção de pagamento foi selecionada!')
+print('-=' *30)
+_________________________________________________________________________
