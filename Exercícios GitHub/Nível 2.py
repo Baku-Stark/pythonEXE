@@ -381,4 +381,61 @@ elif select == 2:
 else:
 	print('ERRO! Nenhuma opção de pagamento foi selecionada!')
 print('-=' *30)
+
 _________________________________________________________________________
+Crie um programa que faça o computador jogar Jokenpô 
+com você.
+
+from random import choice
+from time import sleep
+
+print('-=' *30)
+print('--- JOKENPÔ GAME !!! ---')
+print('-=' *30)
+print('')
+print('''
+	Friday: Vamos jogar JOKENPÔ?
+	>>> Regras: 
+				Pedra >> Tesoura
+				Tesoura >> Papel
+				Papel >> Pedra''')
+print('')
+lista = ["pedra", "papel", "tesoura"]
+player = str(input('Faça sua escolha \nr: ')).lower()
+print('')
+print('JO')
+sleep(1)
+print('KEN')
+sleep(2)
+print('PÔ!!!')
+print('')
+print('-=' *30)
+friday = choice(lista)
+vencedor = ""
+if (player != "pedra" and player != str("papel") and player != str("tesoura")):
+	print('[ERRO !!!]')
+	print('A escolha está incorreta!')
+## Empate
+elif player == friday:
+	print('EMPATE ENTRE HOMEM VS. MÁQUINA!')
+## Vitória do Jogador
+elif player == 'papel' and friday == 'pedra':
+	print('PARABÉNS! Jogador venceu a partida!')
+
+elif player == 'tesoura' and friday == 'papel':
+	print('PARABÉNS! Jogador venceu a partida!')
+
+elif player == 'pedra' and friday == 'tesoura':
+	print('PARABÉNS! Jogador venceu a partida!')
+
+## Vitória da Friday	
+elif friday == 'papel' and friday == 'pedra':
+	print('PARABÉNS! Friday venceu a partida!')
+
+elif friday == 'tesoura' and player == 'papel':
+	print('PARABÉNS! Friday venceu a partida!')
+
+elif friday == 'pedra' and player == 'tesoura':
+	print('PARABÉNS! Friday venceu a partida!')
+
+print('-=' *30)
