@@ -439,3 +439,86 @@ elif friday == 'pedra' and player == 'tesoura':
 	print('PARABÉNS! Friday venceu a partida!')
 
 print('-=' *30)
+
+_________________________________________________________________________
+Faça um programa que mostre na tela uma contagem 
+regressiva para o estouro de fogos de artifício, indo de 10 até 0, com uma 
+pausa de 1 segundo entre eles.
+
+from time import sleep
+print('-=' *30)
+print('=== CONTAGEM REGRESSIVA ===')
+print('-=' *30)
+print('')
+for x in xrange(10, 0, -1):
+	print('{}...'.format(x))
+	sleep(1)
+print('')
+print('FELIZ ANO NOVO!!!')
+
+_________________________________________________________________________
+Crie um programa que mostre na tela todos os números 
+pares que estão no intervalo entre 1 e 50. 
+
+for x in xrange(1, 51):
+	if x % 2 == 0:
+		print('{} '.format(x)),
+
+_________________________________________________________________________
+Faça um programa que calcule a soma entre todos os 
+números que são múltiplos de três e que se encontram no intervalo de 1 até 500.
+
+cont = 0
+soma = 0
+
+for x in xrange(1, 501):
+	if x % 3 == 0:
+		cont += 1
+		soma += x
+print('A soma de todos os valores é: {}'.format(soma)),
+print('--- Foram feitas {} solicitações.'.format(cont))
+
+_________________________________________________________________________
+Refaça o DESAFIO 9, mostrando a tabuada de um número 
+que o usuário escolher, só que agora utilizando um laço for.
+
+from time import sleep
+print('-=' *30)
+print('=== TABUADA ===')
+print('-=' *30)
+print('')
+escolha = int(input('Escolha um número: '))
+print('')
+print('Criando a tabuada...')
+sleep(2)
+print('')
+print('-=' *30)
+print('Tabuada de {}'.format(escolha))
+print('-------------------------------')
+for num in xrange(1, 11):
+	multi = escolha * num
+	print('{} x {:>2} = {:>2}'.format(escolha, num, multi))
+print('-=' *30)
+
+_________________________________________________________________________
+Desenvolva um programa que leia seis números 
+inteiros e mostre a soma apenas daqueles que forem pares. Se o valor 
+digitado for ímpar, desconsidere-o.
+
+soma = 0
+cont = 0
+cont_par = 0
+
+for x in xrange(1, 7):
+	num = int(input('Digite o {}° número \nr: '.format(x)))
+	print('')
+	cont += 1
+	if num % 2 == 0:
+		cont_par += 1
+		soma += num
+print('-=' *30)
+print('A soma entro os números pares é de: {}'.format(soma))
+print('--- Sendo {} número(s) par(es).'.format(cont_par))
+print('-=' *30)
+
+_________________________________________________________________________
