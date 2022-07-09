@@ -517,8 +517,25 @@ for x in xrange(1, 7):
 		cont_par += 1
 		soma += num
 print('-=' *30)
-print('A soma entro os números pares é de: {}'.format(soma))
+print('A soma entre os números pares é de: {}'.format(soma))
 print('--- Sendo {} número(s) par(es).'.format(cont_par))
 print('-=' *30)
+
+_________________________________________________________________________
+Desenvolva um programa que leia o primeiro termo e a 
+razão de uma PA. No final, mostre os 10 primeiros termos dessa progressão.
+
+print('-=' *30)
+print('10 TERMOS DE UMA PA')
+print('-=' *30)
+print('')
+pri_pa = int(input('Digite o 1° Termo \nr: '))
+print('')
+raz_pa = int(input('Digite a razão da PA \nr: '))
+print('')
+
+decimo = pri_pa + (10 - 1) * raz_pa
+for x in xrange(pri_pa, decimo + raz_pa, raz_pa):
+	print('{} > '.format(x)),
 
 _________________________________________________________________________
