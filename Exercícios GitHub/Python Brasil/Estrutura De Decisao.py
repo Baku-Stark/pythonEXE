@@ -307,3 +307,5 @@ elif semana == 7:
 	print('\a DOMINGO!')
 else:
 	print('\a [ERRO] Dia Da Semana Inválido!')
+	
+_________________________________________________________________________
