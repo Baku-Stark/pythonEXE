@@ -45,4 +45,4 @@ else:
 	else:
 		raiz_mais = (- b + math.sqrt(delta)) / (2 * a)
 		raiz_meno = (- b - math.sqrt(delta)) / (2 * a)
-		print('Resultado: {} e {}'.format(raiz_mais, raiz-meno))
+		print('Resultado: {} e {}'.format(raiz_mais, raiz_meno))
