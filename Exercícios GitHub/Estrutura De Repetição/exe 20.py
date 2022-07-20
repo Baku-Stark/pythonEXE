@@ -15,12 +15,20 @@ Vou montar a tabuada de 5 começando em 4 e terminando em 7:
 5 X 7 = 35
 '''
 
+finish = 0
+
 num = int(input('\a Númerador \nr: '))
 print('')
 start = int(input('\a Início Da Tabuada de {} \nr: '.format(num)))
 print('')
 finish = int(input('\a Final Da Tabuada de {} \nr: '.format(num)))
+while finish == 0:
+	finish = int(input('\a Por favor, informe o Final Da Tabuada de {} \nr: '.format(num)))
 print('')
+if start == finish:
+	print('--- O Início e Final não podem ser iguais')
+	print('--- O Final passará a valer como 10')
+	finish = 10
 print('-=' *30)
 print('''
 Tabuada de: {}
