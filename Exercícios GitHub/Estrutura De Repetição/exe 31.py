@@ -46,14 +46,13 @@ while True:
 		print('[ERRO] Produto não catalogado! ')
 		cod = int(input('\a Escolha o código do produto \nr: '))
 		print('')
-	print(linha_div)
 	# -----SISTEMA DE SELEÇÃO-----
 	if cod == 100:
 		produto = 'Cachorro Quente'
 		qtd = int(input('Quantidade de {} \nr: '.format(produto)))
 		valor_produto = 1.20 * qtd
 		print('')
-		print('\a {} UNI de {}'.format(qtd, produto))
+		print('\a {} UNI de {} = R${:.2f}'.format(qtd, produto, valor_produto))
 		print('')
 
 	elif cod == 101:
@@ -61,7 +60,7 @@ while True:
 		qtd = int(input('Quantidade de {} \nr: '.format(produto)))
 		valor_produto = 1.30 * qtd
 		print('')
-		print('\a {} UNI de {}'.format(qtd, produto))
+		print('\a {} UNI de {} = R${:.2f}'.format(qtd, produto, valor_produto))
 		print('')
 
 	elif cod == 102:
@@ -69,7 +68,7 @@ while True:
 		qtd = int(input('Quantidade de {} \nr: '.format(produto)))
 		valor_produto = 1.50 * qtd
 		print('')
-		print('\a {} UNI de {}'.format(qtd, produto))
+		print('\a {} UNI de {} = R${:.2f}'.format(qtd, produto, valor_produto))
 		print('')
 
 	elif cod == 103:
@@ -77,15 +76,15 @@ while True:
 		qtd = int(input('Quantidade de {} \nr: '.format(produto)))
 		valor_produto = 1.20 * qtd
 		print('')
-		print('\a {} UNI de {}'.format(qtd, produto))
+		print('\a {} UNI de {} = R${:.2f}'.format(qtd, produto, valor_produto))
 		print('')
 
 	elif cod == 104:
 		produto = 'Cheeseburguer'
-		qtd = int(input('Quantidade de {} \nr: '.format(produto)))
+		qtd = int(input('Quantidade de {} \nr: '.format(produto, valor_produto)))
 		valor_produto = 1.30 * qtd
 		print('')
-		print('\a {} UNI de {}'.format(qtd, produto))
+		print('\a {} UNI de {} = R${:.2f}'.format(qtd, produto, valor_produto))
 		print('')
 
 	elif cod == 105:
@@ -93,19 +92,18 @@ while True:
 		qtd = int(input('Quantidade de {} \nr: '.format(produto)))
 		valor_produto = 1.00 * qtd
 		print('')
-		print('\a {} UNI de {}'.format(qtd, produto))
+		print('\a {} UNI de {} = R${:.2f}'.format(qtd, produto, valor_produto))
 		print('')
-	print(linha_div)
 	# -----SISTEMA DE RESPOSTA-----
 	select = str(input('DESEJA CONTINUAR? [ S ] - SIM | [ N ] - NÃO \nr: ')).upper()
 	print('')
 	if select == 'NAO' or select == 'NÃO':
 		count_produto += valor_produto
+		print(linha_div)
 		break
 	elif select == 'SIM':
 		count_produto += valor_produto
 		count_somado += count_produto
-		print(linha_div)
 		continue
 	else:
 		while select != 'SIM' and select != 'NAO' and select != 'NÃO':
