@@ -20,6 +20,7 @@ Média dos saltos: 5.9 m
 
 saltos = []
 
+
 def clear():
     print('\n' *10)
 
