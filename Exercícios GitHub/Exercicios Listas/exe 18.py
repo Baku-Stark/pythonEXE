@@ -69,7 +69,6 @@ print('\033[34mO número "0" encerra o programa\033[m')
 print('')
 while num != 0:
     num = int(input('Escolha um jogador \nr: '))
-    eleitos.append(num)
     print('')
     if num > 23:
         print('Número Inválido')
