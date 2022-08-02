@@ -1,7 +1,7 @@
 '''
 Faça um programa para imprimir: 
 
-	1
+    1
     2   2
     3   3   3
     .....
@@ -13,5 +13,6 @@ até a n-ésima linha.
 
 num = int(input('Escolha um número \nr: '))
 print('')
-for n in xrange(1, num+1):
-	print('{} '.format(num)),
+for n in range(num):
+	n += 1
+	print('{} '.format(str(n)*n))
