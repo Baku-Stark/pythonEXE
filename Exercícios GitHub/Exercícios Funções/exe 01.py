@@ -11,8 +11,13 @@ para um n informado pelo usuário. Use uma função que receba um valor n inteir
 até a n-ésima linha. 
 '''
 
+def prog(num):
+	for n in range(num):
+		n += 1
+		print('{} '.format(str(n)*n))
+
+
+# ---
 num = int(input('Escolha um número \nr: '))
 print('')
-for n in range(num):
-	n += 1
-	print('{} '.format(str(n)*n))
+prog(num)
