@@ -605,3 +605,69 @@ if inverso == junto:
 else:
 	print('A frase não é um PALÍNDROMO!')
 print('-=' *30)
+
+--------------------------------------------------------
+'''
+Exercício Python 54: Crie um programa que leia o ano de nascimento de sete 
+pessoas. No final, mostre quantas pessoas ainda não atingiram a maioridade e 
+quantas já são maiores.
+'''
+
+from datetime import date
+from time import sleep
+
+ano_atual = date.today().year
+tot_maior = 0
+tot_menor = 0
+
+def clear():
+	print('\n' *10)
+
+for pessoa in range(1, 8):
+	ano = int(input('Registre o ano da {}ª pessoa \nr: '.format(pessoa)))
+	idade = ano_atual - ano
+	print('')
+	if idade >= 21:
+		tot_maior += 1
+
+	else:
+		tot_menor += 1
+clear()
+print('-=' *30)
+print('Resultado dos dados')
+print('')
+print('Processando...')
+sleep(1)
+print('\a {} pessoas são maiores e {} ainda não atingiram a maioridade'
+	.format(tot_maior, tot_menor))
+print('-=' *30)
+
+--------------------------------------------------------
+'''
+Exercício Python 55: Faça um programa que leia o peso de cinco pessoas. 
+No final, mostre qual foi o maior e o menor peso lidos.
+'''
+
+maior = 0
+menor = 0
+
+for pessoa in range(1, 6):
+	peso = float(input('Peso da {}ª pessoa \nr: '.format(pessoa)))
+	print('')
+	if pessoa == 1:
+		maior = peso
+		menor = peso
+
+	else:
+		if peso > maior:
+			maior = peso
+
+		elif peso < menor:
+			menor = peso
+print('')
+print('-=' *30)
+print('Resultado')
+print('')
+print('\a O MAIOR peso registrado foi {:.2f}KG'.format(maior))
+print('\a O MENOR peso registrado foi {:.2f}KG'.format(menor))
+print('-=' *30)
