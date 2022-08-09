@@ -671,3 +671,49 @@ print('')
 print('\a O MAIOR peso registrado foi {:.2f}KG'.format(maior))
 print('\a O MENOR peso registrado foi {:.2f}KG'.format(menor))
 print('-=' *30)
+
+--------------------------------------------------------
+'''
+Exercício Python 56: Desenvolva um programa que leia o nome, idade e sexo 
+de 4 pessoas. No final do programa, mostre: a média de idade do grupo, 
+qual é o nome do homem mais velho e quantas mulheres têm menos de 20 anos.
+'''
+
+pessoa_old = ''
+maioridadeh = 0
+tot_idade = 0
+sub_vinte = 0
+
+def clear():
+	print('\n' *10)
+
+for qtd in range(1, 5):
+	nome = str(input('Nome e sobrenome \nr: ')).capitalize().strip()
+	print('')
+	sexo = str(input('Sexo do usuário [M/F] \nr: ')).upper().strip()
+	print('')
+	idade = int(input('Idade do usuário \nr: '))
+	tot_idade += idade
+
+	if sexo == 'F' and idade < 20:
+		sub_vinte += 1
+
+	if qtd == 1 and sexo == 'M':
+		maioridadeh = idade
+		pessoa_old = nome
+
+	if sexo in "M" and idade > maioridadeh:
+		maioridadeh = idade
+		pessoa_old = nome
+	print('-' *15)
+# média de idade
+media = tot_idade / qtd
+clear()
+print('-=' *30)
+print('Resultado')
+print('')
+print('\a A média de idade do grupo: {}'.format(media))
+print('\a Mulheres com menos de 20 anos: {}.'.format(sub_vinte))
+print('\a Nome do homem mais velho:  {} com {} anos'.format(pessoa_old, maioridadeh))
+print('-=' *30)
+--------------------------------------------------------
