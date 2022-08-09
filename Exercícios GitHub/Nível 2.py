@@ -539,3 +539,33 @@ for x in xrange(pri_pa, decimo + raz_pa, raz_pa):
 	print('{} > '.format(x)),
 
 _________________________________________________________________________
+'''Exercício Python 52: Faça um programa que leia um número inteiro e diga se 
+ele é ou não um número primo. 
+'''
+
+num = int(input('Escolha um número \nr: '))
+tot = 0
+print('')
+for n in range(1, num + 1):
+	if num % n == 0:
+		print('')
+		tot += 1
+		print('\033[34m') # É divisível
+
+	else:
+		print('\033[31m') # Não é divisível
+		print('')
+
+	print('{}\033[m'.format(n))
+print('')
+print('-=' *30)
+print('Resultado')
+print('')
+if tot == 2:
+	print('O número {} é PRIMO'.format(num))
+
+else:
+	print('O número {} não é PRIMO'.format(num))
+print('')
+print('--- {} foi divisível {}x!'.format(num, tot))
+print('-=' *30)
