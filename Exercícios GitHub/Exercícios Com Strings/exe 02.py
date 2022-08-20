@@ -6,6 +6,6 @@ ou minúsculas.
 '''
 
 
-frase = str(input('Digite seu nome \nr: ')).upper()
+nome = str(input('Digite seu nome \nr: ')).upper()
 print('')
-print('\a' + frase[::-1])
+print('\a' + nome[::-1])
