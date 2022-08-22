@@ -1,3 +1,8 @@
+'''
+Número por extenso. Escreva um programa que solicite ao usuário a digitação de um 
+número até 99 e imprima-o na tela por extenso. 
+'''
+
 def converter_em_texto(numeral):
     dicionario_numerico = {
         0: 'zero', 1: 'um', 2: 'dois', 3: 'três', 4: 'quatro', 5: 'cinco',
