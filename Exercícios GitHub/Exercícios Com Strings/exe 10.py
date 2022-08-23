@@ -28,9 +28,7 @@ def converter_em_texto(numeral):
 
 # ===
 if __name__ == '__main__':
-	print('Insira um número')
-	print('')
-	numeral = int(input('r: '))
+	numeral = int(input('Digite um número \nr: '))
 	print('')
 	numeral_por_extenso = converter_em_texto(numeral)
 	print('\a {}'.format(numeral_por_extenso))
