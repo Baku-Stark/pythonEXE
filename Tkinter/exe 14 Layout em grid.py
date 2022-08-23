@@ -1,5 +1,6 @@
 from tkinter import *
 
+
 janela = Tk()
 janela.title("INTRODUÇÃO AO LAYOUT EM GRID")
 janela.geometry("500x500")
