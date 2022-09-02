@@ -13,7 +13,7 @@ janela.resizable(width=FALSE, height=FALSE)
 
 # ----------------------------------------
 # função
-os.chdir(r'C:\Users\Milena\Desktop\Scripts de Programação\Scripts Python\Music Player\music')
+os.chdir(r'C:\Users\Friday\Desktop\Scripts de Programação\Scripts Python\Music Player\music')
 musicas = os.listdir()
 
 def show():
@@ -76,7 +76,7 @@ frame_esquerda = Frame(
 )
 
 # ----- imagem LOGO
-img_player =  Image.open('../ondas-sonoras.png')
+img_player =  Image.open('../btn/ondas-sonoras.png')
 img_player = img_player.resize((130, 130))
 img_player = ImageTk.PhotoImage(img_player)
 
@@ -109,7 +109,7 @@ l_rolls = Label(
     font=('Ivy 10'), bg="#dedcdc", fg="#111111"
 )
 
-img_previous = Image.open('../button-previous.png')
+img_previous = Image.open('../btn/button-previous.png')
 img_previous = img_previous.resize((30, 30))
 img_previous = ImageTk.PhotoImage(img_previous)
 b_previous = Button(
@@ -117,7 +117,7 @@ b_previous = Button(
     font=('Ivy 10 bold'), image=img_previous, bg="#111111", relief=RAISED, overrelief=RIDGE
 )
 
-img_play = Image.open('../button-play.png')
+img_play = Image.open('../btn/button-play.png')
 img_play = img_play.resize((30, 30))
 img_play = ImageTk.PhotoImage(img_play)
 b_play = Button(
@@ -125,7 +125,7 @@ b_play = Button(
     font=('Ivy 10 bold'), image=img_play, bg="#111111", relief=RAISED, overrelief=RIDGE
 )
 
-img_next = Image.open('../button-next.png')
+img_next = Image.open('../btn/button-next.png')
 img_next = img_next.resize((30, 30))
 img_next = ImageTk.PhotoImage(img_next)
 b_next = Button(
@@ -133,7 +133,7 @@ b_next = Button(
     font=('Ivy 10 bold'), image=img_next, bg="#111111", relief=RAISED, overrelief=RIDGE
 )
 
-img_pause = Image.open('../button-pause.png')
+img_pause = Image.open('../btn/button-pause.png')
 img_pause = img_pause.resize((30, 30))
 img_pause = ImageTk.PhotoImage(img_pause)
 b_pause = Button(
@@ -141,7 +141,7 @@ b_pause = Button(
     font=('Ivy 10 bold'), image=img_pause, bg="#111111", relief=RAISED, overrelief=RIDGE
 )
 
-img_resume = Image.open('../button-resume.png')
+img_resume = Image.open('../btn/button-resume.png')
 img_resume = img_resume.resize((30, 30))
 img_resume = ImageTk.PhotoImage(img_resume)
 b_resume = Button(
@@ -149,7 +149,7 @@ b_resume = Button(
     font=('Ivy 10 bold'), image=img_resume, bg="#111111", relief=RAISED, overrelief=RIDGE
 )
 
-img_stop = Image.open('../button-stop.png')
+img_stop = Image.open('../btn/button-stop.png')
 img_stop = img_stop.resize((30, 30))
 img_stop = ImageTk.PhotoImage(img_stop)
 b_stop = Button(
