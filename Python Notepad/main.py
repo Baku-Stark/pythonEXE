@@ -20,7 +20,7 @@ def anotar():
     if note == "":
         messagebox.showwarning('AVISO!', 'VOCÊ PRECISA ESCREVER ALO PRIMEIRO.')
     else:
-        with open("Notepad Python.txt", 'r+') as notepad:
+        with open("Notepad Python.txt", 'w') as notepad:
             notepad.write(note)
     for i in note:
         label_note.insert(END, i)
