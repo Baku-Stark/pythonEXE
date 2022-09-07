@@ -1,4 +1,4 @@
-from CursoEmVideo.ex115.lib.interface import *
+from lib.interface import *
 
 def arquivoExiste(nome):
     try:

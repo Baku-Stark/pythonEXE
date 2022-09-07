@@ -1,5 +1,5 @@
-from CursoEmVideo.ex115.lib.interface import *
-from CursoEmVideo.ex115.lib.arquivo import *
+from lib.interface import *
+from lib.arquivo import *
 from time import sleep
 
 arq = 'cursoemvideo.txt'
