@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import filedialog
 
 root = Tk()
 root.geometry("850x550")
@@ -13,20 +14,42 @@ fg_color = '#f0f8ff'
 
 # ----------------------------------------
 # função
-def salvarComo():
-    note = str(fileMenu['label'].get())
+def novo():
+    print('\033[1;34mNovo Arquivo\033[m')
 
-    if note == "":
-        messagebox.showwarning("AVISO!", "Você precisa digitar algo!")
+    with open("Novo Arquivo.txt", "a") as arquivo:
+        text = boxNote.get(0.0, END)
+        arquivo.write(text.rstrip())
+
+def abrir():
+    print('\033[1;34mAbrir Arquivo\033[m')
+    
+    noteOpen = filedialog.askopenfile(mode='r+', defaultextension=".txt")
+    text = boxNote.get(0.0, END)
+    noteOpen.write(text.rstrip())
+
+def salvar():
+    print('\033[1;34mSalvar\033[m')
+
+    note = filedialog.asksaveasfile(mode='w', defaultextension=".txt")
+    text = boxNote.get(0.0, END)
+    note.write(text.rstrip())
+
+def salvarComo():
+    print('\033[1;34mSalvar Como\033[m')
+    
+    note = filedialog.asksaveasfile(mode='w', defaultextension=".txt")
+    text = boxNote.get(0.0, END)
+    note.write(text.rstrip())
 
 # ----------------------------------------
 # widget
 meuMenu = Menu(root)
 
 fileMenu = Menu(meuMenu, tearoff=0)
-fileMenu.add_command(label="Novo  - Ctrl + N")
-fileMenu.add_command(label="Abrir  - Ctrl + O")
-fileMenu.add_command(label="Salvar - Ctrl + S")
+fileMenu.add_command(label="Novo  - Ctrl + N", command=novo)
+fileMenu.add_command(label="Abrir  - Ctrl + O", command=abrir)
+fileMenu.add_command(label="Salvar - Ctrl + S", command=salvar)
 fileMenu.add_command(label="Salvar como", command=salvarComo)
 fileMenu.add_separator()
 fileMenu.add_command(label="Sair")
@@ -46,9 +69,16 @@ boxNote = Text(
     root, font=('Arial 10 bold'), bg=bg_color, fg=fg_color
 )
 
+scroll = Scrollbar(
+    root
+)
+scroll.config(command=boxNote.yview)
+boxNote.config(yscrollcommand=scroll.set)
+
 # ----------------------------------------
 # painel
-boxNote.pack()
+boxNote.pack(side=LEFT, expand=True)
+scroll.pack(side=RIGHT, fill=Y)
 
 root.config(menu=meuMenu)
 root.mainloop()
