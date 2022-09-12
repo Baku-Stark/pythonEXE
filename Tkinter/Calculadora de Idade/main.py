@@ -6,7 +6,6 @@ from time import sleep
 # Cores
 comun_fg = "#f0f8ff"
 
-
 frame1_bg = "#1A1A1A"
 frame1_fg = "#90FA2E"
 
