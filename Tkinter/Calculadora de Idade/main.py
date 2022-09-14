@@ -2,6 +2,9 @@ import os
 from tkinter import *
 from time import sleep
 
+# Data atual
+from datetime import datetime
+
 # ----------------------------------------
 # Cores
 comun_fg = "#f0f8ff"
@@ -36,13 +39,46 @@ class meuFrame2(Frame):
 
 # ----------------------------------------
 # Função
+tempo = datetime.now()
+dia = tempo.day
+mes = tempo.month
+ano = tempo.year
+
+def dataAtual():
+    if mes < 10:
+        current_date['text'] = f"{dia}/0{mes}/{ano}"
+    else:
+        current_date['text'] = f"{dia}/{mes}/{ano}"
+
 def calcularIdade():
     print('\033[34mIdade sendo calculada\033[m')
     sleep(0.3)
     print('Limpando terminal')
-    sleep(2)
+    sleep(0.3)
     os.system('cls')
+    
+    dia_user = int(dia_enter.get())
+    if dia > dia_user:
+        dias = dia - dia_user
+    else:
+        dias = dia_user - dia
 
+    mes_user = int(mes_enter.get())
+    if mes > mes_user:
+        meses = mes - mes_user
+    else:
+        meses = mes_user - mes
+
+    ano_user = int(ano_enter.get())
+    if ano > ano_user:
+        idade = ano - ano_user
+    else:
+        idade = ano_user - ano
+
+    # ===== RESULTADO =====
+    register['text'] = f"{str(idade)}"
+    register2['text'] = f"{str(meses)}"
+    register3['text'] = f"{str(dias)}"
 
 # --------------------------------------------------------------------------------
 # Widgets
@@ -87,9 +123,19 @@ current_date = Label(
 )
 
 btn = Button(
-    frame2, text="Calcular Idade", font=('Arial 9 bold'), command=calcularIdade, 
+    frame2, text="Calcular Idade", font=('Arial 9 bold'), command=calcularIdade,
     bg=frame1_bg, fg=comun_fg, border=None, relief=RAISED, overrelief=RIDGE
 )
+
+
+dia_label = Label(frame2, text="Dia:", font=('Helvetica 10 bold'), bg=frame2_bg, fg=comun_fg)
+dia_enter = Entry(frame2)
+
+mes_label = Label(frame2, text="Mês:", font=('Helvetica 10 bold'), bg=frame2_bg, fg=comun_fg)
+mes_enter = Entry(frame2)
+
+ano_label = Label(frame2, text="Ano:", font=('Helvetica 10 bold'), bg=frame2_bg, fg=comun_fg)
+ano_enter = Entry(frame2)
 
 # --------------------------------------------------------------------------------
 # Painel
@@ -107,6 +153,16 @@ sub_title3.place(x=225, y=130)
 register4.place(x=35, y=10)
 current_date.place(x=155, y=10)
 
+dia_label.place(x=105, y=47)
+dia_enter.place(x=155, y=50)
+
+mes_label.place(x=105, y=87)
+mes_enter.place(x=155, y=90)
+
+ano_label.place(x=105, y=127)
+ano_enter.place(x=155, y=130)
+
 btn.place(x=105, y=235)
 
+dataAtual()
 root.mainloop()
