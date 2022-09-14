@@ -2,6 +2,9 @@ import os
 from tkinter import *
 from time import sleep
 
+# Alerta de erro
+from tkinter import messagebox
+
 # Data atual
 from datetime import datetime
 
@@ -57,28 +60,49 @@ def calcularIdade():
     sleep(0.3)
     os.system('cls')
     
+    # ==== CALCULO DE DIA
     dia_user = int(dia_enter.get())
     if dia > dia_user:
         dias = dia - dia_user
+        register3['text'] = f"{str(dias)}"
+
+    elif dia_user > 31 or dia_user < 1:
+        messagebox.showwarning('Error','Valor de "Dia" está incorreto.')
+
     else:
         dias = dia_user - dia
+        register3['text'] = f"{str(dias)}"
 
+    # ==== CALCULO DE MÊS
     mes_user = int(mes_enter.get())
     if mes > mes_user:
         meses = mes - mes_user
+        register2['text'] = f"{str(meses)}"
+
+    elif mes_user > 12 or mes_user < 1:
+        messagebox.showwarning('Error','Valor de "Mês" está incorreto.')
+
     else:
         meses = mes_user - mes
+        register2['text'] = f"{str(meses)}"
 
+    # ==== CALCULO DE ANO
     ano_user = int(ano_enter.get())
     if ano > ano_user:
         idade = ano - ano_user
+        register['text'] = f"{str(idade)}"
+
+    elif ano_user > ano:
+        messagebox.showwarning('Error','Valor de "Ano" está incorreto.')
+
+    elif ano_user == ano and mes_user > mes:
+        register2['text'] = "00"
+        register3['text'] = "00"
+        messagebox.showwarning('Error','Há complicações no "Mês" e "Ano". Tente novamente!')
+
     else:
         idade = ano_user - ano
-
-    # ===== RESULTADO =====
-    register['text'] = f"{str(idade)}"
-    register2['text'] = f"{str(meses)}"
-    register3['text'] = f"{str(dias)}"
+        register['text'] = f"{str(idade)}"
 
 # --------------------------------------------------------------------------------
 # Widgets
