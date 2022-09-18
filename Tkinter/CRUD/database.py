@@ -2,7 +2,7 @@
 # Banco De Dados
 import sqlite3 as lite
 
-con = lite.connect('database.db')
+con = lite.connect('database/database.db')
 
 # ----------------------------------------
 # Tabela
