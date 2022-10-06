@@ -9,7 +9,7 @@ con = lite.connect('database/database.bd')
 def insert(i):
     with con:
         cur = con.cursor()
-        query = "INSERT INTO lista_telefonica(nome, ddd, telefone VALUES (?, ?)"
+        query = "INSERT INTO lista_telefonica(nome, ddd, telefone) VALUES (?, ?, ?)"
         cur.execute(query, i)
 
 # ----------------------------------------
@@ -34,6 +34,7 @@ def update(i):
     with con:
         cur = con.cursor()
         query = "UPDATE lista_telefonica SET nome=?, ddd=?, telefone=? WHERE id=?"
+        
         cur.execute(query, i)
 
 # ----------------------------------------
