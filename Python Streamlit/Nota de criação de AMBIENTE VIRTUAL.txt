@@ -4,3 +4,6 @@ Código no POWER SHELL(como administrador): Set-ExecutionPolicy Unrestricted -Fo
 
 Código no Terminal (VsCode): python -m venv <nome do ambiente virtual>
 Abrindo o AMBIENTE VIRTUAL: '<NOME DA PASTA>\Scripts\activate'
+
+Streamlit: pip install streamlit
+Rodar o streamlit: streamlit run <nome do arquivo .py>
