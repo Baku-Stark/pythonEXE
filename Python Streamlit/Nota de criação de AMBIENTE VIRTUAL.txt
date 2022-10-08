@@ -1,0 +1,6 @@
+Criando um AMBIENTE VIRTUAL:
+
+Código no POWER SHELL(como administrador): Set-ExecutionPolicy Unrestricted -Force
+
+Código no Terminal (VsCode): python -m venv <nome do ambiente virtual>
+Abrindo o AMBIENTE VIRTUAL: '<NOME DA PASTA>\Scripts\activate'
