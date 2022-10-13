@@ -21,7 +21,7 @@ st.write(f"A profissão do usuário é: {input_ageU}")
 
 # ================================================
 # SUBMIT BUTTON
-input_btnS = st.form_submit_button("Enviar")
+input_btnS = st.button("Enviar")
 
 # ================================================
 # SLIDER DE NÚMERO (0 até 100)
