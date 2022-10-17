@@ -56,7 +56,7 @@ def updateUser(i):
 
 # =============================================
 # FORMULÁRIO PRINCIPAL
-st.title("Formulário do cliente")
+st.title("Formulário Do Cliente")
 st.write("_"*30)
 with st.form("FORM_USER"):
     input_name = st.text_input(label="Insira o nome")
