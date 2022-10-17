@@ -1,12 +1,19 @@
-import streamlit as st
+# ===============================================
+# PANDAS
 import pandas as pd 
-from db_fxns import * 
+
+# ===============================================
+# 	STREAMLIT
+import streamlit as st
 import streamlit.components.v1 as stc
 
-
-
+# ===============================================
 # Data Viz Pkgs
 import plotly.express as px
+
+# ===============================================
+# FUNÇÃO DE IMPORTÂNCIA (crud)
+from db_fxns import * 
 
 
 HTML_BANNER = """
@@ -15,7 +22,6 @@ HTML_BANNER = """
     <p style="color:white;text-align:center;">Built with Streamlit</p>
     </div>
     """
-
 
 def main():
 	stc.html(HTML_BANNER)
@@ -119,7 +125,7 @@ def main():
 
 	else:
 		st.subheader("About CRUD App")
-		st.info("Built with Streamlit")
+		st.info(HTML_LINK)
 		st.info("@Walleemc2")
 		st.text("Wallace (Baku-Stark)")
 
