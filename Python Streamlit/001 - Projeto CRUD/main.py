@@ -66,7 +66,7 @@ with st.form("FORM_USER"):
     ops = ["Professor", "Designer", "Desenvolvedor"]
     input_ocuP = st.selectbox("Selecione a sua profissão", ops)
 
-    input_btnS = st.form_submit_button("Enviar")
+    input_btnS = st.form_submit_button("Enviar Registro")
     btn_spaceDelete_function = st.form_submit_button("Excluir")
     btn_spaceUpdate_function = st.form_submit_button("Atualizar")
 st.write("_"*30)
