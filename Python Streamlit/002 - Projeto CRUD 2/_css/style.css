@@ -1,0 +1,159 @@
+/*--- CONFIGURAÇÃO [HEADER => NAVBAR] ---*/
+header.css-18ni7ap{
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 99999;
+    height: 2.875rem;
+    outline: none;
+    display: block;
+    position: fixed;
+    color: #f0f8ff;
+    background: #111111;
+}
+
+span#MainMenu{
+    visibility: hidden;
+}
+/*--- CONFIGURAÇÃO [HEADER => NAVBAR] ---*/
+
+/*--- CONFIGURAÇÃO [SIDEBAR] ---*/
+section.css-163ttbj{
+    background: #000000;
+}
+
+div.st-ag{
+    font-weight: bold;
+}
+
+label.css-81oif8{
+    height: auto;
+    font-size: 14pt;
+    min-height: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    visibility: visible;
+    vertical-align: middle;
+    -webkit-box-align: center;
+    color: #f0f8ff;
+    font-family: 'Poppins', sans-serif;
+}
+/*--- CONFIGURAÇÃO [SIDEBAR] ---*/
+
+/*--- CONFIGURAÇÃO [RIGHT CONTENT] ---*/
+div.css-fg4pbf{
+    inset: 0px;
+    overflow: hidden;
+    position: absolute;
+    color: #f0f8ff;
+    background: #111111;
+}
+
+span.css-10trblm{
+    color: #f0f8ff;
+}
+
+button.css-6kekos{
+    width: auto;
+    margin: 0px;
+    font-weight: 400;
+    line-height: 1.6;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    color: #f0f8ff;
+    background-color: #000000;
+    border: 1px solid #31333f79;
+}
+
+button.css-6kekos:hover{
+    color: #f0f8ff;
+    background-color: #202020;
+    border: 1px solid #31333f79;
+}
+
+input{
+    margin: 0em;
+    text-indent: 0px;
+    padding: 1px 2px;
+    border-width: 2px;
+    cursor: text;
+    appearance: auto;
+    text-shadow: none;
+    text-align: start;
+    border-style: inset;
+    line-height: normal;
+    text-transform: none;
+    text-rendering: auto;
+    word-spacing: normal;
+    display: inline-block;
+    border-image: initial;
+    letter-spacing: normal;
+    color: #f0f8ff;
+    background-color: #111111;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    -webkit-rtl-ordering: logical;
+}
+/*--- [Visualizar] ---*/
+[role="button"]{
+    color: #f0f8ff;
+    cursor: pointer;
+}
+
+[role="button"]:hover{
+    color: #00b7ff;
+}
+
+.css-1fcdlhc .streamlit-expanderHeader:hover svg {
+    fill: #00b7ff;
+}
+
+/*--- CONFIGURAÇÃO [RIGHT CONTENT] ---*/
+
+/*--- CONFIGURAÇÃO [FOOTER] ---*/
+footer.css-1q1n0ol.egzxvld0{
+    visibility: hidden;
+}
+/*--- CONFIGURAÇÃO [FOOTER] ---*/
+
+/*--- CONFIGURAÇÃO [MEDIA QUERY] ---*/
+@media (max-width: 920px) {
+    section.css-163ttbj{
+        background: #000000;
+    }
+    
+    div.st-ag{
+        font-weight: bold;
+    }
+
+    div.css-6qob1r{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: overlay;
+        background: #000000;
+    }
+    
+    label.css-81oif8{
+        height: auto;
+        font-size: 14pt;
+        min-height: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        visibility: visible;
+        vertical-align: middle;
+        -webkit-box-align: center;
+        color: #f0f8ff;
+        font-family: 'Poppins', sans-serif;
+    }
+}
+/*--- CONFIGURAÇÃO [MEDIA QUERY] ---*/
