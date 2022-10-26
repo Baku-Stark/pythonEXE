@@ -19,6 +19,7 @@ class App():
         self.root = root
         self.tela()
         self.frame_tela()
+        self.frameTop_Gadgets()
         # =======================================
         # ROOT [mainloop]
         root.mainloop()
@@ -47,7 +48,57 @@ class App():
         # =======================================
         # INSERÇÃO DE FRAME
         self.frameTop.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.46)
+        
         self.frameBottom.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
+    
+    # ===========================================
+    # BUTTONS
+    def frameTop_Gadgets(self):
+        # -------- BUTTONS --------
+        self.st_Limpar = Button(
+            self.frameTop, text="Limpar",  font=('Arial 8 bold'), fg=fg_root, overrelief="ridge", relief='raised'
+        )
+
+        self.st_Buscar = Button(
+            self.frameTop, text="Buscar",  font=('Arial 8 bold'), fg=fg_root, overrelief="ridge", relief='raised'
+        )
+
+        self.st_Novo = Button(
+            self.frameTop, text="Novo",  font=('Arial 8 bold'), fg=fg_root, overrelief="ridge", relief='raised'
+        )
+
+        self.st_Alterar = Button(
+            self.frameTop, text="Alterar",  font=('Arial 8 bold'), fg=fg_root, overrelief="ridge", relief='raised'
+        )
+
+        self.st_Apagar = Button(
+            self.frameTop, text="Apagar", font=('Arial 8 bold'), fg=fg_root, overrelief="ridge", relief='raised'
+        )
+        # -------- BUTTONS --------
+
+        # -------- LABELS N' INPUTS --------
+        self.codigo = Label(
+            self.frameTop, text="Código", font=('Arial 10 bold')
+        )
+        # -------- LABELS N' INPUTS --------
+
+        # =======================================
+        # INSERÇÃO DOS GADGETS
+        # -------- BUTTONS --------
+        self.st_Limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.st_Buscar.place(relx=0.3, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.st_Novo.place(relx=0.6, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.st_Alterar.place(relx=0.7, rely=0.1, relwidth=0.1, relheight=0.15)
+
+        self.st_Apagar.place(relx=0.8, rely=0.1, relwidth=0.1, relheight=0.15)
+        # -------- BUTTONS --------
+
+        # -------- LABELS N' INPUTS --------
+        self.codigo.place(relx=0.05, rely=0.05)
+        # -------- LABELS N' INPUTS --------
 
 # ===============================================
 # EXECUÇÃO DA JANELA
