@@ -1,7 +1,10 @@
 # ===============================================
 # IMPORTAÇÕES
 from tkinter import *
+from tkinter import messagebox
 from tkinter.ttk import Treeview
+
+from functions import *
 
 # ===============================================
 # CORES
@@ -17,12 +20,108 @@ hl_bg = "#9C9FA6"
 # ===============================================
 # FUNÇOES
 class Funcs():
+    # Ler banco de dados [database.db]
+    def readTable(self):
+        lista = read()
+
+        for item in lista:
+            self.listaCli.insert("", END, values=item)
+
     # Limpar Conteúdo [st_Limpar]
     def limpar_tela(self):
         self.codigo_entry.delete(0, END)
         self.nome_entry.delete(0, END)
         self.telefone_entry.delete(0, END)
         self.cidade_entry.delete(0, END)
+
+    # Inserir Usuário [st_Novo]
+    def novo_usuario(self):
+        self.codigo = self.codigo_entry.get()
+        self.nome = self.nome_entry.get()
+        self.telefone = self.telefone_entry.get()
+        self.cidade = self.cidade_entry.get()
+
+        # ---- [CÓDIGO]
+        if self.codigo == "" and self.nome == "":
+            messagebox.showwarning(
+                title="Código e/ou Nome",
+                message="CÓDIGO e NOME são obrigados para o registro."
+            )
+
+        elif self.codigo == "":
+            messagebox.showwarning(
+                title="Inserção de código vazia",
+                message="O usuário precisa preencher a opção CÓDIGO para fazer um novo cadastro."
+            )
+        # ---- [CÓDIGO]
+
+        # ---- [NOME]
+        elif self.nome == "":
+            messagebox.showwarning(
+                title="Inserção de nome vazia",
+                message="O usuário precisa preencher a opção Nome para fazer um novo cadastro."
+            )
+        # ---- [NOME]
+
+        # ---- [TELEFONE]
+        elif len(self.telefone) > 9:
+            messagebox.showwarning(
+                title="Inserção de telefone inválida",
+                message="O número de telefone ultrapassou o limite de dígitos."
+            )
+
+        elif len(self.telefone) < 8:
+            messagebox.showwarning(
+                title="Inserção de telefone inválida",
+                message="O telefone precisa (no máximo) de 8 dígitos para a autocorreção funcionar."
+            )
+
+        elif len(self.telefone) == 8:
+            messagebox.showwarning(
+                title="Correção no número de telefone",
+                message="O número de telefone possui 8 dígitos. Então, o programa adicionou um '9' na frente."
+            )
+
+            telefone_comp = f"9{self.telefone[0:5]}-{self.telefone[5:]}"
+
+            lista = [self.codigo, self.nome, telefone_comp, self.cidade]
+            create(lista)
+
+            messagebox.showinfo(
+                title="Sucesso!",
+                message="Um novo cadastro foi efetuado com sucesso!"
+            )
+
+            self.limpar_tela()
+        # ---- [TELEFONE]
+        
+        # ---- [CIDADE]
+        elif self.cidade == "":
+            self.cidade = "Cidade não informada"
+
+            lista = [self.codigo, self.nome, self.telefone, self.cidade]
+            create(lista)
+
+            messagebox.showinfo(
+                title="Sucesso!",
+                message="Um novo cadastro foi efetuado com sucesso!"
+            )
+
+            self.limpar_tela()
+        # ---- [CIDADE]
+
+        # ---- [EFETUADO COM SUCESSO (sem interrupções)]
+        else:
+            lista = [self.codigo, self.nome, self.telefone, self.cidade]
+            create(lista)
+
+            messagebox.showinfo(
+                title="Sucesso!",
+                message="Um novo cadastro foi efetuado com sucesso!"
+            )
+
+            self.limpar_tela()
+        # ---- [EFETUADO COM SUCESSO (sem interrupções)]
         
 # ===============================================
 # JANELA [config.]
@@ -35,6 +134,8 @@ class App(Funcs):
         self.frame_tela()
         self.frameTop_Gadgets()
         self.frameBottom_Gadgets()
+        # ---
+        self.readTable()
         # =======================================
         # ROOT [mainloop]
         root.mainloop()
@@ -74,8 +175,9 @@ class App(Funcs):
         self.st_Limpar = Button(
             self.frameTop, text="Limpar",
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
-            overrelief="ridge", relief='raised', command=self.limpar_tela
+            overrelief="ridge", relief='raised'
         )
+        self.st_Limpar['command'] = self.limpar_tela
 
         self.st_Buscar = Button(
             self.frameTop, text="Buscar",
@@ -88,6 +190,7 @@ class App(Funcs):
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
+        self.st_Novo['command'] = self.novo_usuario
 
         self.st_Alterar = Button(
             self.frameTop, text="Alterar",
