@@ -18,9 +18,26 @@ frame_top_bottom = "#f0f8ff"
 hl_bg = "#9C9FA6"
 
 # ===============================================
-# FUNÇOES
-class Funcs():
-    # Ler banco de dados [database.db]
+# JANELA [config.]
+root = Tk()
+
+class App():
+    def __init__(self):
+        self.root = root
+        self.tela()
+        self.frame_tela()
+        self.frameTop_Gadgets()
+        self.frameBottom_Gadgets()
+        
+        # --- [class (Funcs)]
+        self.readTable()
+        # =======================================
+        # ROOT [mainloop]
+        root.mainloop()
+    
+    # ===============================================
+    # Funções [main.py > functions.py]
+    # Ler banco de dados [cadastro.db]
     def readTable(self):
         lista = readCRUD()
 
@@ -64,7 +81,7 @@ class Funcs():
         # ---- [NOME]
 
         # ---- [TELEFONE]
-        elif len(telefoneUser) > 9:
+        if len(telefoneUser) > 9:
             messagebox.showwarning(
                 title="Inserção de telefone inválida",
                 message="O número de telefone ultrapassou o limite de dígitos."
@@ -98,7 +115,7 @@ class Funcs():
         # ---- [TELEFONE]
         
         # ---- [CIDADE]
-        elif cidadeUser == "":
+        if cidadeUser == "":
             cidadeUser = "Cidade não informada"
 
             lista = [codigoUser, nomeUser, telefoneUser, cidadeUser]
@@ -132,24 +149,10 @@ class Funcs():
     # Deletar Usuário [st_Apagar]
     def deletar_usuario(self):
         pass
-# ===============================================
-# JANELA [config.]
-root = Tk()
+    # Funções [main.py > functions.py] ==============
 
-class App(Funcs):
-    def __init__(self):
-        self.root = root
-        self.tela()
-        self.frame_tela()
-        self.frameTop_Gadgets()
-        self.frameBottom_Gadgets()
-        
-        # --- [Funcs]
-        self.readTable()
-        # =======================================
-        # ROOT [mainloop]
-        root.mainloop()
-    
+    # ===============================================
+    # TELA [Frames > Gadgets]
     def tela(self):
         self.root.title("Python - Cadastro de Cliente")
         self.root.iconbitmap("_img/natural.ico")
@@ -303,6 +306,7 @@ class App(Funcs):
         # INSERÇÃO DA LISTA
         self.listaCli.place(relx=0.01, rely=0.01, relwidth=0.96, relheight=0.98)
         self.scrollY.place(relx=0.97, rely=0.01, relwidth=0.03, relheight=0.98)
+    # TELA [Frames > Gadgets] ===================
 
 # ===============================================
 # EXECUÇÃO DA JANELA
