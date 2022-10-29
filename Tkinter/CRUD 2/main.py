@@ -22,9 +22,9 @@ hl_bg = "#9C9FA6"
 class Funcs():
     # Ler banco de dados [database.db]
     def readTable(self):
-        self.lista = readCRUD()
+        lista = readCRUD()
 
-        for item in self.lista:
+        for item in lista:
             self.listaCli.insert('', 'end', values=item)
     
     # Limpar Conteúdo [st_Limpar]
