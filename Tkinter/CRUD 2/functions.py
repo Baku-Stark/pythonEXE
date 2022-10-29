@@ -13,7 +13,7 @@ def createCRUD(i):
     cur.execute(query, i)
 
 # --- LER BANCO DE DADOS
-def acessCRUD():
+def readCRUD():
     lista = []
 
     cur = con.cursor()

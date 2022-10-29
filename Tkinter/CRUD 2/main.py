@@ -1,8 +1,8 @@
 # ===============================================
 # IMPORTAÇÕES
 from tkinter import *
-from tkinter import messagebox
 from tkinter import ttk
+from tkinter import messagebox
 
 from functions import *
 
@@ -22,9 +22,9 @@ hl_bg = "#9C9FA6"
 class Funcs():
     # Ler banco de dados [database.db]
     def readTable(self):
-        lista = acessCRUD()
+        self.lista = readCRUD()
 
-        for item in lista:
+        for item in self.lista:
             self.listaCli.insert('', 'end', values=item)
     
     # Limpar Conteúdo [st_Limpar]
@@ -124,7 +124,14 @@ class Funcs():
 
             self.limpar_tela()
         # ---- [EFETUADO COM SUCESSO (sem interrupções)]
-        
+    
+    # Atualizar Usuário [st_Alterar]
+    def atualizar_usuario(self):
+        pass
+
+    # Deletar Usuário [st_Apagar]
+    def deletar_usuario(self):
+        pass
 # ===============================================
 # JANELA [config.]
 root = Tk()
@@ -136,7 +143,8 @@ class App(Funcs):
         self.frame_tela()
         self.frameTop_Gadgets()
         self.frameBottom_Gadgets()
-        # ---
+        
+        # --- [Funcs]
         self.readTable()
         # =======================================
         # ROOT [mainloop]
@@ -199,12 +207,14 @@ class App(Funcs):
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
+        self.st_Alterar['command'] = self.atualizar_usuario
 
         self.st_Apagar = Button(
             self.frameTop, text="Apagar",
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
+        self.st_Apagar['command'] = self.deletar_usuario
         # -------- BUTTONS --------
 
         # -------- LABELS N' INPUTS --------
