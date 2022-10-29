@@ -3,11 +3,11 @@ import sqlite3 as lite
 # ===============================================
 # CONEXÃO COM SQLITE3
 con = lite.connect("data/cadastro.db")
-cur = con.cursor()
 
 # ===============================================
 # CRIAÇÃO DA TABELA
 try:
+    cur = con.cursor()
     cur.execute("""
         CREATE TABLE cadastro(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
