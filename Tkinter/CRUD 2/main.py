@@ -36,19 +36,19 @@ class Funcs():
 
     # Inserir Usuário [st_Novo]
     def novo_usuario(self):
-        self.codigo = self.codigo_entry.get()
-        self.nome = self.nome_entry.get()
-        self.telefone = self.telefone_entry.get()
-        self.cidade = self.cidade_entry.get()
+        codigoUser = self.codigo_entry.get()
+        nomeUser = self.nome_entry.get()
+        telefoneUser = self.telefone_entry.get()
+        cidadeUser = self.cidade_entry.get()
 
         # ---- [CÓDIGO]
-        if self.codigo == "" and self.nome == "":
+        if codigoUser == "" and nomeUser == "":
             messagebox.showwarning(
                 title="Código e/ou Nome",
                 message="CÓDIGO e NOME são obrigados para o registro."
             )
 
-        elif self.codigo == "":
+        elif codigoUser == "":
             messagebox.showwarning(
                 title="Inserção de código vazia",
                 message="O usuário precisa preencher a opção CÓDIGO para fazer um novo cadastro."
@@ -56,7 +56,7 @@ class Funcs():
         # ---- [CÓDIGO]
 
         # ---- [NOME]
-        elif self.nome == "":
+        elif nomeUser == "":
             messagebox.showwarning(
                 title="Inserção de nome vazia",
                 message="O usuário precisa preencher a opção Nome para fazer um novo cadastro."
@@ -64,29 +64,29 @@ class Funcs():
         # ---- [NOME]
 
         # ---- [TELEFONE]
-        elif len(self.telefone) > 9:
+        elif len(telefoneUser) > 9:
             messagebox.showwarning(
                 title="Inserção de telefone inválida",
                 message="O número de telefone ultrapassou o limite de dígitos."
             )
             self.telefone_entry.delete(0, 'end')
 
-        elif len(self.telefone) < 8:
+        elif len(telefoneUser) < 8:
             messagebox.showwarning(
                 title="Inserção de telefone inválida",
                 message="O telefone precisa (no máximo) de 8 dígitos para a autocorreção funcionar."
             )
             self.telefone_entry.delete(0, 'end')
 
-        elif len(self.telefone) == 8:
+        elif len(telefoneUser) == 8:
             messagebox.showwarning(
                 title="Correção no número de telefone",
                 message="O número de telefone possui 8 dígitos. Então, o programa adicionou um '9' na frente."
             )
 
-            self.telefone = f"9{self.telefone}"
+            telefoneUser = f"9{telefoneUser}"
 
-            lista = [self.codigo, self.nome, self.telefone, self.cidade]
+            lista = [codigoUser, nomeUser, telefoneUser, cidadeUser]
             createCRUD(lista)
 
             messagebox.showinfo(
@@ -98,10 +98,10 @@ class Funcs():
         # ---- [TELEFONE]
         
         # ---- [CIDADE]
-        elif self.cidade == "":
-            self.cidade = "Cidade não informada"
+        elif cidadeUser == "":
+            cidadeUser = "Cidade não informada"
 
-            lista = [self.codigo, self.nome, self.telefone, self.cidade]
+            lista = [codigoUser, nomeUser, telefoneUser, cidadeUser]
             createCRUD(lista)
 
             messagebox.showinfo(
@@ -114,7 +114,7 @@ class Funcs():
 
         # ---- [EFETUADO COM SUCESSO (sem interrupções)]
         else:
-            lista = [self.codigo, self.nome, self.telefone, self.cidade]
+            lista = [codigoUser, nomeUser, telefoneUser, cidadeUser]
             createCRUD(lista)
 
             messagebox.showinfo(
