@@ -2,7 +2,7 @@ import sqlite3 as lite
 
 # ===============================================
 # CONEXÃO COM SQLITE3
-con = lite.connect("data/database.db")
+con = lite.connect("data/cadastro.db")
 
 # ===============================================
 # CRIAÇÃO DA TABELA

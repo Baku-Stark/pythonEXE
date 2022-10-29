@@ -2,7 +2,7 @@
 # IMPORTAÇÕES
 from tkinter import *
 from tkinter import messagebox
-from tkinter.ttk import Treeview
+from tkinter import ttk
 
 from functions import *
 
@@ -22,17 +22,17 @@ hl_bg = "#9C9FA6"
 class Funcs():
     # Ler banco de dados [database.db]
     def readTable(self):
-        lista = read()
+        lista = acessCRUD()
 
         for item in lista:
-            self.listaCli.insert("", END, values=item)
-
+            self.listaCli.insert('', 'end', values=item)
+    
     # Limpar Conteúdo [st_Limpar]
     def limpar_tela(self):
-        self.codigo_entry.delete(0, END)
-        self.nome_entry.delete(0, END)
-        self.telefone_entry.delete(0, END)
-        self.cidade_entry.delete(0, END)
+        self.codigo_entry.delete(0, 'end')
+        self.nome_entry.delete(0, 'end')
+        self.telefone_entry.delete(0, 'end')
+        self.cidade_entry.delete(0, 'end')
 
     # Inserir Usuário [st_Novo]
     def novo_usuario(self):
@@ -69,12 +69,14 @@ class Funcs():
                 title="Inserção de telefone inválida",
                 message="O número de telefone ultrapassou o limite de dígitos."
             )
+            self.telefone_entry.delete(0, 'end')
 
         elif len(self.telefone) < 8:
             messagebox.showwarning(
                 title="Inserção de telefone inválida",
                 message="O telefone precisa (no máximo) de 8 dígitos para a autocorreção funcionar."
             )
+            self.telefone_entry.delete(0, 'end')
 
         elif len(self.telefone) == 8:
             messagebox.showwarning(
@@ -82,10 +84,10 @@ class Funcs():
                 message="O número de telefone possui 8 dígitos. Então, o programa adicionou um '9' na frente."
             )
 
-            telefone_comp = f"9{self.telefone[0:5]}-{self.telefone[5:]}"
+            self.telefone = f"9{self.telefone}"
 
-            lista = [self.codigo, self.nome, telefone_comp, self.cidade]
-            create(lista)
+            lista = [self.codigo, self.nome, self.telefone, self.cidade]
+            createCRUD(lista)
 
             messagebox.showinfo(
                 title="Sucesso!",
@@ -100,7 +102,7 @@ class Funcs():
             self.cidade = "Cidade não informada"
 
             lista = [self.codigo, self.nome, self.telefone, self.cidade]
-            create(lista)
+            createCRUD(lista)
 
             messagebox.showinfo(
                 title="Sucesso!",
@@ -113,7 +115,7 @@ class Funcs():
         # ---- [EFETUADO COM SUCESSO (sem interrupções)]
         else:
             lista = [self.codigo, self.nome, self.telefone, self.cidade]
-            create(lista)
+            createCRUD(lista)
 
             messagebox.showinfo(
                 title="Sucesso!",
@@ -269,11 +271,11 @@ class App(Funcs):
     # Gadgets [Bottom_Frame]
     def frameBottom_Gadgets(self):
         colunas = ("ID", "Código", "Nome", "Telefone", "Cidade")
-        self.listaCli = Treeview(
+        self.listaCli = ttk.Treeview(
             self.frameBottom, height=3, columns=colunas, show='headings'
         )
 
-        self.scrollY = Scrollbar(
+        self.scrollY = ttk.Scrollbar(
             self.frameBottom, orient='vertical'
         )
         self.scrollY['command'] = self.listaCli.yview
