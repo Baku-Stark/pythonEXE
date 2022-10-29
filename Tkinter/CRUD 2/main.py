@@ -306,7 +306,7 @@ class App():
         # INSERÇÃO DA LISTA
         self.listaCli.place(relx=0.01, rely=0.01, relwidth=0.96, relheight=0.98)
         self.scrollY.place(relx=0.97, rely=0.01, relwidth=0.03, relheight=0.98)
-    # TELA [Frames > Gadgets] ===================
+        # TELA [Frames > Gadgets] ===================
 
 # ===============================================
 # EXECUÇÃO DA JANELA
