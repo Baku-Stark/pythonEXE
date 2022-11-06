@@ -28,8 +28,7 @@ class App():
         self.frame_tela()
         self.frameTop_Gadgets()
         self.frameBottom_Gadgets()
-        
-        # --- [class (Funcs)]
+
         self.readTable()
         # =======================================
         # ROOT [mainloop]
@@ -81,7 +80,7 @@ class App():
         # ---- [NOME]
 
         # ---- [TELEFONE]
-        if len(telefoneUser) > 9:
+        elif len(telefoneUser) > 9:
             messagebox.showwarning(
                 title="Inserção de telefone inválida",
                 message="O número de telefone ultrapassou o limite de dígitos."
@@ -115,7 +114,7 @@ class App():
         # ---- [TELEFONE]
         
         # ---- [CIDADE]
-        if cidadeUser == "":
+        elif cidadeUser == "":
             cidadeUser = "Cidade não informada"
 
             lista = [codigoUser, nomeUser, telefoneUser, cidadeUser]
@@ -144,11 +143,67 @@ class App():
     
     # Atualizar Usuário [st_Alterar]
     def atualizar_usuario(self):
-        pass
+        try:
+            list_data = self.listaCli.focus()
+            list_dic = self.listaCli.item(list_data)
+            list_set = list_dic['values']
+
+            valorID = list_set[0]
+
+            self.limpar_tela()
+
+            self.codigo_entry.insert(0, list_set[1])
+            self.nome_entry.insert(0, list_set[2])
+            self.telefone_entry.insert(0, list_set[3])
+            self.cidade_entry.insert(0, list_set[4])
+
+            #UPDATE FUNCTION
+            def updateCheck():
+                new_codigo = self.codigo_entry.get()
+                new_nome = self.nome_entry.get()
+                new_telefone = self.telefone_entry.get()
+                new_cidade = self.cidade_entry.get()
+
+                lista = [new_codigo, new_nome, new_telefone, new_cidade, valorID]
+                    
+                if new_nome == "":
+                    messagebox.showwarning(
+                            title="Erro na atualização",
+                            message="Um nome precisa ser inserido!"
+                    )
+                else:
+                    updateCRUD(lista)
+                    messagebox.showinfo(
+                        title="Atualização",
+                        message="Atualização feita com sucesso!"
+                    )
+                    self.limpar_tela()
+                    
+            self.btn_confirm = Button(
+                    self.frameTop, text="Confirmar",
+                    font=('Arial 8 bold'), overrelief="raised", relief="ridge"
+                )
+            self.btn_confirm['command'] = updateCheck
+
+            self.btn_confirm.place(relx=0.7, rely=0.10, relwidth=0.1, relheight=0.15)
+
+        except IndexError:
+            messagebox.showerror("Erro", "Selecione um dos dados na tabela!")
 
     # Deletar Usuário [st_Apagar]
     def deletar_usuario(self):
-        pass
+        list_data = self.listaCli.focus()
+        list_dic = self.listaCli.item(list_data)
+        list_set = list_dic['values']
+
+        valorID = [list_set[0]]
+
+        deleteCRUD(valorID)
+
+        messagebox.showinfo(
+            title="Usuário deletado",
+            message="O usuário foi deletado com sucesso!"
+        )
     # Funções [main.py > functions.py] ==============
 
     # ===============================================
