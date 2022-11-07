@@ -4,6 +4,14 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 
+# reportlab [PDF]
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import SimpleDocTemplate, Image
+import webbrowser
+
 from functions import *
 
 # ===============================================
@@ -30,10 +38,57 @@ class App():
         self.frameBottom_Gadgets()
 
         self.readTable()
+        self.Menu()
         # =======================================
         # ROOT [mainloop]
         root.mainloop()
     
+    # ===============================================
+    # CONFIGURAÇÃO [Double Click]
+    def OnDoubleClick(self, event):
+        self.limpar_tela()
+        self.listaCli.selection()
+
+        list_data = self.listaCli.focus()
+        list_dic = self.listaCli.item(list_data)
+        list_set = list_dic['values']
+        self.codigo_entry.insert(0, list_set[1])
+        self.nome_entry.insert(0, list_set[2])
+        self.telefone_entry.insert(0, list_set[3])
+        self.cidade_entry.insert(0, list_set[4])
+
+    # ===============================================
+    # CONFIGURAÇÃO [reportlab PDF]
+    # FUNÇÕES
+    # === CONFIGURAÇÃO [caminho do arquivo]
+    def printClient(self):
+        self.nomeArq = self.nome_entry.get()
+        webbrowser.open(f"clientPDF/{self.nomeArq}.pdf")
+
+    # === CONFIGURAÇÃO [gerar PDF]
+    def gerarRelatClient(self):
+        self.codigoRel = self.codigo_entry.get()
+        self.nomeRel = self.nome_entry.get()
+        self.telefoneRel = self.telefone_entry.get()
+        self.cidadeRel = self.cidade_entry.get()
+
+        self.c = canvas.Canvas(f"clientPDF/{self.nomeRel}.pdf")
+
+        self.c.setFont(psfontname="Helvetica-Bold", size=24)
+        self.c.drawString(200, 790, 'Ficha do Cliente')
+        self.c.setFont(psfontname="Helvetica-Bold", size=18)
+        self.c.drawString(50, 700, f"Código: {self.codigoRel}")
+        self.c.drawString(50, 670, f"Nome: {self.nomeRel}")
+        self.c.drawString(50, 630, f"Telefone: {self.telefoneRel[0:5]}-{self.telefoneRel[5:]}")
+        self.c.drawString(50, 600, f"Cidade: {self.cidadeRel}")
+        self.c.rect(20, 550, 550, 5, fill=True, stroke=False)
+        # MARGEM
+        # self.c.rect(20, 550, 550, 20, fill=False, stroke=True)
+
+        self.c.showPage()
+        self.c.save()
+        self.printClient()
+
     # ===============================================
     # Funções [main.py > functions.py]
     # Ler banco de dados [cadastro.db]
@@ -165,6 +220,8 @@ class App():
                 new_cidade = self.cidade_entry.get()
 
                 lista = [new_codigo, new_nome, new_telefone, new_cidade, valorID]
+
+
                     
                 if new_nome == "":
                     messagebox.showwarning(
@@ -178,6 +235,7 @@ class App():
                         message="Atualização feita com sucesso!"
                     )
                     self.limpar_tela()
+                    self.btn_confirm.destroy()
                     
             self.btn_confirm = Button(
                     self.frameTop, text="Confirmar",
@@ -205,6 +263,18 @@ class App():
             message="O usuário foi deletado com sucesso!"
         )
     # Funções [main.py > functions.py] ==============
+
+    # Buscar Usuário [st_Buscar]
+    def buscar_usuario(self):
+        self.listaCli.delete(*self.listaCli.get_children())
+
+        self.nome_entry.insert('end', '%')
+        nome = self.nome_entry.get()
+        
+        for i in buscarCRUD(nome):
+            self.listaCli.insert("", 'end', values=i)
+        
+        self.limpar_tela()
 
     # ===============================================
     # TELA [Frames > Gadgets]
@@ -252,6 +322,7 @@ class App():
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
+        self.st_Buscar['command'] = self.buscar_usuario
 
         self.st_Novo = Button(
             self.frameTop, text="Novo",
@@ -356,12 +427,31 @@ class App():
             self.listaCli.heading(c, text=col)
             self.listaCli.column(c, width=listaWidth[c])
             c += 1
-    
+
+        self.listaCli.bind("<Double-1>", self.OnDoubleClick)
         # =======================================
         # INSERÇÃO DA LISTA
         self.listaCli.place(relx=0.01, rely=0.01, relwidth=0.96, relheight=0.98)
         self.scrollY.place(relx=0.97, rely=0.01, relwidth=0.03, relheight=0.98)
         # TELA [Frames > Gadgets] ===============
+    
+    # ===========================================
+    # CONFIGURAÇÃO [Menu]
+    def Menu(self):
+        menubar = Menu(self.root)
+        self.root.config(menu=menubar)
+        filemenu = Menu(menubar)
+        filemenu2 = Menu(menubar)
+
+        def Quit():
+            self.root.destroy()
+
+        menubar.add_cascade(label="Opções", menu=filemenu)
+        menubar.add_cascade(label="Relatórios", menu=filemenu2)
+
+        filemenu.add_command(label="Sair", command=Quit)
+        filemenu.add_command(label="Limpar Cliente", command=self.limpar_tela)
+        filemenu2.add_command(label="Ficha do Cliente", command=self.gerarRelatClient)
 
 # ===============================================
 # EXECUÇÃO DA JANELA

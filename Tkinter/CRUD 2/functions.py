@@ -41,3 +41,18 @@ def deleteCRUD(i):
         cur = con.cursor()
         query = "DELETE FROM cadastro WHERE id=?"
         cur.execute(query, i)
+
+# --- BUSCAR CADASTRO
+def buscarCRUD(i):
+    with con:
+        lista = []
+
+        cur = con.cursor()
+        query = f"""SELECT codigo, nome, telefone, cidade FROM cadastro WHERE nome LIKE "{i}" ORDER BY nome ASC"""
+        cur.execute(query)
+        info = cur.fetchall()
+
+        for i in info:
+            lista.append(i)
+
+        return lista
