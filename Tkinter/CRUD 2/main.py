@@ -2,15 +2,21 @@
 # IMPORTAÇÕES
 from tkinter import *
 from tkinter import ttk
+from tkinter import tix
 from tkinter import messagebox
 
+# Gráficos[Matplotlib]
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 # reportlab [PDF]
+import webbrowser
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Image
-import webbrowser
 
 from functions import *
 
@@ -25,11 +31,31 @@ fg_button = "#f0f8ff"
 frame_top_bottom = "#f0f8ff"
 hl_bg = "#9C9FA6"
 
+bg_aba1 = "#D7D9D9"
+bg_aba2 = "#6F7372"
+
 # ===============================================
 # JANELA [config.]
-root = Tk()
+root = tix.Tk()
 
-class App():
+class Rede():
+    def gitHub(self):
+        gitHub = "https://github.com/Baku-Stark"
+        webbrowser.open_new(gitHub)
+
+    def twitter(self):
+        twitter = "https://twitter.com/Walleemc2"
+        webbrowser.open_new(twitter)
+
+    def instagram(self):
+        instagram = "https://www.instagram.com/wallace_emc2/"
+        webbrowser.open_new(instagram)
+    
+    def linkedin(self):
+        linkedin = "https://www.linkedin.com/in/wallace-freitas-92a2061b6/"
+        webbrowser.open_new(linkedin)
+
+class App(Rede):
     def __init__(self):
         self.root = root
         self.tela()
@@ -43,6 +69,91 @@ class App():
         # ROOT [mainloop]
         root.mainloop()
     
+    # ===============================================
+    # TELA [Frames > Gadgets]
+    def tela(self):
+        self.root.title("Python - Cadastro de Cliente")
+        self.root.iconbitmap("_img/natural.ico")
+        self.root.geometry("700x500")
+        self.root.configure(background=bg_root)
+        self.root.maxsize(width=900, height=700)
+        self.root.minsize(width=500, height=400)
+        self.root.resizable(width='true', height='true')
+
+    # ===========================================
+    # CONFIGURAÇÃO [Menu]
+    def Menu(self):
+        menubar = Menu(self.root)
+        self.root.config(menu=menubar)
+        filemenu = Menu(menubar)
+        filemenu2 = Menu(menubar)
+        filemenu3 = Menu(menubar)
+
+        def Quit():
+            self.root.destroy()
+
+        menubar.add_cascade(label="Opções", menu=filemenu)
+        menubar.add_cascade(label="Relatório", menu=filemenu2)
+        menubar.add_cascade(label="Aplicação", menu=filemenu3)
+
+        filemenu.add_command(label="Sair", command=Quit)
+        filemenu.add_command(label="Limpar Cliente", command=self.limpar_tela)
+
+        filemenu2.add_command(label="Ficha do Cliente", command=self.gerarRelatClient)
+
+        filemenu3.add_command(label="Sobre a aplicação", command=self.root2)
+
+    # ===========================================
+    # CONFIGURAÇÃO [Toplevel => Nova Janela]
+    def root2(self):
+        self.root2 = Toplevel()
+        self.root2.grab_set()
+        self.root2.focus_force()
+        self.root2.geometry("400x200")
+        self.root2.transient(self.root)
+        self.root2.title("Sobre a aplicação")
+        self.root2.configure(background=bg_root)
+        self.root2.resizable(width='false', height='false')
+
+        text_autor = "Autor do projeto: Wallace (Baku-Stark)"
+        self.nome_autor = Label(
+            self.root2, text=text_autor, font=('Arial 10 bold'),
+            bg="#111111", fg="#f0f8ff"
+        )
+        self.nome_autor.place(x=5, y=10)
+
+        # --- GITHUB
+        self.gitHub_btn = Button(
+            self.root2, text="GitHub", font=('Arial 10 bold'),
+            bg="#111111", fg="#f0f8ff", relief="raised", overrelief="ridge"
+        )
+        self.gitHub_btn['command'] = self.gitHub
+        self.gitHub_btn.place(x=5, y=40)
+
+        # --- TWITTER
+        self.twitter_btn = Button(
+            self.root2, text="Twitter", font=('Arial 10 bold'),
+            bg="#111111", fg="#f0f8ff", relief="raised", overrelief="ridge"
+        )
+        self.twitter_btn['command'] = self.twitter
+        self.twitter_btn.place(x=65, y=40)
+
+        # --- INSTAGRAM
+        self.instagram_btn = Button(
+            self.root2, text="Instagram", font=('Arial 10 bold'),
+            bg="#111111", fg="#f0f8ff", relief="raised", overrelief="ridge"
+        )
+        self.instagram_btn['command'] = self.instagram
+        self.instagram_btn.place(x=125, y=40)
+
+        # --- LINKEDIN
+        self.linkedin_btn = Button(
+            self.root2, text="LinkedIN", font=('Arial 10 bold'),
+            bg="#111111", fg="#f0f8ff", relief="raised", overrelief="ridge"
+        )
+        self.linkedin_btn['command'] = self.linkedin
+        self.linkedin_btn.place(x=205, y=40)
+
     # ===============================================
     # CONFIGURAÇÃO [Double Click]
     def OnDoubleClick(self, event):
@@ -76,6 +187,7 @@ class App():
 
         self.c.setFont(psfontname="Helvetica-Bold", size=24)
         self.c.drawString(200, 790, 'Ficha do Cliente')
+        self.c.rect(20, 770, 550, 5, fill=True, stroke=False)
         self.c.setFont(psfontname="Helvetica-Bold", size=18)
         self.c.drawString(50, 700, f"Código: {self.codigoRel}")
         self.c.drawString(50, 670, f"Nome: {self.nomeRel}")
@@ -164,7 +276,6 @@ class App():
                 title="Sucesso!",
                 message="Um novo cadastro foi efetuado com sucesso!"
             )
-
             self.limpar_tela()
         # ---- [TELEFONE]
         
@@ -179,7 +290,6 @@ class App():
                 title="Sucesso!",
                 message="Um novo cadastro foi efetuado com sucesso!"
             )
-
             self.limpar_tela()
         # ---- [CIDADE]
 
@@ -192,7 +302,6 @@ class App():
                 title="Sucesso!",
                 message="Um novo cadastro foi efetuado com sucesso!"
             )
-
             self.limpar_tela()
         # ---- [EFETUADO COM SUCESSO (sem interrupções)]
     
@@ -275,17 +384,6 @@ class App():
             self.listaCli.insert("", 'end', values=i)
         
         self.limpar_tela()
-
-    # ===============================================
-    # TELA [Frames > Gadgets]
-    def tela(self):
-        self.root.title("Python - Cadastro de Cliente")
-        self.root.iconbitmap("_img/natural.ico")
-        self.root.geometry("700x500")
-        self.root.configure(background=bg_root)
-        self.root.maxsize(width=900, height=700)
-        self.root.minsize(width=500, height=400)
-        self.root.resizable(width='true', height='true')
         
     # ===========================================
     # FRAMES [top - bottom]
@@ -302,84 +400,130 @@ class App():
 
         # =======================================
         # INSERÇÃO DE FRAME
-        self.frameTop.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.46)
-        
+        self.frameTop.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.46)  
         self.frameBottom.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
     
     # ===========================================
     # Gadgets [Top_Frame]
     def frameTop_Gadgets(self):
+        # -------- ABAS -----------
+        self.abas = ttk.Notebook(self.frameTop)
+        self.aba1 = Frame(self.abas)
+        self.aba2 = Frame(self.abas)
+
+        self.abas.add(self.aba1, text="Registro")
+        self.abas.add(self.aba2, text="Gráfico")
+
+        self.aba1.configure(background=bg_aba1)
+        self.aba2.configure(background=bg_aba2)
+
+        self.abas.place(relx=0, rely=0, relwidth=0.98, relheight=0.98)
+        # -------- ABAS -----------
+
+        # -------- GRÁFICO --------
+        self.figura = plt.Figure(figsize=(8,4), dpi=60)
+        self.ax = self.figura.add_subplot(111)
+
+        self.canvas = FigureCanvasTkAgg(self.figura, self.aba2)
+
+        np.random.seed(19680801)
+        self.cidades = ("Angra dos Reis", "Barra Mansa", "Volta Redonda", "Não informada", "Outros")
+        y_pos = np.arange(len(self.cidades))
+        self.count_cidade = 3 + 10 * np.random.rand(len(self.cidades))
+        error = np.random.rand(len(self.cidades))
+
+        self.ax.barh(y_pos, self.count_cidade, xerr=error)
+        self.ax.set_yticks(y_pos, labels=self.cidades)
+        self.ax.invert_yaxis()
+        self.ax.set_title('Municipios do Rio de Janeiro')
+        # -------- GRÁFICO --------
+
         # -------- BUTTONS --------
-        self.st_Limpar = Button(
-            self.frameTop, text="Limpar",
+        self.st_Limpar = tix.Button(
+            self.aba1, text="Limpar",
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
         self.st_Limpar['command'] = self.limpar_tela
+        self.balao_limpar = tix.Balloon(self.frameTop)
+        self.balao_limpar.bind_widget(self.st_Limpar, balloonmsg="Limpar os campos.")
 
-        self.st_Buscar = Button(
-            self.frameTop, text="Buscar",
+        self.st_Buscar = tix.Button(
+            self.aba1, text="Buscar",
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
         self.st_Buscar['command'] = self.buscar_usuario
+        self.balao_buscar = tix.Balloon(self.frameTop)
+        self.balao_buscar.bind_widget(self.st_Buscar, balloonmsg="Procurar por um usuário desejado na lista.")
 
-        self.st_Novo = Button(
-            self.frameTop, text="Novo",
+        self.st_Novo = tix.Button(
+            self.aba1, text="Novo",
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
         self.st_Novo['command'] = self.novo_usuario
+        self.balao_novo = tix.Balloon(self.frameTop)
+        self.balao_novo.bind_widget(self.st_Novo, balloonmsg="Adicionar novo usuário ao banco de dados.")
 
-        self.st_Alterar = Button(
-            self.frameTop, text="Alterar",
+        self.st_Alterar = tix.Button(
+            self.aba1, text="Alterar",
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
         self.st_Alterar['command'] = self.atualizar_usuario
+        self.balao_alterar = tix.Balloon(self.frameTop)
+        self.balao_alterar.bind_widget(self.st_Alterar, balloonmsg="Atualizar informações do usuário.")
 
-        self.st_Apagar = Button(
-            self.frameTop, text="Apagar",
+        self.st_Apagar = tix.Button(
+            self.aba1, text="Apagar",
             font=('Arial 8 bold'), bg=bg_button, fg=fg_button,
             overrelief="ridge", relief='raised'
         )
         self.st_Apagar['command'] = self.deletar_usuario
+        self.balao_apagar = tix.Balloon(self.frameTop)
+        self.balao_apagar.bind_widget(self.st_Apagar, balloonmsg="Apagar usuário.")
         # -------- BUTTONS --------
 
         # -------- LABELS N' INPUTS --------
         self.codigo = Label(
-            self.frameTop, text="Código",
-            font=('Arial 10 bold'), bg=frame_top_bottom
+            self.aba1, text="Código",
+            font=('Arial 10 bold'), bg=bg_aba1
         )
-        self.codigo_entry = Entry(self.frameTop)
+        self.codigo_entry = Entry(self.aba1)
 
         # ----- NOME
         self.nome = Label(
-            self.frameTop, text="Nome",
-            font=('Arial 10 bold'), bg=frame_top_bottom
+            self.aba1, text="Nome",
+            font=('Arial 10 bold'), bg=bg_aba1
         )
-        self.nome_entry = Entry(self.frameTop)
+        self.nome_entry = Entry(self.aba1)
         # ----- NOME
 
         # ----- TELEFONE
         self.telefone = Label(
-            self.frameTop, text="Telefone",
-            font=('Arial 10 bold'), bg=frame_top_bottom
+            self.aba1, text="Telefone",
+            font=('Arial 10 bold'), bg=bg_aba1
         )
-        self.telefone_entry = Entry(self.frameTop)
+        self.telefone_entry = Entry(self.aba1)
         # ----- TELEFONE
 
         # ----- CIDADE
         self.cidade = Label(
-            self.frameTop, text="Cidade",
-            font=('Arial 10 bold'), bg=frame_top_bottom
+            self.aba1, text="Cidade",
+            font=('Arial 10 bold'), bg=bg_aba1
         )
-        self.cidade_entry = Entry(self.frameTop)
+        self.cidade_entry = Entry(self.aba1)
         # ----- CIDADE
         # -------- LABELS N' INPUTS --------
 
         # =======================================
         # INSERÇÃO DOS GADGETS
+
+        # -------- GRÁFICO --------
+        self.canvas.get_tk_widget().place(relx=0, rely=0, relwidth=1, relheight=1)
+        # -------- GRÁFICO --------
+
         # -------- BUTTONS --------
         self.st_Limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
 
@@ -434,24 +578,6 @@ class App():
         self.listaCli.place(relx=0.01, rely=0.01, relwidth=0.96, relheight=0.98)
         self.scrollY.place(relx=0.97, rely=0.01, relwidth=0.03, relheight=0.98)
         # TELA [Frames > Gadgets] ===============
-    
-    # ===========================================
-    # CONFIGURAÇÃO [Menu]
-    def Menu(self):
-        menubar = Menu(self.root)
-        self.root.config(menu=menubar)
-        filemenu = Menu(menubar)
-        filemenu2 = Menu(menubar)
-
-        def Quit():
-            self.root.destroy()
-
-        menubar.add_cascade(label="Opções", menu=filemenu)
-        menubar.add_cascade(label="Relatórios", menu=filemenu2)
-
-        filemenu.add_command(label="Sair", command=Quit)
-        filemenu.add_command(label="Limpar Cliente", command=self.limpar_tela)
-        filemenu2.add_command(label="Ficha do Cliente", command=self.gerarRelatClient)
 
 # ===============================================
 # EXECUÇÃO DA JANELA
