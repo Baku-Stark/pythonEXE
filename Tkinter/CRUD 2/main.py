@@ -176,20 +176,28 @@ class App(Rede):
     # ===============================================
     # CONFIGURAÇÃO [Double Click]
     def OnDoubleClick(self, event):
-        self.limpar_tela()
-        self.listaCli.selection()
+        try:
+            self.limpar_tela()
+            self.listaCli.selection()
 
-        list_data = self.listaCli.focus()
-        list_dic = self.listaCli.item(list_data)
-        list_set = list_dic['values']
-        self.codigo_entry.insert(0, list_set[1])
-        self.nome_entry.insert(0, list_set[2])
-        self.telefone_entry.insert(0, list_set[3])
-        self.cidade_entry.insert(0, list_set[4])
+            list_data = self.listaCli.focus()
+            list_dic = self.listaCli.item(list_data)
+            list_set = list_dic['values']
+            self.codigo_entry.insert(0, list_set[1])
+            self.nome_entry.insert(0, list_set[2])
+            self.telefone_entry.insert(0, list_set[3])
+            self.cidade_entry.insert(0, list_set[4])
+
+        except IndexError:
+            messagebox.showerror(
+                title="Nenhuma dado encontrado",
+                message="A lista está limpa. Nenhum dado pode ser selecionado."
+            )
 
     # ===============================================
     # CONFIGURAÇÃO [reportlab PDF]
     # === FUNÇÕES
+
     # === CONFIGURAÇÃO [caminho do arquivo]
     def printClient(self):
         self.nomeArq = self.nome_entry.get()
@@ -408,7 +416,7 @@ class App(Rede):
     # ===========================================
     # Gadgets [Top_Frame]
     def frameTop_Gadgets(self):
-        # -------- GRÁFICO --------
+        # -------- ABAS --------
         self.abas = ttk.Notebook(self.frameTop)
         self.aba1 = Frame(self.abas)
         self.aba2 = Frame(self.abas)
@@ -418,21 +426,26 @@ class App(Rede):
 
         self.aba1.configure(background=bg_aba1)
         self.aba2.configure(background=bg_aba2)
+        # -------- ABAS --------
 
-        self.abas.place(relx=0, rely=0, relwidth=0.98, relheight=0.98)
-
+        # -------- GRÁFICO --------
         self.figura = plt.Figure(figsize=(8,4), dpi=60)
         self.ax = self.figura.add_subplot(111)
 
         self.canvas = FigureCanvasTkAgg(self.figura, self.aba2)
 
         np.random.seed(19680801)
-        self.cidades = ("Angra dos Reis", "Barra Mansa", "Volta Redonda", "Não informada", "Outros")
+        self.cidades = ["Angra dos Reis", "Barra Mansa", "Volta Redonda", "Outros", "Não informada"]
+        self.city1 = 0
+        self.city2 = 0
+        self.city3 = 0
+        self.outros = 0
+        self.n_info = 0
+        
+        x_pos = 0
         y_pos = np.arange(len(self.cidades))
-        self.count_cidade = 3 + 10 * np.random.rand(len(self.cidades))
-        error = np.random.rand(len(self.cidades))
-
-        self.ax.barh(y_pos, self.count_cidade, xerr=error)
+        self.count_cidade = [self.city1, self.city2, self.city3, self.outros, self.n_info]
+        self.ax.barh(y_pos, self.count_cidade, xerr=x_pos)
         self.ax.set_yticks(y_pos, labels=self.cidades)
         self.ax.invert_yaxis()
         self.ax.set_title('Municípios do Rio de Janeiro')
@@ -519,6 +532,9 @@ class App(Rede):
 
         # =======================================
         # INSERÇÃO DOS GADGETS
+        # -------- ABAS --------
+        self.abas.place(relx=0, rely=0, relwidth=0.98, relheight=0.98)
+        # -------- ABAS --------
 
         # -------- GRÁFICO --------
         self.canvas.get_tk_widget().place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -569,7 +585,7 @@ class App(Rede):
         
         for col in colunas:
             self.listaCli.heading(c, text=col)
-            self.listaCli.column(c, width=listaWidth[c])
+            self.listaCli.column(c, width=listaWidth[c], anchor='center')
             c += 1
 
         self.listaCli.bind("<Double-1>", self.OnDoubleClick)
