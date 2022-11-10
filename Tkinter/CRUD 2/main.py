@@ -154,6 +154,25 @@ class App(Rede):
         self.linkedin_btn['command'] = self.linkedin
         self.linkedin_btn.place(x=205, y=40)
 
+    # ===========================================
+    # FRAMES [top - bottom]
+    def frame_tela(self):
+        self.frameTop = Frame(
+            self.root, bg=frame_top_bottom, bd=4,
+            highlightbackground=hl_bg, highlightthickness=3
+        )
+
+        self.frameBottom = Frame(
+            self.root, bg=frame_top_bottom, bd=4,
+            highlightbackground=hl_bg, highlightthickness=3
+        )
+        # =======================================
+        # INSERÇÃO DE FRAME
+        self.frameTop.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.46)  
+        self.frameBottom.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
+        # INSERÇÃO DE FRAME
+        # =======================================
+
     # ===============================================
     # CONFIGURAÇÃO [Double Click]
     def OnDoubleClick(self, event):
@@ -170,7 +189,7 @@ class App(Rede):
 
     # ===============================================
     # CONFIGURAÇÃO [reportlab PDF]
-    # FUNÇÕES
+    # === FUNÇÕES
     # === CONFIGURAÇÃO [caminho do arquivo]
     def printClient(self):
         self.nomeArq = self.nome_entry.get()
@@ -371,7 +390,6 @@ class App(Rede):
             title="Usuário deletado",
             message="O usuário foi deletado com sucesso!"
         )
-    # Funções [main.py > functions.py] ==============
 
     # Buscar Usuário [st_Buscar]
     def buscar_usuario(self):
@@ -384,29 +402,13 @@ class App(Rede):
             self.listaCli.insert("", 'end', values=i)
         
         self.limpar_tela()
-        
-    # ===========================================
-    # FRAMES [top - bottom]
-    def frame_tela(self):
-        self.frameTop = Frame(
-            self.root, bg=frame_top_bottom, bd=4,
-            highlightbackground=hl_bg, highlightthickness=3
-        )
-
-        self.frameBottom = Frame(
-            self.root, bg=frame_top_bottom, bd=4,
-            highlightbackground=hl_bg, highlightthickness=3
-        )
-
-        # =======================================
-        # INSERÇÃO DE FRAME
-        self.frameTop.place(relx=0.02, rely=0.02, relwidth=0.96, relheight=0.46)  
-        self.frameBottom.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
+    # Funções [main.py > functions.py]
+    # ===============================================
     
     # ===========================================
     # Gadgets [Top_Frame]
     def frameTop_Gadgets(self):
-        # -------- ABAS -----------
+        # -------- GRÁFICO --------
         self.abas = ttk.Notebook(self.frameTop)
         self.aba1 = Frame(self.abas)
         self.aba2 = Frame(self.abas)
@@ -418,9 +420,7 @@ class App(Rede):
         self.aba2.configure(background=bg_aba2)
 
         self.abas.place(relx=0, rely=0, relwidth=0.98, relheight=0.98)
-        # -------- ABAS -----------
 
-        # -------- GRÁFICO --------
         self.figura = plt.Figure(figsize=(8,4), dpi=60)
         self.ax = self.figura.add_subplot(111)
 
@@ -435,7 +435,7 @@ class App(Rede):
         self.ax.barh(y_pos, self.count_cidade, xerr=error)
         self.ax.set_yticks(y_pos, labels=self.cidades)
         self.ax.invert_yaxis()
-        self.ax.set_title('Municipios do Rio de Janeiro')
+        self.ax.set_title('Municípios do Rio de Janeiro')
         # -------- GRÁFICO --------
 
         # -------- BUTTONS --------
