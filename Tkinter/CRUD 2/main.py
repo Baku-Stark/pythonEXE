@@ -1,15 +1,21 @@
 # ===============================================
-# IMPORTAÇÕES
+# IMPORTAÇÕES [datetime]
+from datetime import datetime
+
+# ===============================================
+# IMPORTAÇÕES [Tkinter]
 from tkinter import *
 from tkinter import ttk
 from tkinter import tix
 from tkinter import messagebox
 
+# ===============================================
 # Gráficos[Matplotlib]
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+# ===============================================
 # reportlab [PDF]
 import webbrowser
 from reportlab.pdfgen import canvas
@@ -18,6 +24,8 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Image
 
+# ===============================================
+# IMPORTAÇÕES [functions.py n' database.py]
 from functions import *
 from database import cadastroCreate
 
@@ -46,7 +54,7 @@ class TableRead():
 
         for item in lista:
             self.listaCli.insert('', 'end', values=item)
-
+    
 class Graph():
     def graphCity(self):
         # -------- GRÁFICO --------
@@ -71,16 +79,16 @@ class Graph():
             list_data = value[0].upper()
             c+=1
 
-            if list_data.upper() == "ANGRA DOS REIS":
+            if list_data == "ANGRA DOS REIS":
                 self.angra_reis += 1
 
-            elif list_data.upper() == "BARRA MANSA":
+            elif list_data == "BARRA MANSA":
                 self.barra_mansa +=1
 
-            elif list_data.upper() == "VOLTA REDONDA":
+            elif list_data == "VOLTA REDONDA":
                 self.volta_redonda += 1
 
-            elif list_data.upper() == "CIDADE NÃO INFORMADA":
+            elif list_data == "CIDADE NÃO INFORMADA":
                 self.n_info += 1
             
             else:
@@ -116,7 +124,7 @@ class Rede():
         linkedin = "https://www.linkedin.com/in/wallace-freitas-92a2061b6/"
         webbrowser.open_new(linkedin)
 
-class App(Rede, Graph, TableRead):
+class App(TableRead, Graph, Rede):
     def __init__(self):
         self.root = root
         self.tela()
@@ -270,22 +278,61 @@ class App(Rede, Graph, TableRead):
         self.codigoRel = self.codigo_entry.get()
         self.nomeRel = self.nome_entry.get()
         self.telefoneRel = self.telefone_entry.get()
-        self.cidadeRel = self.cidade_entry.get()
+        self.cidadeRel = self.cidade_entry.get().upper()
 
         self.c = canvas.Canvas(f"clientPDF/{self.nomeRel}.pdf")
 
+        # MARGEM
+        self.c.rect(20, 10, 550, 820, fill=False, stroke=True)
+        #self.<variável canvas>.rect(x, y, largura, altura)
+        # MARGEM
+
+        # TÍTULO
         self.c.setFont(psfontname="Helvetica-Bold", size=24)
-        self.c.drawString(200, 790, 'Ficha do Cliente')
-        self.c.rect(20, 770, 550, 5, fill=True, stroke=False)
+        self.c.drawString(200, 790, f'Ficha do(a) {self.nomeRel}')
+        # TÍTULO
+
+        # CONTEÚDO [pdf => dados do usuário]
+        self.c.rect(20, 770, 550, 2, fill=True, stroke=False)
         self.c.setFont(psfontname="Helvetica-Bold", size=18)
         self.c.drawString(50, 700, f"Código: {self.codigoRel}")
         self.c.drawString(50, 670, f"Nome: {self.nomeRel}")
         self.c.drawString(50, 630, f"Telefone: {self.telefoneRel[0:5]}-{self.telefoneRel[5:]}")
         self.c.drawString(50, 600, f"Cidade: {self.cidadeRel}")
-        self.c.rect(20, 550, 550, 5, fill=True, stroke=False)
-        # MARGEM
-        # self.c.rect(20, 550, 550, 20, fill=False, stroke=True)
+        if self.cidadeRel == "BARRA MANSA":
+            self.c.drawString(50, 570, f"Coordenadas de {self.cidadeRel}: -22.54, -44.17")
+        elif self.cidadeRel == "ANGRA DOS REIS":
+            self.c.drawString(50, 570, f"Coordenadas de {self.cidadeRel}: -23.00, -44.31")
+        elif self.cidadeRel == "VOLTA REDONDA":
+            self.c.drawString(50, 570, f"Coordenadas de {self.cidadeRel}: -22.50, -44.09")
+        else:
+            self.c.drawString(50, 570, f"As coordenadas de {self.cidadeRel} não estão no sistema.")
+        self.c.rect(20, 550, 540, 2, fill=True, stroke=False)
+        # CONTEÚDO [pdf => dados do usuário]
 
+        # DADOS [pdf => último acesso ao servidor]
+        mes_translate = {
+            1:"Janeiro", 2:"Fevereiro", 3:"Março", 4:"Abril", 5:"Maio", 6:"Junho",
+            7:"Julho", 8:"Agosto", 9:"Setembro", 10:"Outubro", 11:"Novembro", 12:"Dezembro"
+        }
+
+        tempo_atual = datetime.now()
+        dia_atual = tempo_atual.day
+        mes_atual = tempo_atual.month
+        ano_atual = tempo_atual.year
+
+        hora_atual = tempo_atual.hour
+        minuto_atual = tempo_atual.minute
+
+        self.c.setFont(psfontname="Helvetica-Bold", size=18)
+        self.c.drawString(50, 490, f"Último acesso: {dia_atual}/{mes_translate[mes_atual]}/{ano_atual}")
+        if minuto_atual < 10:
+            self.c.drawString(50, 470, f"Horas: {hora_atual}:0{minuto_atual}")
+        else:
+            self.c.drawString(50, 470, f"Horário: {hora_atual}:{minuto_atual}")
+        
+        # DADOS [pdf => último acesso ao servidor]
+        
         self.c.showPage()
         self.c.save()
         self.printClient()
