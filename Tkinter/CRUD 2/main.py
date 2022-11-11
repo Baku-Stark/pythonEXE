@@ -38,6 +38,56 @@ bg_aba2 = "#6F7372"
 # JANELA [config.]
 root = tix.Tk()
 
+class Graph():
+    def graphCity(self):
+        # -------- GRÁFICO --------
+        self.figura = plt.Figure(figsize=(8,4), dpi=60)
+        self.ax = self.figura.add_subplot(111)
+
+        self.canvas = FigureCanvasTkAgg(self.figura, self.aba2)
+
+        np.random.seed(19680801)
+        self.cidades = ["Angra dos Reis", "Barra Mansa", "Volta Redonda", "Outros", "Não informada"]
+        
+        self.angra_reis = 0
+        self.barra_mansa = 0
+        self.volta_redonda = 0
+        self.outros = 0
+        self.n_info = 0
+
+        for n in self.listaCli.get_children():
+            list_data = self.listaCli.item(n)['values'][4].upper()
+            for c in self.listaCli.get_children(n):
+                list_data = self.listaCli.item(c)['values'][4].upper()
+
+        if list_data == "ANGRA DOS REIS":
+            self.angra_reis += 1
+
+        elif list_data == "BARRA MANSA":
+            self.barra_mansa +=1
+
+        elif list_data == "VOLTA REDONDA":
+            self.volta_redonda += 1
+
+        elif list_data == "CIDADE NÃO INFORMADA":
+            self.n_info += 1
+        
+        else:
+            self.outros += 1
+        
+        x_pos = 0
+        y_pos = np.arange(len(self.cidades))
+        self.count_cidade = [self.angra_reis, self.barra_mansa, self.volta_redonda, self.outros, self.n_info]
+        self.ax.barh(y_pos, self.count_cidade, xerr=x_pos)
+        self.ax.set_yticks(y_pos, labels=self.cidades)
+        self.ax.invert_yaxis()
+        self.ax.set_title('Municípios do Rio de Janeiro')
+        # -------- GRÁFICO --------
+
+        # -------- GRÁFICO --------
+        self.canvas.get_tk_widget().place(relx=0, rely=0, relwidth=1, relheight=1)
+        # -------- GRÁFICO --------
+
 class Rede():
     def gitHub(self):
         gitHub = "https://github.com/Baku-Stark"
@@ -55,7 +105,7 @@ class Rede():
         linkedin = "https://www.linkedin.com/in/wallace-freitas-92a2061b6/"
         webbrowser.open_new(linkedin)
 
-class App(Rede):
+class App(Rede, Graph):
     def __init__(self):
         self.root = root
         self.tela()
@@ -65,6 +115,7 @@ class App(Rede):
 
         self.readTable()
         self.Menu()
+        self.graphCity()
         # =======================================
         # ROOT [mainloop]
         root.mainloop()
@@ -374,7 +425,7 @@ class App(Rede):
                     self.btn_confirm.destroy()
                     
             self.btn_confirm = Button(
-                    self.frameTop, text="Confirmar",
+                    self.aba1, text="Confirmar",
                     font=('Arial 8 bold'), overrelief="raised", relief="ridge"
                 )
             self.btn_confirm['command'] = updateCheck
@@ -416,7 +467,7 @@ class App(Rede):
     # ===========================================
     # Gadgets [Top_Frame]
     def frameTop_Gadgets(self):
-        # -------- ABAS --------
+        # -------- ABAS ----------
         self.abas = ttk.Notebook(self.frameTop)
         self.aba1 = Frame(self.abas)
         self.aba2 = Frame(self.abas)
@@ -426,30 +477,7 @@ class App(Rede):
 
         self.aba1.configure(background=bg_aba1)
         self.aba2.configure(background=bg_aba2)
-        # -------- ABAS --------
-
-        # -------- GRÁFICO --------
-        self.figura = plt.Figure(figsize=(8,4), dpi=60)
-        self.ax = self.figura.add_subplot(111)
-
-        self.canvas = FigureCanvasTkAgg(self.figura, self.aba2)
-
-        np.random.seed(19680801)
-        self.cidades = ["Angra dos Reis", "Barra Mansa", "Volta Redonda", "Outros", "Não informada"]
-        self.city1 = 0
-        self.city2 = 0
-        self.city3 = 0
-        self.outros = 0
-        self.n_info = 0
-        
-        x_pos = 0
-        y_pos = np.arange(len(self.cidades))
-        self.count_cidade = [self.city1, self.city2, self.city3, self.outros, self.n_info]
-        self.ax.barh(y_pos, self.count_cidade, xerr=x_pos)
-        self.ax.set_yticks(y_pos, labels=self.cidades)
-        self.ax.invert_yaxis()
-        self.ax.set_title('Municípios do Rio de Janeiro')
-        # -------- GRÁFICO --------
+        # -------- ABAS -----------
 
         # -------- BUTTONS --------
         self.st_Limpar = tix.Button(
@@ -535,10 +563,6 @@ class App(Rede):
         # -------- ABAS --------
         self.abas.place(relx=0, rely=0, relwidth=0.98, relheight=0.98)
         # -------- ABAS --------
-
-        # -------- GRÁFICO --------
-        self.canvas.get_tk_widget().place(relx=0, rely=0, relwidth=1, relheight=1)
-        # -------- GRÁFICO --------
 
         # -------- BUTTONS --------
         self.st_Limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
