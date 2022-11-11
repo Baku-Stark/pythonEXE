@@ -6,18 +6,19 @@ con = lite.connect("data/cadastro.db")
 
 # ===============================================
 # CRIAÇÃO DA TABELA
-try:
-    cur = con.cursor()
-    cur.execute("""
-        CREATE TABLE cadastro(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            codigo TEXT,
-            nome TEXT,
-            telefone TEXT,
-            cidade TEXT
-        )
-        """)
-except Exception as e:
-    print(f"Falha ao criar a tabela: {e}")
-else:
-    print("Tabela criada com sucesso!")
+def cadastroCreate():
+    try:
+        cur = con.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS cadastro(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                codigo TEXT,
+                nome TEXT,
+                telefone TEXT,
+                cidade TEXT
+            )
+            """)
+    except Exception as e:
+        print(f"\033[1;31m[Falha ao criar a tabela: {e}]\033[m")
+    else:
+        print("\033[1;36m[Tabela criada com sucesso!]\033[m")

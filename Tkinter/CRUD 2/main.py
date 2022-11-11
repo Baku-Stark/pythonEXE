@@ -19,6 +19,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Image
 
 from functions import *
+from database import cadastroCreate
 
 # ===============================================
 # CORES
@@ -38,6 +39,14 @@ bg_aba2 = "#6F7372"
 # JANELA [config.]
 root = tix.Tk()
 
+class TableRead():
+    # Ler banco de dados [cadastro.db]
+    def readTable(self):
+        lista = readCRUD()
+
+        for item in lista:
+            self.listaCli.insert('', 'end', values=item)
+
 class Graph():
     def graphCity(self):
         # -------- GRÁFICO --------
@@ -55,21 +64,22 @@ class Graph():
         self.outros = 0
         self.n_info = 0
 
-        for n in self.listaCli.get_children():
-            list_data = self.listaCli.item(n)['values'][4].upper()
-            for c in self.listaCli.get_children(n):
-                list_data = self.listaCli.item(c)['values'][4].upper()
+        list_data = ""
 
-        if list_data == "ANGRA DOS REIS":
+        for line in self.listaCli.get_children():
+            for value in self.listaCli.item(line)['values']:
+                list_data = value
+
+        if list_data.upper() == "ANGRA DOS REIS":
             self.angra_reis += 1
 
-        elif list_data == "BARRA MANSA":
+        elif list_data.upper() == "BARRA MANSA":
             self.barra_mansa +=1
 
-        elif list_data == "VOLTA REDONDA":
+        elif list_data.upper() == "VOLTA REDONDA":
             self.volta_redonda += 1
 
-        elif list_data == "CIDADE NÃO INFORMADA":
+        elif list_data.upper() == "CIDADE NÃO INFORMADA":
             self.n_info += 1
         
         else:
@@ -81,7 +91,7 @@ class Graph():
         self.ax.barh(y_pos, self.count_cidade, xerr=x_pos)
         self.ax.set_yticks(y_pos, labels=self.cidades)
         self.ax.invert_yaxis()
-        self.ax.set_title('Municípios do Rio de Janeiro')
+        self.ax.set_title('Qtd. de Cidades Cadastradas')
         # -------- GRÁFICO --------
 
         # -------- GRÁFICO --------
@@ -105,7 +115,7 @@ class Rede():
         linkedin = "https://www.linkedin.com/in/wallace-freitas-92a2061b6/"
         webbrowser.open_new(linkedin)
 
-class App(Rede, Graph):
+class App(Rede, Graph, TableRead):
     def __init__(self):
         self.root = root
         self.tela()
@@ -150,7 +160,7 @@ class App(Rede, Graph):
         filemenu.add_command(label="Sair", command=Quit)
         filemenu.add_command(label="Limpar Cliente", command=self.limpar_tela)
 
-        filemenu2.add_command(label="Ficha do Cliente", command=self.gerarRelatClient)
+        filemenu2.add_command(label="Ficha do Cliente(PDF)", command=self.gerarRelatClient)
 
         filemenu3.add_command(label="Sobre a aplicação", command=self.root2)
 
@@ -281,13 +291,6 @@ class App(Rede, Graph):
 
     # ===============================================
     # Funções [main.py > functions.py]
-    # Ler banco de dados [cadastro.db]
-    def readTable(self):
-        lista = readCRUD()
-
-        for item in lista:
-            self.listaCli.insert('', 'end', values=item)
-    
     # Limpar Conteúdo [st_Limpar]
     def limpar_tela(self):
         self.codigo_entry.delete(0, 'end')
@@ -622,5 +625,6 @@ class App(Rede, Graph):
 # ===============================================
 # EXECUÇÃO DA JANELA
 if __name__ == '__main__':
+    cadastroCreate()
     App()
     
