@@ -28,6 +28,20 @@ def readCRUD():
 
         return lista
 
+def readCrudCity():
+    with con:
+        lista_city = []
+
+        cur = con.cursor()
+        query = "SELECT cidade FROM cadastro"
+        cur.execute(query)
+        info = cur.fetchall()
+
+        for i in info:
+            lista_city.append(i)
+        
+        return lista_city
+
 # --- ATUALIZAR CADASTRO
 def updateCRUD(i):
     with con:

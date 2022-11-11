@@ -65,25 +65,26 @@ class Graph():
         self.n_info = 0
 
         list_data = ""
+        c = 0
 
-        for line in self.listaCli.get_children():
-            for value in self.listaCli.item(line)['values']:
-                list_data = value
+        for value in readCrudCity():
+            list_data = value[0].upper()
+            c+=1
 
-        if list_data.upper() == "ANGRA DOS REIS":
-            self.angra_reis += 1
+            if list_data.upper() == "ANGRA DOS REIS":
+                self.angra_reis += 1
 
-        elif list_data.upper() == "BARRA MANSA":
-            self.barra_mansa +=1
+            elif list_data.upper() == "BARRA MANSA":
+                self.barra_mansa +=1
 
-        elif list_data.upper() == "VOLTA REDONDA":
-            self.volta_redonda += 1
+            elif list_data.upper() == "VOLTA REDONDA":
+                self.volta_redonda += 1
 
-        elif list_data.upper() == "CIDADE NÃO INFORMADA":
-            self.n_info += 1
-        
-        else:
-            self.outros += 1
+            elif list_data.upper() == "CIDADE NÃO INFORMADA":
+                self.n_info += 1
+            
+            else:
+                self.outros += 1
         
         x_pos = 0
         y_pos = np.arange(len(self.cidades))
