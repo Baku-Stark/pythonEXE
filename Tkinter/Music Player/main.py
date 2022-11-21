@@ -13,7 +13,8 @@ janela.resizable(width=FALSE, height=FALSE)
 
 # ----------------------------------------
 # função
-os.chdir(r'C:\Users\Friday\Desktop\Scripts de Programação\Scripts Python\Music Player\music')
+user = os.getlogin()
+os.chdir(rf'C:\Users\{user}\Documents\GitPython\pythonEXE\pythonEXE\Tkinter\Music Player\music')
 musicas = os.listdir()
 
 def show():
