@@ -10,6 +10,10 @@
 
 **Autor do projeto**: [chavarera](https://github.com/chavarera)
 
+* Projetos: [Python Mini Projects](https://github.com/Python-World/python-mini-projects)
+
+#
+
 ## Contributors ✨
 
 SR No   | Project | Author  
