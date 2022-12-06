@@ -1,0 +1,2 @@
+[Youtube](https://www.youtube.com/watch?v=Nqqc2FHf9Ug&list=RDFKGpf1Bb6mo&index=11&ab_channel=LeagueofLegends)
+[GitHub](https://github.com/Python-World/python-mini-projects/blob/master/projects/All_links_from_given_webpage/get_links.py)
