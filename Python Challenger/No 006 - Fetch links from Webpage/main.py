@@ -8,7 +8,7 @@ def saveLinks(site_name, link):
     'a+' -> leitura e escrita (abre o arquivo para atualização)
     '''
 
-    if ("https" or "https") in link:
+    if ("https" or "http") in link:
         print('Endereçamento de domínio correto. Adicionado ao arquivo \033[32m[SaveLinks.txt]\033[m')
         link_set = f"[{site_name}]({link})"
         with open('SaveLinks.txt', 'a+') as arq:
