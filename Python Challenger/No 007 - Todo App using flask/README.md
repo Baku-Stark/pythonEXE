@@ -16,16 +16,21 @@
 * `from yaml import load, Loader`
 * `import os`
 
-> **Flask Static (img, js, css):**
-* [Flask Static](https://flask.palletsprojects.com/en/2.2.x/tutorial/static/)
+# Flask
+* **Static (img, js, css)**
+  * [Flask Static](https://flask.palletsprojects.com/en/2.2.x/tutorial/static/)
     * _Exemplo_: `{{ url_for('<pasta static>', filename='<diretório do arquivo>') }}`
 
-> **SASS - Watch:**
-* _Compressed Mode:_ `sass -w app\static\sass\style.scss app\static\css\style.css -s compressed`
+# SASS
+* **Watch:**
+  * _Compressed Mode:_ `sass -w app\static\sass\style.scss app\static\css\style.css -s compressed`
 
-#
+# JQuery
+* Site: [JQuery](https://jquery.com/)
 
-> **YAML Document**
+<br>
+
+# **YAML Document**
 ```yaml
 runtime: python # ou outra versão de sua máquina
 
@@ -52,7 +57,7 @@ handlers:
   static_dir: static/css
 ```
 
-> **Pip List*:*
+# **Pip List*:*
 
 Package | Version
 --- | ---
