@@ -1,8 +1,8 @@
 <div align="center">
-    <h2>
+    <h3>
         WishList App Using Django
         <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
-    <h2>
+    <h3>
 </div>
 
 <p align="center">
