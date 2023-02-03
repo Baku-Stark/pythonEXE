@@ -1,0 +1,69 @@
+@import 'variabels';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    color: var(--color-dark);
+    background-color: var(--color-light);
+
+    div.row div.col-12 img.logo-django{
+        max-height: 200px;
+        @include screenPhones{
+            max-height: 135px;
+        }
+    }
+
+    div.container table{
+        border-collapse: collapse;
+        @include marginCenter;
+
+        thead tr{
+            color: var(--color-white);
+            background: var(--color-dark);
+        }
+
+        tbody tr{
+            color: var(--color-dark);
+            background: var(--color-light);
+            &:nth-child(2n){
+                color: var(--color-white);
+                background: var(--color-gray-light);
+            }
+        }
+
+        tr{
+            th > span.update{
+                color: var(--color-success);
+            }
+
+            th > span.delete{
+                color: var(--color-danger);
+            }
+
+            th, td{
+                text-align: center;
+                padding: 12px 20px;
+                border: 2px solid #111111;
+
+                button{
+                    padding: 5px 10px;
+                    border-radius: 50%;
+                    border: 1px solid #111111;
+                    background: #111111;
+                    i{
+                        color: #f0f8ff;
+                    }
+
+                    &:hover{
+                        background-color: var(--color-dark);
+                    }
+                }
+            }
+        }
+    }
+}

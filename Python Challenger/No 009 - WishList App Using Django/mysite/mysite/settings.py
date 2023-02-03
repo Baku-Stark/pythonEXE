@@ -118,6 +118,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Additional locations of static files
+STATICFILES_DIRS = (
+   'css/style.css',
+   'script/script.js',
+)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

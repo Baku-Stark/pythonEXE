@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def  helloWorld(request):
     return HttpResponse('Hello World! s2')
+
+def wishList(request):
+    return render(request, 'pages/index.html')
