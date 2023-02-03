@@ -1,10 +1,19 @@
-## WishList App Using Django <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" /><br>Python Version: <b>3.11.1</b>
+<div align="center">
+
+<h3>WishList App Using Django <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" /></h3>
+
+</div>
 
 <hr>
 
 <br>
 
-# Prerequisite
+<h3><strong>Python [🐍]</strong></h3>
+
+* Python Version: <b>3.11.1</b>
+    * <i>🐍 Update: App w/ Django</i>
+
+<h3><strong>Prerequisite</strong></h3>
 
 * Django (4.1.6) -> `pip install django`
 <details>
@@ -14,9 +23,18 @@
 
 ```python
     django-admin startproject mysite
-        └── python mysite\manage.py runserver
+        └── cd .\mysite
+            ├── django-admin startapp Wish
+            INSTALLED_APPS = [
+                'django.contrib.admin',
+                'django.contrib.auth',
+                'django.contrib.contenttypes',
+                'django.contrib.sessions',
+                'django.contrib.messages',
+                'django.contrib.staticfiles',
+                'Wish'
+            ]
+            └── python manage.py runserver
 ```
 
 </details>
-
-<i>🐍 Update: App w/ Django</i>
