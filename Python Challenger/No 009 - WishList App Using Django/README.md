@@ -1,5 +1,4 @@
-## WishList App Using Django <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
-Python Version: <b>3.11.1</b>
+## WishList App Using Django <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" /><br>Python Version: <b>3.11.1</b>
 
 <hr>
 
@@ -19,3 +18,5 @@ Python Version: <b>3.11.1</b>
 ```
 
 </details>
+
+<i>🐍 Update: App w/ Django</i>
