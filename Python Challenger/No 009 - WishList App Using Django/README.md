@@ -1,17 +1,21 @@
-<div align="center">
-    <h3>
-        WishList App Using Django
-        <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
-    <h3>
-</div>
-
-<p align="center">
-    Python Version: <b>3.11.1</b>
-</p>
+## WishList App Using Django <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
+Python Version: <b>3.11.1</b>
 
 <hr>
 
-<ul>
-    <h3>Libs</h3>
-    <li>Django (4.1.6) -> <mark>pip install django</mark></li>
-</ul>
+<br>
+
+# Prerequisite
+
+* Django (4.1.6) -> `pip install django`
+<details>
+<summary>
+    <strong>Comandos DJANGO</strong>
+</summary>
+
+```python
+    django-admin startproject mysite
+        └── python mysite\manage.py runserver
+```
+
+</details>
