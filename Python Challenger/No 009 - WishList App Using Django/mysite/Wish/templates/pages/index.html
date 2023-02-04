@@ -32,18 +32,29 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Whis</th>
+                            <th>ID</th>
+                            <th>Wish</th>
                             <th>Description</th>
                             <th colspan="2"><span class="update">Update</span> / <span class="delete">Delete</span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>aaa</td>
-                            <td>aaa</td>
+                            <td>Wish ID</td>
+                            <td>Wish TItle</td>
+                            <td>My wish</td>
                             <td><button><i class="bi bi-arrow-90deg-up"></i></button></td>
                             <td><button><i class="bi bi-trash-fill"></i></button></td>
                         </tr>
+                        {% for wish in wishes %}
+                        <tr>
+                            <td>{{ wish.id }}</td>
+                            <td>{{ wish.wish_title }}</td>
+                            <td>{{ wish.my_wish }}</td>
+                            <td><button><i class="bi bi-arrow-90deg-up"></i></button></td>
+                            <td><button><i class="bi bi-trash-fill"></i></button></td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

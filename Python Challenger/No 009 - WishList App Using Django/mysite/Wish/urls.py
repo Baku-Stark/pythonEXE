@@ -4,7 +4,10 @@ from django.urls import path
 # http://127.0.0.1:8000/helloworld/
 from . import views
 
+# IMPORT [views CRUD]
+
+
+# Rendering HTML pages
 urlpatterns = [
-    path('helloworld/', views.helloWorld),
-    path('home/', views.wishList, name='wish-list'),
+    path('', views.wishList, name='wish-list'),
 ]

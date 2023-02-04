@@ -1,11 +1,9 @@
 from django.db import models
 
 # Create your models here.
-class wishFormModel(models.Model):
+class Wish(models.Model):
+    wish_title = models.CharField(max_length=250)
+    my_wish = models.CharField(max_length=10000)
 
-    STATUS = ((1, 'Doing'), (2, 'Done'))
-
-    wish_form = models.CharField(max_length=100)
-    description = models.TextField()
-    done = models.CharField(max_length=1, choices=STATUS)
-    created_at = models.DateTimeField()
+    def __str__(self):
+        return self.wish_title
