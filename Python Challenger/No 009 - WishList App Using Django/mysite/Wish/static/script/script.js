@@ -1,1 +1,0 @@
-console.log('Documento de script ativado')
