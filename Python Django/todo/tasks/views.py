@@ -6,6 +6,7 @@ def helloWorld(request):
     return HttpResponse("Hello World!")
 
 # RENDERIZAR O PRIMEIRO ARQUIVO HTML
+# LISTA DE TAREFAS [arquivo principal]
 def taskList(request):
     return render(request, 'tasks/list.html')
 

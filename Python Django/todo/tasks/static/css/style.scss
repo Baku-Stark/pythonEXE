@@ -1,0 +1,189 @@
+@mixin screenTablet{
+    // and (min-width: 768px) and (max-width: 1024px)
+    @media screen and (max-width: 1024px){
+        @content;
+    }
+}
+
+@mixin screenTablet-bootstrap{
+    @media screen and (max-width: 991px){
+        @content;
+    }
+}
+
+@mixin screenPhone{
+    // and (min-width: 320px) and (max-width: 600px)
+    @media screen and (max-width: 600px){
+        @content;
+    }
+}
+
+$twitter: #23A4F2, #50B7F5, #80CBF7;
+$instagram: #D93662, #D9328E, #8D33A6, #F2AC57, #F25F29;
+$linkedin:#014283, #0274B3, #EFF6FA;
+$github: #535353, #131313;
+
+:root{
+    --color-light: #f0eff5;
+    --color-dark: #27282f;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: var(--color-light);
+
+    a{
+        text-decoration: none;
+    }
+
+    div.container-fluid{
+        @include screenTablet{
+            justify-content: space-evenly !important;
+        }
+        a.navbar-brand{
+            margin-right: 2rem;
+            @include screenTablet-bootstrap{
+                margin-right: 9rem;
+            }
+
+            i.select-icon{
+                font-size: 2rem;
+                color: #008b8b;
+                @include screenTablet{
+                    font-size: 4rem;
+                }
+            }
+        }
+
+        div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown{
+            background-color: #111111;
+            @include screenTablet-bootstrap{
+                background-color: #11111152;
+            }
+
+            li hr{
+                background-color: var(--color-light);
+            }
+
+            li a{
+                color: var(--color-light);
+
+                &:hover{
+                    background-color: #24242498;
+                }
+            }
+        }
+    }
+
+    footer{
+        color: var(--color-light);
+        background: #111111;
+
+        div.content-top{
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            @include screenTablet{
+                align-items: center;
+                flex-direction: column;
+            }
+
+            div.title-box{
+                display: flex;
+                align-items: center;
+                @include screenTablet{
+                    margin-bottom: 20px;
+                }
+
+                h3{
+                    margin-bottom: 0 !important;
+                    font-family: 'Impact', sans-serif;
+                }
+    
+                div.divider-top{
+                    width: 2px;
+                    height: 80px;
+                    margin: 0 15px;
+                    background-color: #f0eff59f;
+                }
+            }
+
+            div.social-box{
+                display: grid;
+                grid-template-columns: 1fr;
+                @include screenTablet{
+                    margin-bottom: 20px;
+                }
+
+                span.sb-text{
+                    opacity: .7;
+                    color: #f0eff5;
+                    @include screenTablet{
+                        margin-bottom: 12px;
+                    }
+                }
+
+                aside{
+                    display: grid;
+                    grid-template-rows: 1fr;
+                    grid-template-columns: 1fr 1fr;
+
+                    button.button-port{
+                        padding: 10px 20px;
+                        background-color: #111111;
+
+                        span{
+                            font-family: 'Impact', sans-serif;
+                        }
+
+                        a{
+                            text-decoration: none;
+                            transition: .3s ease-in-out;
+                            color: var(--color-light);
+                            
+                        }
+
+                        a.twitter:hover{
+                            cursor: pointer;
+                            background-image: linear-gradient(to right, $twitter);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            color: transparent;
+                            transition: .3s ease-in-out;
+                        }
+                        a.instagram:hover{
+                            cursor: pointer;
+                            background-image: linear-gradient(to right, $instagram);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            color: transparent;
+                            transition: .3s ease-in-out;
+                        }
+                        a.linkedin:hover{
+                            cursor: pointer;
+                            background-image: linear-gradient(to right, $linkedin);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            color: transparent;
+                            transition: .3s ease-in-out;
+                        }
+                        a.github:hover{
+                            cursor: pointer;
+                            background-image: linear-gradient(to right, $github);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            color: transparent;
+                            transition: .3s ease-in-out;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -32,10 +32,11 @@
 
 * **Funções (DJANGO):**
     1. django-admin startproject todo
-    2. django-admin startapp todo/tasks
-    3. django-admin startapp todo/about
-    4. django-admin startapp todo/users
+        1. django-admin startapp todo/tasks
+        2. django-admin startapp todo/about
+        3. django-admin startapp todo/users
 
+    * **PROJETO TO-DO**
 <br>
 
 <details>

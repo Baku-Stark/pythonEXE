@@ -1,8 +1,158 @@
-*{
-    font-family: 'Poppins', sans-serif;
+:root {
+  --color-light: #f0eff5;
+  --color-dark: #27282f;
 }
 
-body{
-    color: #f0f8ff;
-    background: #111111;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
+
+body {
+  background-color: var(--color-light);
+}
+body a {
+  text-decoration: none;
+}
+@media screen and (max-width: 1024px) {
+  body div.container-fluid {
+    justify-content: space-evenly !important;
+  }
+}
+body div.container-fluid a.navbar-brand {
+  margin-right: 2rem;
+}
+@media screen and (max-width: 991px) {
+  body div.container-fluid a.navbar-brand {
+    margin-right: 9rem;
+  }
+}
+body div.container-fluid a.navbar-brand i.select-icon {
+  font-size: 2rem;
+  color: #008b8b;
+}
+@media screen and (max-width: 1024px) {
+  body div.container-fluid a.navbar-brand i.select-icon {
+    font-size: 4rem;
+  }
+}
+body div.container-fluid div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown {
+  background-color: #111111;
+}
+@media screen and (max-width: 991px) {
+  body div.container-fluid div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown {
+    background-color: rgba(17, 17, 17, 0.3215686275);
+  }
+}
+body div.container-fluid div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown li hr {
+  background-color: var(--color-light);
+}
+body div.container-fluid div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown li a {
+  color: var(--color-light);
+}
+body div.container-fluid div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown li a:hover {
+  background-color: rgba(36, 36, 36, 0.5960784314);
+}
+body footer {
+  color: var(--color-light);
+  background: #111111;
+}
+body footer div.content-top {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+  body footer div.content-top {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+body footer div.content-top div.title-box {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 1024px) {
+  body footer div.content-top div.title-box {
+    margin-bottom: 20px;
+  }
+}
+body footer div.content-top div.title-box h3 {
+  margin-bottom: 0 !important;
+  font-family: "Impact", sans-serif;
+}
+body footer div.content-top div.title-box div.divider-top {
+  width: 2px;
+  height: 80px;
+  margin: 0 15px;
+  background-color: rgba(240, 239, 245, 0.6235294118);
+}
+body footer div.content-top div.social-box {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media screen and (max-width: 1024px) {
+  body footer div.content-top div.social-box {
+    margin-bottom: 20px;
+  }
+}
+body footer div.content-top div.social-box span.sb-text {
+  opacity: 0.7;
+  color: #f0eff5;
+}
+@media screen and (max-width: 1024px) {
+  body footer div.content-top div.social-box span.sb-text {
+    margin-bottom: 12px;
+  }
+}
+body footer div.content-top div.social-box aside {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+body footer div.content-top div.social-box aside button.button-port {
+  padding: 10px 20px;
+  background-color: #111111;
+}
+body footer div.content-top div.social-box aside button.button-port span {
+  font-family: "Impact", sans-serif;
+}
+body footer div.content-top div.social-box aside button.button-port a {
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  color: var(--color-light);
+}
+body footer div.content-top div.social-box aside button.button-port a.twitter:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, #23A4F2, #50B7F5, #80CBF7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: 0.3s ease-in-out;
+}
+body footer div.content-top div.social-box aside button.button-port a.instagram:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, #D93662, #D9328E, #8D33A6, #F2AC57, #F25F29);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: 0.3s ease-in-out;
+}
+body footer div.content-top div.social-box aside button.button-port a.linkedin:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, #014283, #0274B3, #EFF6FA);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: 0.3s ease-in-out;
+}
+body footer div.content-top div.social-box aside button.button-port a.github:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to right, #535353, #131313);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: 0.3s ease-in-out;
+}/*# sourceMappingURL=style.css.map */
