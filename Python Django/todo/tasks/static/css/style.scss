@@ -1,3 +1,15 @@
+@mixin screenLANDSCAPE{
+    @media (orientation: landscape){
+        @content;
+    }
+}
+
+@mixin screenPORTRAIT{
+    @media (orientation: portrait){
+        @content;
+    }
+}
+
 @mixin screenTablet{
     // and (min-width: 768px) and (max-width: 1024px)
     @media screen and (max-width: 1024px){
@@ -7,6 +19,12 @@
 
 @mixin screenTablet-bootstrap{
     @media screen and (max-width: 991px){
+        @content;
+    }
+}
+
+@mixin screenTablet-low{
+    @media screen and (max-width: 825px){
         @content;
     }
 }
@@ -35,6 +53,10 @@ $github: #535353, #131313;
     font-family: 'Poppins', sans-serif;
 }
 
+.padding-basic{
+    padding: 20px 10px;
+}
+
 body{
     background-color: var(--color-light);
 
@@ -42,44 +64,251 @@ body{
         text-decoration: none;
     }
 
-    div.container-fluid{
-        @include screenTablet{
-            justify-content: space-evenly !important;
-        }
-        a.navbar-brand{
-            margin-right: 2rem;
-            @include screenTablet-bootstrap{
-                margin-right: 9rem;
+    nav.navbar{
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        position: fixed;
+        div.container-fluid{
+            @include screenTablet{
+                justify-content: space-evenly !important;
             }
-
-            i.select-icon{
-                font-size: 2rem;
-                color: #008b8b;
-                @include screenTablet{
-                    font-size: 4rem;
+            a.navbar-brand{
+                margin-right: 2rem;
+                @include screenTablet-bootstrap{
+                    margin-right: 9rem;
+                }
+    
+                i.select-icon{
+                    font-size: 2rem;
+                    color: #008b8b;
+                    @include screenTablet{
+                        font-size: 4rem;
+                    }
                 }
             }
-        }
 
-        div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown{
-            background-color: #111111;
-            @include screenTablet-bootstrap{
-                background-color: #11111152;
-            }
+            div.navbar-collapse{
+                justify-content: center;
 
-            li hr{
-                background-color: var(--color-light);
-            }
-
-            li a{
-                color: var(--color-light);
-
-                &:hover{
-                    background-color: #24242498;
+                li.nav-item.dropdown ul.bg-personal-dropdown{
+                    background-color: #111111;
+                    @include screenTablet-bootstrap{
+                        background-color: #11111152;
+                    }
+        
+                    li hr{
+                        background-color: var(--color-light);
+                    }
+        
+                    li a{
+                        color: var(--color-light);
+        
+                        &:hover{
+                            background-color: #24242498;
+                        }
+                    }
                 }
             }
         }
     }
+
+    main{
+        margin-top: 15vh;
+        @include screenTablet{
+            margin-top: 21vh;
+        }
+        @include screenTablet-low{
+            margin-top: 20vh;
+        }
+    }
+    
+    // =========== HOME PAGE ===========
+    div.col-12.title-box{
+        text-align: center;
+        h2{
+            font-size: 6rem;
+            font-family: 'Impact', sans-serif;
+            @include screenTablet-bootstrap{
+                font-size: 3.8rem;
+                margin-bottom: 4vh;
+            }
+        }
+    }
+
+    div.content-box{
+        margin-bottom: 5vh;
+        display: flex;
+        justify-content: center;
+        @include screenTablet-low{
+            margin-bottom: 2vh;
+        }
+
+        div.card{
+            width: 18rem;
+            background: var(--color-dark) !important;
+
+            div.card-body h5{
+                opacity: .7;
+            }
+
+            p.card-text{
+                a{
+                    font-weight: bold;
+                    color: #114D4C;
+
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    // TABLE
+    div.content-table-home{
+        margin-bottom: 10vh;
+        display: flex;
+        justify-content: center;
+        @include screenLANDSCAPE{
+            margin-bottom: 5vh !important;
+        }
+        @include screenTablet-low{
+            margin-bottom: 2vh;
+        }
+
+        table{
+            width: 100%;
+
+            tr{
+                text-align: center;
+    
+                th{
+                    font-size: 2.2rem;
+                    @include screenTablet-bootstrap{
+                        font-size: 1.2rem;
+                    }
+                }
+    
+                th, td{
+                    padding: 5px 10px !important;
+                    border: 2px solid #000000;
+    
+                    i{
+                        font-size: 5.4rem;
+                        color: #114D4C;
+                        @include screenTablet-bootstrap{
+                            font-size: 4rem;
+                        }
+                        @include screenPhone{
+                            font-size: 2.3rem;
+                        }
+                    }
+                }
+            }
+    
+    
+            thead{
+                color: var(--color-light);
+                background-color: var(--color-dark);
+            }
+        }
+    }
+    // =========== END OF HOME PAGE ===========
+
+    // =========== TASK LIST ===========
+    div.list-div{
+        padding: 0;
+
+        div.add-div{
+            cursor: pointer;
+            padding: 8px;
+            margin-right: 25px;
+            border-radius: 5px;
+            display: inline-block;
+            color: var(--color-light);
+            background-color: #3476e2;
+            &:hover{
+                background-color: #1e4380;
+            }
+            @include screenPhone{
+                margin-top: 5px;
+            }
+
+            i.bi.bi-plus-square{
+                margin-left: 5px;
+                margin-right: 10px;
+                font-weight: bold;
+            }
+        }
+
+        div.search-div{
+            padding: 0;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+
+            input#search {
+                border-radius: 20px 0 0 20px;
+            }
+
+            i.bi.bi-search{
+                cursor: pointer;
+                font-size: 1.5rem;
+                padding: 1px 20px;
+                border-radius: 0 20px 20px 0;
+                font-weight: bold;
+                background-color: #708090;
+                &:hover{
+                    color: #808080;
+                }
+                @include screenPhone{
+                    font-size: 1.1rem;
+                    padding: 5px 14px;
+                }
+            }
+        }
+
+        ul.task-list{
+            padding-left: 0;
+            list-style: none;
+
+            li.task-item{
+                height: 50px;
+                font-size: 20px;
+                padding-top: 10px;
+                border-bottom: 1px dashed #ccc;
+
+                abbr{
+                    text-decoration: none;
+
+                    i.bi.bi-trash-fill{
+                        color: #dc143c;
+                        &:hover{
+                            color: #690519;
+                        }
+                    }
+
+                    i.bi.bi-pen-fill{
+                        color: #008b8b;
+                        &:hover{
+                            color: #014242;
+                        }
+                    }
+
+                    i.bi.bi-trash-fill, i.bi.bi-pen-fill{
+                        cursor: pointer;
+                        margin: 5px;
+                        font-size: 20px;
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+    // =========== END OF TASK LIST ===========
 
     footer{
         color: var(--color-light);
@@ -88,7 +317,7 @@ body{
         div.content-top{
             display: flex;
             text-align: center;
-            justify-content: space-between;
+            justify-content: space-around;
             @include screenTablet{
                 align-items: center;
                 flex-direction: column;
@@ -108,7 +337,7 @@ body{
     
                 div.divider-top{
                     width: 2px;
-                    height: 80px;
+                    height: 50px;
                     margin: 0 15px;
                     background-color: #f0eff59f;
                 }
@@ -123,6 +352,7 @@ body{
 
                 span.sb-text{
                     opacity: .7;
+                    margin-bottom: 2vh;
                     color: #f0eff5;
                     @include screenTablet{
                         margin-bottom: 12px;
@@ -182,6 +412,53 @@ body{
                             transition: .3s ease-in-out;
                         }
                     }
+                }
+            }
+        }
+
+        div.content-mid{
+            display: flex;
+            justify-content: center;
+            @include screenTablet-low{
+                flex-direction: column;
+            }
+
+            div.col-md-3.items-box {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+
+                h6 > i{
+                    font-family: 'Impact', sans-serif;
+                }
+
+                ul li, ul li > a{
+                    opacity: .7;
+                }
+
+                ul{
+                    list-style: none;
+
+                    li{
+                        color: var(--color-light);
+    
+                        a{
+                            color: #008b8b;
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div.content-bot{
+            p{
+                text-align: center;
+
+                i{
+                    opacity: .7;
                 }
             }
         }

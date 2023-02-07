@@ -5,6 +5,7 @@ from . import views
 
 # RENDER VIEWS
 urlpatterns = [
-    path('', views.taskList, name="task-list"),
+    path('', views.homePage),
+    path('task-list/', views.taskList, name="task-list"),
     path('name/<str:name>', views.yourName)
 ]

@@ -1,7 +1,85 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
 {% block title %}To-Do List{% endblock %}
 
 {% block content %}
-<h1>LISTA DE TAREFAS</h1>
+<div class="offset-1 col-10 list-div">
+    <div class="col-12">
+        <h1>Lista de Tarefas</h1>
+    </div>
+    <div class="col-md-2 add-div">
+        <i class="bi bi-plus-square"></i> Adicionar Tarefa
+    </div>
+    <div class="col-9 search-div">
+        <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar">
+        <i class="bi bi-search"></i>
+    </div>
+    <ul class="task-list">
+        <li class="task-item">
+            <span>Título da tarefa</span>
+            <span>
+                <abbr title="Apagar tarefa">
+                    <i class="bi bi-trash-fill"></i>
+                </abbr>
+            </span>
+            <span>
+                <abbr title="Editar tarefa">
+                    <i class="bi bi-pen-fill"></i>
+                </abbr>
+            </span>
+        </li>
+        <li class="task-item">
+            <span>Título da tarefa</span>
+            <span>
+                <abbr title="Apagar tarefa">
+                    <i class="bi bi-trash-fill"></i>
+                </abbr>
+            </span>
+            <span>
+                <abbr title="Editar tarefa">
+                    <i class="bi bi-pen-fill"></i>
+                </abbr>
+            </span>
+        </li>
+        <li class="task-item">
+            <span>Título da tarefa</span>
+            <span>
+                <abbr title="Apagar tarefa">
+                    <i class="bi bi-trash-fill"></i>
+                </abbr>
+            </span>
+            <span>
+                <abbr title="Editar tarefa">
+                    <i class="bi bi-pen-fill"></i>
+                </abbr>
+            </span>
+        </li>
+        <li class="task-item">
+            <span>Título da tarefa</span>
+            <span>
+                <abbr title="Apagar tarefa">
+                    <i class="bi bi-trash-fill"></i>
+                </abbr>
+            </span>
+            <span>
+                <abbr title="Editar tarefa">
+                    <i class="bi bi-pen-fill"></i>
+                </abbr>
+            </span>
+        </li>
+        <li class="task-item">
+            <span>Título da tarefa</span>
+            <span>
+                <abbr title="Apagar tarefa">
+                    <i class="bi bi-trash-fill"></i>
+                </abbr>
+            </span>
+            <span>
+                <abbr title="Editar tarefa">
+                    <i class="bi bi-pen-fill"></i>
+                </abbr>
+            </span>
+        </li>
+    </ul>
+</div>
 {% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'index.html' %}
+
+{% block title %}To-Do List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 title-box">
+            <h2>Bem-vindo!</h2>
+        </div>
+
+        <!-- CARDS -->
+        <div class="col-md-6 content-box">
+            <div class="card text-bg-dark mb-3">
+                <div class="card-header">
+                    <i class="devicon-python-plain"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i>Python Version</i>
+                    </h5>
+                    <p class="card-text">
+                        <i>3.11.1</i>
+                    </p>
+                    <p class="card-text">
+                        <a href="https://www.python.org/" target="_blank">
+                            Python ORG
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 content-box">
+            <div class="card text-bg-dark mb-3">
+                <div class="card-header">
+                    <i class="devicon-django-plain"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Django Version</h5>
+                    <p class="card-text">
+                        <i>4.1.6</i>
+                    </p>
+                    <p class="card-text">
+                        <a href="https://www.djangoproject.com/" target="_blank">
+                            Django Project
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- END OF CARDS -->
+
+        <!-- TABLE -->
+        <div class="col-12 content-table-home">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Front END</th>
+                        <th colspan="2">Languages</th>
+                        <th colspan="1">Framework</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- FRONT END -->
+                        <td><i class="devicon-html5-plain"></i></td>
+                        <td><i class="devicon-sass-original"></i></td>
+
+                        <!-- LANGUAGES -->
+                        <td><i class="devicon-python-plain"></i></td>
+                        <td><i class="devicon-javascript-plain"></i></td>
+
+                        <!-- FRAMEWORK -->
+                        <td><i class="devicon-django-plain"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

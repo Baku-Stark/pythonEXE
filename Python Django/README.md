@@ -30,12 +30,14 @@
 
 <br>
 
-* **Funções (DJANGO):**
-    1. django-admin startproject todo
+* **Funções para iniciamento do projeto (DJANGO):**
+    * django-admin startproject todo
         1. django-admin startapp todo/tasks
         2. django-admin startapp todo/about
         3. django-admin startapp todo/users
-
+    
+    <br>
+    
     * **PROJETO TO-DO**
 <br>
 
