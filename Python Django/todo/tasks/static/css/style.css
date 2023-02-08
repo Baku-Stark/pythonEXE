@@ -172,7 +172,10 @@ body div.content-table-home table thead {
 body div.list-div {
   padding: 0;
 }
-body div.list-div div.add-div {
+body div.list-div a#add-id {
+  text-decoration: none;
+}
+body div.list-div a#add-id div.add-div {
   cursor: pointer;
   padding: 8px;
   margin-right: 25px;
@@ -181,15 +184,15 @@ body div.list-div div.add-div {
   color: var(--color-light);
   background-color: #3476e2;
 }
-body div.list-div div.add-div:hover {
+body div.list-div a#add-id div.add-div:hover {
   background-color: #1e4380;
 }
 @media screen and (max-width: 600px) {
-  body div.list-div div.add-div {
+  body div.list-div a#add-id div.add-div {
     margin-top: 5px;
   }
 }
-body div.list-div div.add-div i.bi.bi-plus-square {
+body div.list-div a#add-id div.add-div i.bi.bi-plus-square {
   margin-left: 5px;
   margin-right: 10px;
   font-weight: bold;
@@ -214,7 +217,7 @@ body div.list-div div.search-div i.bi.bi-search {
   background-color: #708090;
 }
 body div.list-div div.search-div i.bi.bi-search:hover {
-  color: #808080;
+  background-color: #2c3136;
 }
 @media screen and (max-width: 600px) {
   body div.list-div div.search-div i.bi.bi-search {

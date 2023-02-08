@@ -220,25 +220,29 @@ body{
     div.list-div{
         padding: 0;
 
-        div.add-div{
-            cursor: pointer;
-            padding: 8px;
-            margin-right: 25px;
-            border-radius: 5px;
-            display: inline-block;
-            color: var(--color-light);
-            background-color: #3476e2;
-            &:hover{
-                background-color: #1e4380;
-            }
-            @include screenPhone{
-                margin-top: 5px;
-            }
-
-            i.bi.bi-plus-square{
-                margin-left: 5px;
-                margin-right: 10px;
-                font-weight: bold;
+        a#add-id{
+            text-decoration: none;
+            
+            div.add-div{
+                cursor: pointer;
+                padding: 8px;
+                margin-right: 25px;
+                border-radius: 5px;
+                display: inline-block;
+                color: var(--color-light);
+                background-color: #3476e2;
+                &:hover{
+                    background-color: #1e4380;
+                }
+                @include screenPhone{
+                    margin-top: 5px;
+                }
+    
+                i.bi.bi-plus-square{
+                    margin-left: 5px;
+                    margin-right: 10px;
+                    font-weight: bold;
+                }
             }
         }
 
@@ -262,7 +266,7 @@ body{
                 font-weight: bold;
                 background-color: #708090;
                 &:hover{
-                    color: #808080;
+                    background-color: #2c3136;
                 }
                 @include screenPhone{
                     font-size: 1.1rem;
