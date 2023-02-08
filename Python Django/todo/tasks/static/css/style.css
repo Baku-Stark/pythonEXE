@@ -253,6 +253,15 @@ body div.list-div ul.task-list li.task-item abbr i.bi.bi-trash-fill, body div.li
   font-size: 20px;
   float: right;
 }
+body div.list-div div.task-title {
+  margin-bottom: 30px;
+  border-bottom: 1px dashed #ccc;
+}
+body div.list-div div.task-title h1 {
+  margin-bottom: 0;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
 body footer {
   color: var(--color-light);
   background: #111111;

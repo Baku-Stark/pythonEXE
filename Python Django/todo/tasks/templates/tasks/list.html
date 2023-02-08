@@ -15,8 +15,18 @@
         <i class="bi bi-search"></i>
     </div>
     <ul class="task-list">
+        {% for task in tasks %}
         <li class="task-item">
-            <span>Título da tarefa</span>
+            <span>
+                <a href="/task/{{task.id}}">
+                    <!-- 
+                        MODELS [class Task]
+                        ├── title
+                        └── description
+                    -->
+                    {{task.title}}
+                </a>
+            </span>
             <span>
                 <abbr title="Apagar tarefa">
                     <i class="bi bi-trash-fill"></i>
@@ -28,58 +38,7 @@
                 </abbr>
             </span>
         </li>
-        <li class="task-item">
-            <span>Título da tarefa</span>
-            <span>
-                <abbr title="Apagar tarefa">
-                    <i class="bi bi-trash-fill"></i>
-                </abbr>
-            </span>
-            <span>
-                <abbr title="Editar tarefa">
-                    <i class="bi bi-pen-fill"></i>
-                </abbr>
-            </span>
-        </li>
-        <li class="task-item">
-            <span>Título da tarefa</span>
-            <span>
-                <abbr title="Apagar tarefa">
-                    <i class="bi bi-trash-fill"></i>
-                </abbr>
-            </span>
-            <span>
-                <abbr title="Editar tarefa">
-                    <i class="bi bi-pen-fill"></i>
-                </abbr>
-            </span>
-        </li>
-        <li class="task-item">
-            <span>Título da tarefa</span>
-            <span>
-                <abbr title="Apagar tarefa">
-                    <i class="bi bi-trash-fill"></i>
-                </abbr>
-            </span>
-            <span>
-                <abbr title="Editar tarefa">
-                    <i class="bi bi-pen-fill"></i>
-                </abbr>
-            </span>
-        </li>
-        <li class="task-item">
-            <span>Título da tarefa</span>
-            <span>
-                <abbr title="Apagar tarefa">
-                    <i class="bi bi-trash-fill"></i>
-                </abbr>
-            </span>
-            <span>
-                <abbr title="Editar tarefa">
-                    <i class="bi bi-pen-fill"></i>
-                </abbr>
-            </span>
-        </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

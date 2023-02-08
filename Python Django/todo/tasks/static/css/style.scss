@@ -307,6 +307,19 @@ body{
                 }
             }
         }
+
+        // =========== [task.html] ===========
+        div.task-title{
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #ccc;
+
+            h1{
+                margin-bottom: 0;
+                font-weight: bold;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        }
+        // =========== END OF [task.html] ===========
     }
     // =========== END OF TASK LIST ===========
 

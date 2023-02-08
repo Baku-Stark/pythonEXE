@@ -39,6 +39,14 @@
     <br>
     
     * **PROJETO TO-DO**
+        1. Criar um usuário: `python manage.py createsuperuser`
+
+        <br>
+
+        2. **Criando um model:**
+            1. `python manage.py makemigrations`
+            2. `python manage.py migrate`
+
 <br>
 
 <details>
