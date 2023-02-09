@@ -182,10 +182,10 @@ body div.list-div a#add-id div.add-div {
   border-radius: 5px;
   display: inline-block;
   color: var(--color-light);
-  background-color: #3476e2;
+  background-color: #008b8b;
 }
 body div.list-div a#add-id div.add-div:hover {
-  background-color: #1e4380;
+  background-color: #014242;
 }
 @media screen and (max-width: 600px) {
   body div.list-div a#add-id div.add-div {
@@ -205,10 +205,14 @@ body div.list-div div.search-div {
   align-items: center;
   justify-content: space-between;
 }
-body div.list-div div.search-div input#search {
-  border-radius: 20px 0 0 20px;
+body div.list-div div.search-div form.search-form {
+  display: flex;
 }
-body div.list-div div.search-div i.bi.bi-search {
+body div.list-div div.search-div form.search-form input#search {
+  width: 60vw;
+  border-radius: 0;
+}
+body div.list-div div.search-div form.search-form i.bi.bi-search {
   cursor: pointer;
   font-size: 1.5rem;
   padding: 1px 20px;
@@ -216,11 +220,12 @@ body div.list-div div.search-div i.bi.bi-search {
   font-weight: bold;
   background-color: #708090;
 }
-body div.list-div div.search-div i.bi.bi-search:hover {
+body div.list-div div.search-div form.search-form i.bi.bi-search:hover {
+  color: var(--color-light);
   background-color: #2c3136;
 }
 @media screen and (max-width: 600px) {
-  body div.list-div div.search-div i.bi.bi-search {
+  body div.list-div div.search-div form.search-form i.bi.bi-search {
     font-size: 1.1rem;
     padding: 5px 14px;
   }
@@ -235,26 +240,55 @@ body div.list-div ul.task-list li.task-item {
   padding-top: 10px;
   border-bottom: 1px dashed #ccc;
 }
-body div.list-div ul.task-list li.task-item abbr {
+body div.list-div ul.task-list li.task-item a.return-btn {
+  float: right;
+  text-decoration: none;
+  color: #114D4C;
+}
+body div.list-div ul.task-list li.task-item a.return-btn:hover {
+  text-decoration: underline;
+  color: #0b3131;
+}
+body div.list-div ul.task-list li.task-item a {
+  text-decoration: none;
+  color: #114D4C;
+}
+body div.list-div ul.task-list li.task-item a:hover {
+  color: #0b3131;
+}
+body div.list-div ul.task-list li.task-item a abbr {
   text-decoration: none;
 }
-body div.list-div ul.task-list li.task-item abbr i.bi.bi-trash-fill {
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-trash-fill {
   color: #dc143c;
 }
-body div.list-div ul.task-list li.task-item abbr i.bi.bi-trash-fill:hover {
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-trash-fill:hover {
   color: #690519;
 }
-body div.list-div ul.task-list li.task-item abbr i.bi.bi-pen-fill {
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-pen-fill {
   color: #008b8b;
 }
-body div.list-div ul.task-list li.task-item abbr i.bi.bi-pen-fill:hover {
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-pen-fill:hover {
   color: #014242;
 }
-body div.list-div ul.task-list li.task-item abbr i.bi.bi-trash-fill, body div.list-div ul.task-list li.task-item abbr i.bi.bi-pen-fill {
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-trash-fill, body div.list-div ul.task-list li.task-item a abbr i.bi.bi-pen-fill {
   cursor: pointer;
   margin: 5px;
   font-size: 20px;
   float: right;
+}
+body div.list-div div.pagination {
+  display: flex;
+  justify-content: center;
+}
+body div.list-div div.pagination a i.bi {
+  color: #008b8b;
+}
+body div.list-div div.pagination a i.bi:hover {
+  color: #014242;
+}
+body div.list-div div.pagination span.current {
+  font-weight: bold;
 }
 body div.list-div div.task-title {
   margin-bottom: 30px;
@@ -264,6 +298,12 @@ body div.list-div div.task-title h1 {
   margin-bottom: 0;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
+}
+body div.list-div form p {
+  display: grid;
+}
+body div.list-div form p label {
+  font-weight: bold;
 }
 body footer {
   color: var(--color-light);

@@ -1,4 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+
+# PAGINAÇÃO
+from django.core.paginator import Paginator
 
 # [MODELS]
 from .models import Task
@@ -11,8 +16,22 @@ def homePage(request):
 # RENDERIZAR O PRIMEIRO ARQUIVO HTML
 # LISTA DE TAREFAS [arquivo principal]
 def taskList(request):
-    tasks = Task.objects.all().order_by('-created_at')
-    return render(request, 'tasks/list.html', {'tasks' : tasks})
+    # request.GET.get(<name="search">)
+    search = request.GET.get('search')
+
+    if search:
+        tasks = Task.objects.filter(title__icontains=search)
+
+        if search != tasks:
+            return render(request, 'tasks/no-item.html')
+        
+    else:
+        tasks_list = Task.objects.all().order_by('-created_at')
+        paginator = Paginator(tasks_list, 5)
+        page = request.GET.get('page')
+        tasks = paginator.get_page(page)
+
+        return render(request, 'tasks/list.html', {'tasks' : tasks})
 
 # RENDERIZAR UMA VARIÁVEL
 def yourName(request, name):
@@ -37,3 +56,26 @@ def createTask(request):
     else:
         form = TaskForm()
         return render(request, 'tasks/create.html', {'form' : form})
+
+# ATUALIZAR UMA TAREFA
+def updateTask(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    form = TaskForm(instance=task)
+
+    if(request.method == 'POST'):
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            task.save()
+            return redirect('/task-list/')
+    
+    else:
+        return render(request, 'tasks/edit.html', {'form' : form, 'task' : task})
+
+# APAGAR TAREFA
+def deleteTask(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    task.delete()
+
+    messages.info(request, 'Tarefa deletada com sucesso!')
+
+    return redirect('/task-list/')

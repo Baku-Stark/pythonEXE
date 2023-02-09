@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'tasks/list.html' %}
 
 {% block title %}To-Do List{% endblock %}
 
@@ -19,29 +19,16 @@
         </form>
     </div>
     <ul class="task-list">
-        {% for task in tasks %}
         <li class="task-item">
             <span>
-                <a href="/task/{{task.id}}" class="task-title">
-                    {{task.title}}
-                </a>
+                Nenhuma Tarefa foi encontrada
             </span>
             <span>
-                <a href="delete/{{task.id}}" class="delete-btn">
-                    <abbr title="Apagar tarefa">
-                        <i class="bi bi-trash-fill"></i>
-                    </abbr>
-                </a>
-            </span>
-            <span>
-                <a href="edit/{{task.id}}" class="update-btn">
-                    <abbr title="Editar tarefa">
-                        <i class="bi bi-pen-fill"></i>
-                    </abbr>
+                <a href="/task-list" class="return-btn">
+                    Voltar
                 </a>
             </span>
         </li>
-        {% endfor %}
     </ul>
     <div class="pagination">
         <span class="step-links">
