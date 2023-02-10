@@ -27,6 +27,7 @@
     * art -> `pip install art`
     * rich -> `pip install rich`
     * django -> `pip install django`
+    * django-crispy-forms -> `pip install django-crispy-forms`
 
 <br>
 
@@ -39,7 +40,8 @@
     <br>
     
     * **PROJETO TO-DO**
-        1. Criar um usuário: `python manage.py createsuperuser`
+        1. **Criar um usuário:**
+            1. `python manage.py createsuperuser`
 
         <br>
 

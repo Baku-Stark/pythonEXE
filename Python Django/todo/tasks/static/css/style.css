@@ -51,11 +51,35 @@ body nav.navbar div.container-fluid a.navbar-brand i.select-icon {
 body nav.navbar div.container-fluid div.navbar-collapse {
   justify-content: center;
 }
+body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.login-btn, body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.logout-btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #f0f8ff;
+}
+@media screen and (max-width: 991px) {
+  body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.login-btn, body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.logout-btn {
+    text-align: center;
+  }
+}
+body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.login-btn {
+  background-color: #0B3F3F;
+}
+body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.login-btn:hover {
+  background-color: #0b3131;
+}
+body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.logout-btn {
+  background-color: #008b8b;
+}
+body nav.navbar div.container-fluid div.navbar-collapse li.nav-item a.logout-btn:hover {
+  background-color: #0b3131;
+}
 body nav.navbar div.container-fluid div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown {
   background-color: #111111;
 }
 @media screen and (max-width: 991px) {
   body nav.navbar div.container-fluid div.navbar-collapse li.nav-item.dropdown ul.bg-personal-dropdown {
+    margin-bottom: 20px;
     background-color: rgba(17, 17, 17, 0.3215686275);
   }
 }
@@ -304,6 +328,9 @@ body div.list-div form p {
 }
 body div.list-div form p label {
   font-weight: bold;
+}
+body form.login-logout div#div_id_username, body form.login-logout div#div_id_password {
+  margin-bottom: 20px;
 }
 body footer {
   color: var(--color-light);

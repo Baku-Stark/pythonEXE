@@ -38,12 +38,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="/task-list">Tarefas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/name/Wallace">Usuários</a>
                         </li>
+                        {% else %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Sobre o projeto
@@ -55,6 +57,15 @@
                                 <li><a class="dropdown-item" href="https://www.youtube.com/playlist?list=PLnDvRpP8BnewqnMzRnBT5LeTpld5bMvsj" target="_blank">Projeto Django</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link login-btn" href="/accounts/login/">Login</a>
+                        </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link logout-btn" href="/accounts/logout/">Logout</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

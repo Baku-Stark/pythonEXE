@@ -91,9 +91,36 @@ body{
             div.navbar-collapse{
                 justify-content: center;
 
+                li.nav-item{
+                    a.login-btn, a.logout-btn{
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        font-weight: bold;
+                        color: #f0f8ff;
+                        @include screenTablet-bootstrap{
+                            text-align: center;
+                        }
+                    }
+
+                    a.login-btn{
+                        background-color: #0B3F3F;
+                        &:hover{
+                            background-color: #0b3131;
+                        }
+                    }
+
+                    a.logout-btn{
+                        background-color: #008b8b;
+                        &:hover{
+                            background-color: #0b3131;
+                        }
+                    }
+                }
+
                 li.nav-item.dropdown ul.bg-personal-dropdown{
                     background-color: #111111;
                     @include screenTablet-bootstrap{
+                        margin-bottom: 20px;
                         background-color: #11111152;
                     }
         
@@ -376,6 +403,14 @@ body{
         // =========== END OF [create.html] ===========
     }
     // =========== END OF TASK LIST ===========
+
+    // =========== [login.html] ===========
+    form.login-logout{
+        div#div_id_username, div#div_id_password{
+            margin-bottom: 20px;
+        }
+    }
+    // =========== END OF [login.html] ===========
 
     footer{
         color: var(--color-light);

@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
@@ -15,6 +15,7 @@ def homePage(request):
 
 # RENDERIZAR O PRIMEIRO ARQUIVO HTML
 # LISTA DE TAREFAS [arquivo principal]
+@login_required
 def taskList(request):
     # request.GET.get(<name="search">)
     search = request.GET.get('search')
@@ -34,15 +35,18 @@ def taskList(request):
         return render(request, 'tasks/list.html', {'tasks' : tasks})
 
 # RENDERIZAR UMA VARIÁVEL
+@login_required
 def yourName(request, name):
     return render(request, 'tasks/name.html', {'name': name})
 
 # RENDERIZAR AS TAREFAS
+
 def taskView(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     return render(request, 'tasks/task.html', {'task' : task})
 
 # CRIAR NOVA TAREFA
+@login_required
 def createTask(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -58,6 +62,7 @@ def createTask(request):
         return render(request, 'tasks/create.html', {'form' : form})
 
 # ATUALIZAR UMA TAREFA
+@login_required
 def updateTask(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     form = TaskForm(instance=task)
@@ -72,6 +77,7 @@ def updateTask(request, task_id):
         return render(request, 'tasks/edit.html', {'form' : form, 'task' : task})
 
 # APAGAR TAREFA
+@login_required
 def deleteTask(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     task.delete()
