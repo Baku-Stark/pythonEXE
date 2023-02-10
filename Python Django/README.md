@@ -35,7 +35,7 @@
     * django-admin startproject todo
         1. django-admin startapp todo/tasks
         2. django-admin startapp todo/about
-        3. django-admin startapp todo/users
+        3. django-admin startapp todo/users 
     
     <br>
     
@@ -48,6 +48,11 @@
         2. **Criando um model:**
             1. `python manage.py makemigrations`
             2. `python manage.py migrate`
+
+        <br>
+
+        3. **Accounts:**
+            1. `python manage.py startapp accounts`
 
 <br>
 

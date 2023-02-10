@@ -92,7 +92,7 @@ body{
                 justify-content: center;
 
                 li.nav-item{
-                    a.login-btn, a.logout-btn{
+                    a.login-btn, a.logout-btn, a.register-btn{
                         padding: 10px 20px;
                         border-radius: 20px;
                         font-weight: bold;
@@ -103,7 +103,8 @@ body{
                     }
 
                     a.login-btn{
-                        background-color: #0B3F3F;
+                        background-color: #212529;
+                        border: 1px solid #0B3F3F;
                         &:hover{
                             background-color: #0b3131;
                         }
@@ -113,6 +114,18 @@ body{
                         background-color: #008b8b;
                         &:hover{
                             background-color: #0b3131;
+                        }
+                    }
+
+                    a.register-btn{
+                        margin-left: 10px;
+                        background-color: #008b8b;
+                        &:hover{
+                            background-color: #0b3131;
+                        }
+                        @include screenTablet-bootstrap{
+                            margin-left: 0;
+                            margin-top: 10px;
                         }
                     }
                 }
