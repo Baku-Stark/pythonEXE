@@ -45,7 +45,7 @@
 
         <br>
 
-        2. **Criando um model:**
+        2. **Criando/Alterando um model:**
             1. `python manage.py makemigrations`
             2. `python manage.py migrate`
 

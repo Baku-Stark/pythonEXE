@@ -21,13 +21,13 @@ def taskList(request):
     search = request.GET.get('search')
 
     if search:
-        tasks = Task.objects.filter(title__icontains=search)
+        tasks = Task.objects.filter(title__icontains=search, user=request.user)
 
         if search != tasks:
             return render(request, 'tasks/no-item.html')
         
     else:
-        tasks_list = Task.objects.all().order_by('-created_at')
+        tasks_list = Task.objects.all().order_by('-created_at').filter(user=request.user)
         paginator = Paginator(tasks_list, 5)
         page = request.GET.get('page')
         tasks = paginator.get_page(page)
@@ -40,7 +40,7 @@ def yourName(request, name):
     return render(request, 'tasks/name.html', {'name': name})
 
 # RENDERIZAR AS TAREFAS
-
+@login_required
 def taskView(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     return render(request, 'tasks/task.html', {'task' : task})
@@ -53,6 +53,7 @@ def createTask(request):
         if form.is_valid():
             task = form.save(commit=False)
             task.done = 'doing'
+            task.user = request.user
             task.save()
             return redirect('/task-list/')
 

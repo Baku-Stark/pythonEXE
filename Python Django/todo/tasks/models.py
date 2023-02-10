@@ -16,7 +16,7 @@ class Task(models.Model):
     )
 
     # [ID DO USUÁRIO]
-    user_ID = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     # [CRIAR]
     created_at = models.DateTimeField(auto_now_add=True)
     # [ATUALIZAR]
