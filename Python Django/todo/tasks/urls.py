@@ -11,5 +11,6 @@ urlpatterns = [
     path('task-list/new_task/', views.createTask, name="new-task"),
     path('task-list/edit/<int:task_id>', views.updateTask, name="edit-task"),
     path('task-list/delete/<int:task_id>', views.deleteTask, name="delete-task"),
+    path('task-list/changestatus/<int:task_id>', views.changeTaskStatus, name="change-status"),
     path('name/<str:name>', views.yourName)
 ]

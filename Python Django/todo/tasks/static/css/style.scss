@@ -256,7 +256,7 @@ body{
     }
     // =========== END OF HOME PAGE ===========
 
-    // =========== TASK LIST ===========
+    // =========== TASK LIST [list.html] ===========
     div.list-div{
         padding: 0;
 
@@ -298,7 +298,7 @@ body{
                 display: flex;
 
                 input#search {
-                    width: 60vw;
+                    width: 57vw;
                     border-radius: 0;
                 }
 
@@ -321,9 +321,39 @@ body{
             }
         }
 
+        div.filter-div{
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            
+            select#filter{
+                width: 18rem;
+            }
+        }
+
         ul.task-list{
             padding-left: 0;
             list-style: none;
+
+            li.task-item.done{
+                background-color: #CCC;
+                border-bottom: 1px dashed var(--color-dark);
+
+                a.task-title{
+                    color: #008000;
+                    &:hover{
+                        color: #013b01;
+                    }
+                }
+                abbr{
+                    i.bi.bi-clipboard2-check-fill{
+                        color: #03a7ff;
+                        &:hover{
+                            color: #014283;
+                        }
+                    }
+                }
+            }
 
             li.task-item{
                 height: 50px;
@@ -334,7 +364,7 @@ body{
                 a.return-btn{
                     float: right;
                     text-decoration: none;
-                    color: #114D4C;
+                    color: #59c2c0;
                     &:hover{
                         text-decoration: underline;
                         color: #0b3131;
@@ -349,6 +379,7 @@ body{
                     }
 
                     abbr{
+                        float: right;
                         text-decoration: none;
     
                         i.bi.bi-trash-fill{
@@ -364,8 +395,15 @@ body{
                                 color: #014242;
                             }
                         }
+
+                        i.bi.bi-clipboard2-check-fill{
+                            color: #0274B3;
+                            &:hover{
+                                color: #014283;
+                            }
+                        }
     
-                        i.bi.bi-trash-fill, i.bi.bi-pen-fill{
+                        i.bi.bi-trash-fill, i.bi.bi-pen-fill, i.bi.bi-clipboard2-check-fill{
                             cursor: pointer;
                             margin: 5px;
                             font-size: 20px;
@@ -375,6 +413,71 @@ body{
                 }
             }
         }
+
+        // DASHBOARD
+        div.dashboard{
+            padding: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            @include screenTablet{
+                align-items: center;
+                flex-direction: column;
+            }
+
+            div#dashboard-lastdays{
+                background-color: #3476e2;
+            }
+
+            div#dashboard-done{
+                background-color: #13c34f;
+            }
+            
+            div#dashboard-doing{
+                background-color: #db1e47;
+            }
+
+            div.dashboard-box{
+                width: 32%;
+                padding: 20px;
+                margin-left: 20px;
+                float: left;
+                text-align: center;
+                box-sizing: border-box;
+                color: var(--color-light);
+                &:first-child{
+                    margin-left: 0;
+                }
+                @include screenTablet{
+                    width: 100%;
+                    margin-top: 20px;
+                    margin-left: 0;
+                    &:first-child{
+                        margin-top: 0;
+                    }
+                }
+
+                h4{
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    color: var(--color-light);
+                }
+
+                h6{
+                    opacity: .6;
+                    font-size: 0.7rem;
+                    color: var(--color-light);
+                }
+    
+                span{
+                    width: 100%;
+                    font-size: 40px;
+                    display: block;
+                    color: var(--color-light);
+                }
+            }
+        }
+        // DASHBOARD
 
         div.pagination{
             display: flex;
@@ -391,6 +494,7 @@ body{
                 font-weight: bold;
             }
         }
+        // =========== END OF TASK LIST [list.html] ===========
 
         // =========== [task.html] ===========
         div.task-title{

@@ -247,7 +247,7 @@ body div.list-div div.search-div form.search-form {
   display: flex;
 }
 body div.list-div div.search-div form.search-form input#search {
-  width: 60vw;
+  width: 57vw;
   border-radius: 0;
 }
 body div.list-div div.search-div form.search-form i.bi.bi-search {
@@ -268,9 +268,33 @@ body div.list-div div.search-div form.search-form i.bi.bi-search:hover {
     padding: 5px 14px;
   }
 }
+body div.list-div div.filter-div {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+body div.list-div div.filter-div select#filter {
+  width: 18rem;
+}
 body div.list-div ul.task-list {
   padding-left: 0;
   list-style: none;
+}
+body div.list-div ul.task-list li.task-item.done {
+  background-color: #CCC;
+  border-bottom: 1px dashed var(--color-dark);
+}
+body div.list-div ul.task-list li.task-item.done a.task-title {
+  color: #008000;
+}
+body div.list-div ul.task-list li.task-item.done a.task-title:hover {
+  color: #013b01;
+}
+body div.list-div ul.task-list li.task-item.done abbr i.bi.bi-clipboard2-check-fill {
+  color: #03a7ff;
+}
+body div.list-div ul.task-list li.task-item.done abbr i.bi.bi-clipboard2-check-fill:hover {
+  color: #014283;
 }
 body div.list-div ul.task-list li.task-item {
   height: 50px;
@@ -281,7 +305,7 @@ body div.list-div ul.task-list li.task-item {
 body div.list-div ul.task-list li.task-item a.return-btn {
   float: right;
   text-decoration: none;
-  color: #114D4C;
+  color: #59c2c0;
 }
 body div.list-div ul.task-list li.task-item a.return-btn:hover {
   text-decoration: underline;
@@ -295,6 +319,7 @@ body div.list-div ul.task-list li.task-item a:hover {
   color: #0b3131;
 }
 body div.list-div ul.task-list li.task-item a abbr {
+  float: right;
   text-decoration: none;
 }
 body div.list-div ul.task-list li.task-item a abbr i.bi.bi-trash-fill {
@@ -309,11 +334,76 @@ body div.list-div ul.task-list li.task-item a abbr i.bi.bi-pen-fill {
 body div.list-div ul.task-list li.task-item a abbr i.bi.bi-pen-fill:hover {
   color: #014242;
 }
-body div.list-div ul.task-list li.task-item a abbr i.bi.bi-trash-fill, body div.list-div ul.task-list li.task-item a abbr i.bi.bi-pen-fill {
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-clipboard2-check-fill {
+  color: #0274B3;
+}
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-clipboard2-check-fill:hover {
+  color: #014283;
+}
+body div.list-div ul.task-list li.task-item a abbr i.bi.bi-trash-fill, body div.list-div ul.task-list li.task-item a abbr i.bi.bi-pen-fill, body div.list-div ul.task-list li.task-item a abbr i.bi.bi-clipboard2-check-fill {
   cursor: pointer;
   margin: 5px;
   font-size: 20px;
   float: right;
+}
+body div.list-div div.dashboard {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  body div.list-div div.dashboard {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+body div.list-div div.dashboard div#dashboard-lastdays {
+  background-color: #3476e2;
+}
+body div.list-div div.dashboard div#dashboard-done {
+  background-color: #13c34f;
+}
+body div.list-div div.dashboard div#dashboard-doing {
+  background-color: #db1e47;
+}
+body div.list-div div.dashboard div.dashboard-box {
+  width: 32%;
+  padding: 20px;
+  margin-left: 20px;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+  color: var(--color-light);
+}
+body div.list-div div.dashboard div.dashboard-box:first-child {
+  margin-left: 0;
+}
+@media screen and (max-width: 1024px) {
+  body div.list-div div.dashboard div.dashboard-box {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  body div.list-div div.dashboard div.dashboard-box:first-child {
+    margin-top: 0;
+  }
+}
+body div.list-div div.dashboard div.dashboard-box h4 {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--color-light);
+}
+body div.list-div div.dashboard div.dashboard-box h6 {
+  opacity: 0.6;
+  font-size: 0.7rem;
+  color: var(--color-light);
+}
+body div.list-div div.dashboard div.dashboard-box span {
+  width: 100%;
+  font-size: 40px;
+  display: block;
+  color: var(--color-light);
 }
 body div.list-div div.pagination {
   display: flex;

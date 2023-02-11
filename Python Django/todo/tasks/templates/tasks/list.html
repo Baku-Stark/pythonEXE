@@ -18,9 +18,21 @@
             <i class="bi bi-search search-btn"></i>
         </form>
     </div>
+    <div class="col-12 filter-div mb-4">
+        <span>Filtrar por:</span>
+        <select name="filter" id="filter" class="form-control">
+            <option value="">Escolha uma opção</option>
+            <option value="done">Tarefas concluídas</option>
+            <option value="doing">Tarefas a fazer</option>
+        </select>
+    </div>
     <ul class="task-list">
         {% for task in tasks %}
+        {% if task.done == 'doing' %}
         <li class="task-item">
+        {% else %}
+        <li class="task-item done">
+        {% endif %}
             <span>
                 <a href="/task/{{task.id}}" class="task-title">
                     {{task.title}}
@@ -40,9 +52,46 @@
                     </abbr>
                 </a>
             </span>
+            <span>
+                <a href="changestatus/{{task.id}}" class="change-btn">
+                    <abbr title="Alterar situação da tarefa">
+                        <i class="bi bi-clipboard2-check-fill"></i>
+
+                    </abbr>
+                </a>
+            </span>
         </li>
         {% endfor %}
     </ul>
+    <div class="container dashboard mt-4 mb-4">
+        <div class="col-4 dashboard-box" id="dashboard-lastdays">
+            <div class="col-12">
+                <h4>Tarefas finalizadas</h4>
+                <h6>(últimos 30 dias)</h6>
+            </div>
+            <div class="col-12">
+                <span>{{ tasksrecently }}</span>
+            </div>
+        </div>
+        <div class="col-4 dashboard-box" id="dashboard-done">
+            <div class="col-12">
+                <h4>Tarefas finalizadas</h4>
+                <h6>(Recentemente)</h6>
+            </div>
+            <div class="col-12">
+                <span>{{ tasksdone }}</span>
+            </div>
+        </div>
+        <div class="col-4 dashboard-box" id="dashboard-doing">
+            <div class="col-12">
+                <h4>Tarefas para fazer</h4>
+                <h6>(Recentemente)</h6>
+            </div>
+            <div class="col-12">
+                <span>{{ tasksdoing }}</span>
+            </div>
+        </div>
+    </div>
     <div class="pagination">
         <span class="step-links">
             <!-- página anterior -->

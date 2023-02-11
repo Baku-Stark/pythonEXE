@@ -1,1 +1,6 @@
 DJANGO [HTML] COMMANDS
+├── {% load static %}
+│       └── Carregar os arquivos da pasta `static`
+│
+├── {% block title %}<Título do site>{% endblock %}
+│       └── Nomeando o título do site.

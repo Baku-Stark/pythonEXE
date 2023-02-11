@@ -17,9 +17,15 @@ $(document).ready(function() {
 
     var searchBTN = $('.search-btn')
     var searchForm = $('.search-form')
-
     $(searchBTN).on('click', () => {
         searchForm.submit()
         
+    })
+
+    var baseURL = 'http://127.0.0.1:8000/task-list/'
+    var filter = $('#filter')
+    $(filter).change(function(){
+        var filter = $(this).val()
+        window.location.href = baseURL + '?filter=' + filter
     })
 })
