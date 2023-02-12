@@ -11,22 +11,22 @@ from functions.crud import *
 class mainPainel(CRUD_APP):
     def __init__(self):
         set_title(f'Bloco De Notas | Usuário: {os.getlogin()}')
+        
         while True:
             self.tableCRUD()
 
             self.userChoice = str(input('commando: ')).lower().strip()
             print('')
-            print('──' *50)
-            if self.userChoice == 'read-note':
+            if self.userChoice == 'read':
                 self.readNoteUS()
             
-            elif self.userChoice == 'create-note':
+            elif self.userChoice == 'create':
                 self.createNote()
 
-            elif self.userChoice == 'update-note':
+            elif self.userChoice == 'update':
                 self.updateNote()
 
-            elif self.userChoice == 'delete-note':
+            elif self.userChoice == 'delete':
                 self.deleteNote()
 
             elif self.userChoice == 'cls':
@@ -39,8 +39,9 @@ class mainPainel(CRUD_APP):
                     break
                 else:
                     continue
+
             else:
-                rprint('[bold]Comando Negado... Tente Novamente![/bold]')
+                rprint('[bold red]Comando Negado... Tente Novamente![/bold red]')
 
             print('')
             print('──' *50)
