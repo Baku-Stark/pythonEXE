@@ -27,8 +27,10 @@ class mainPainel(CRUD_APP):
             app_situation = "[INVALID]"
             message = f"A Lista de Tarefas não pode ser criada...{e}"
             rprint(f'[on white] [black] {app_situation} [/black] [/on white][on red] [bold]{message}[/bold] [/on red]')
-        
-        while True:
+
+        self.res = "y"
+
+        while self.res == "y":
             self.userChoice = str(input('commando: ')).lower().strip()
             print('')
 
@@ -53,10 +55,6 @@ class mainPainel(CRUD_APP):
             elif self.userChoice == 'end':
                 rprint('[red]Deseja interromper a aplicação?[/red]')
                 self.res = str(input('[y/n]: ')).lower().strip()
-                if self.res == 'y':
-                    break
-                else:
-                    continue
 
             else:
                 rprint('[bold red]Esse comando não existe... Tente Novamente![/bold red]')

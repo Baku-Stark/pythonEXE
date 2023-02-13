@@ -126,19 +126,54 @@ class CRUD_APP():
                 self.checkNoteID(self.task_id, self.task_note, self.task_status)
 
     def updateNote(self):
-        
+        self.readNoteUS()
+        app_situation = "[Apagar Anotação]"
+        message = "Atualizar anotação desejada"
+        rprint(f'[on white] [black] {app_situation} [/black] [/on white][on red] [bold]{message}[/bold] [/on red]')
+
+        with self.con:
+            self.task_id = str(input('Escolha o ID para atualizar a anotação\nr: ')).strip()
+            print('')
+            self.task_status = str(input('Cite o novo status da anotação\nr: ')).strip()
+            print('')
+
+            if self.task_id == "" or self.task_status == "":
+                while self.task_id == "" or self.task_status == "":
+                    self.task_id = str(input('(REFAZENDO)Escolha um ID da sua anotação\nr: ')).strip()
+                    print('')
+                    self.task_status = str(input('(REFAZENDO)Cite o novo status da anotação\nr: ')).strip()
+                    print('')
+            
+            # nome da tabela: tasks
+            cur = self.con.cursor()
+            query = f'UPDATE tasks SET status="{self.task_status}" WHERE id="{self.task_id}"'
+            cur.execute(query)
+            cur.close()
+
+            status_title = "[VALID]"
+            status_message = "Anotação apagada com sucesso!"
+            rprint(f'[on white] [black] {status_title} [/black] [/on white][on blue] [bold]{status_message}[/bold] [/on blue]')
     
     def deleteNote(self):
         self.readNoteUS()
-        app_situation = "[Criar Anotação]"
-            message = "Criar uma nova anotação"
-            rprint(f'[on white] [black] {app_situation} [/black] [/on white][on blue] [bold]{message}[/bold] [/on blue]')
+        app_situation = "[Apagar Anotação]"
+        message = "Apagar anotação desejada"
+        rprint(f'[on white] [black] {app_situation} [/black] [/on white][on red] [bold]{message}[/bold] [/on red]')
 
         with self.con:
             self.task_id = str(input('Escolha o ID para apagar a anotação\nr: ')).strip()
 
+            if self.task_id == "":
+                while self.task_id == "":
+                    self.task_id = str(input('(REFAZENDO)Escolha um ID da sua anotação\nr: ')).strip()
+                    print('')
+            
             # nome da tabela: tasks
             cur = self.con.cursor()
             query = f'DELETE FROM tasks WHERE id="{self.task_id}"'
             cur.execute(query)
             cur.close()
+            print('')
+            status_title = "[VALID]"
+            status_message = "Anotação apagada com sucesso!"
+            rprint(f'[on white] [black] {status_title} [/black] [/on white][on blue] [bold]{status_message}[/bold] [/on blue]')
