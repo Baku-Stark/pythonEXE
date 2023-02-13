@@ -1,4 +1,0 @@
-219180312;Limpar casa do cachorro;Para Fazer
-202302212;Passar pano em casa;Feito
-123;criar um sistema de anota��o;Para Fazer
-1234;task teste;Para Fazer
