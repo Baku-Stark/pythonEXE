@@ -1,0 +1,25 @@
+@import '_variables.scss', '_navbar.scss', '_sidebar.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--background);
+}
+
+.switch-mode{
+    --background: #111111;
+    --letter-color: #f0eff5;
+}
+
+div.mt-content-block{
+    margin-top: 15vh;
+}
+
+div.title-block-content{
+    margin-bottom: 5vh;
+    text-align: center;
+}

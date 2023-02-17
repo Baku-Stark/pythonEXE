@@ -1,40 +1,113 @@
 <div align="center">
 
-<h3>WishList App Using Django <img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" /></h3>
+## WishList App Using Django
+<img height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
 
+</div>
+
+<br>
+
+<div align="center">
+
+**Python 🐍:**  _3.11.1_
+
+`🐍 Update: Django - Wish List`
 </div>
 
 <hr>
 
+
+<div align="left">
+
+## 🐍 Fator inicial
+
+</div>
+
+<details>
+<summary>
+    <strong>Inicialização Wish LIst</strong>
+</summary>
+
+* **Ambient Virtual**
+    * `python -m venv env`
+
+
+* **Instalações do Projeto**
+    * `python.exe -m pip install --upgrade pip`
+    * `pip install django`
+    * `pip install rich`
+    * `pip install art`
+
+</details>
+
 <br>
 
-<h3><strong>Python [🐍]</strong></h3>
-
-* Python Version: <b>3.11.1</b>
-    * <i>🐍 Update: App w/ Django</i>
-
-<h3><strong>Prerequisite</strong></h3>
-
-* Django (4.1.6) -> `pip install django`
 <details>
 <summary>
     <strong>Comandos DJANGO</strong>
 </summary>
 
-```python
-    django-admin startproject mysite
-        └── cd .\mysite
-            ├── django-admin startapp Wish
-            INSTALLED_APPS = [
-                'django.contrib.admin',
-                'django.contrib.auth',
-                'django.contrib.contenttypes',
-                'django.contrib.sessions',
-                'django.contrib.messages',
-                'django.contrib.staticfiles',
-                'Wish'
-            ]
-            └── python manage.py runserver
-```
+* **Ambient Virtual**
+    * `python -m venv env`
+
+
+* **Instalações do Projeto**
+    * `python.exe -m pip install --upgrade pip`
+    * `pip install django`
+    * `pip install rich`
+    * `pip install art`
+
+</details>
+
+<hr>
+
+
+<div align="left">
+
+## 🐍 DJANGO
+
+</div>
+
+<details>
+<summary>
+    <strong>Componentes do DJANGO</strong>
+</summary>
+
+* **Ambient Virtual**
+    * `python -m venv env`
+
+
+* **Instalações do Projeto**
+    * `python.exe -m pip install --upgrade pip`
+    * `pip install django`
+    * `pip install rich`
+    * `pip install art`
+
+</details>
+
+<br>
+
+<details>
+<summary>
+    <strong>Comandos DJANGO</strong>
+</summary>
+
+* **Inicialização**
+    * `django-admin startproject wish`
+
+
+* **DependÇencias**
+    * `django-admin startapp wishes`
+
+</details>
+
+<br>
+
+<details>
+<summary>
+    <strong>Tecnologias</strong>
+</summary>
+
+
 
 </details>

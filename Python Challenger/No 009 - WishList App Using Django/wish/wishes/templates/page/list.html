@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block title %}All Wishes{% endblock %}
+
+{% block content %}
+{% for name in names %}
+<h1>Todos os desejos aqui, {{name}}</h1>
+{% endfor %}
+{% endblock %}

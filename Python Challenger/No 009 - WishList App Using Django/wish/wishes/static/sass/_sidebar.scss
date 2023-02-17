@@ -1,0 +1,98 @@
+div.sidebar{
+    display: none;
+}
+
+div.sidebar.active{
+    top: 0;
+    z-index: 20;
+    width: 230px;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    background-color: #000000;
+    box-shadow: 20px 0px 20px 20px #00000079;
+    @include Flexbox-Column(column, space-between);
+
+    div.title-content{
+        padding: 10px;
+        background-color: var(--color-dark);
+
+        div.col{
+            @include Grid-Pattern(2fr 1fr);
+            align-items: center;
+            text-align: center;
+            i{
+                font-size: x-large;
+                color: var(--color-light);
+                &:hover{
+                    cursor: pointer;
+                    opacity: .7;
+                    transition: $tran-02;
+                }
+            }
+
+            h1{
+                opacity: .7;
+                font-size: 30px;
+                margin-bottom: 0;
+                color: var(--color-light);
+            }
+        }
+
+        div.col-12{
+            text-align: center;
+
+            span.username{
+                font-weight: 500;
+                color: var(--color-dark-light);
+            }
+
+            h6{
+                opacity: .5;
+                font-size: 15px;
+                margin-bottom: 0;
+                color: var(--color-light);
+            }
+        }
+    }
+
+    ul.side-items{
+        gap: 8vh;
+        padding-left: 0;
+        margin-bottom: 0 !important;
+        display: grid;
+        list-style: none;
+
+        li.side-nav-link{
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            transition: $tran-03;
+
+            i{
+                color: var(--color-light);
+            }
+
+            a{
+                margin-left: 10px;
+                font-weight: bold;
+                text-decoration: none;
+                color: var(--color-light);
+                &:hover{
+                    color: var(--color-primary);
+                }
+            }
+
+            &:hover{
+                cursor: pointer;
+                transition: $tran-03;
+                background-color: var(--color-dark-light);
+            }
+
+            &:hover i{
+                transition: $tran-03;
+                margin-left: 10px;
+            }
+        }
+    }
+}

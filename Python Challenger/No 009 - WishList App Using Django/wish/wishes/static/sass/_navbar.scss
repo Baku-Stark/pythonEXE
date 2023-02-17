@@ -1,0 +1,40 @@
+nav.navbar-container{
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    background-color: #111111b7;
+    border-bottom: 1px solid #000000;
+    @include Flexbox-Pattern(space-around);
+    div.logo-content img.logo-django{
+        width: 70px;
+    }
+
+    div.profile-content span{
+        opacity: .7;
+        font-weight: bold;
+        color: var(--color-white);
+        &:hover{
+            cursor: pointer;
+            color: var(--color-dark);
+        }
+    }
+
+    div.button-content button{
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: $tran-03;
+        color: var(--color-light);
+        background-color: var(--color-dark-light);
+        i{
+            font-size: 1.2rem;
+        }
+
+        &:hover{
+            transition: $tran-03;
+            background-color: var(--color-gray-dark);
+        }
+    }
+}
