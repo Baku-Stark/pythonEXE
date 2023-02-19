@@ -79,6 +79,7 @@
 
 * **Instalações do Projeto**
     * `python.exe -m pip install --upgrade pip`
+    * `pip install django-crispy-forms`
     * `pip install django`
     * `pip install rich`
     * `pip install art`
@@ -96,8 +97,15 @@
     * `django-admin startproject wish`
 
 
-* **DependÇencias**
+* **Comandos Secundarios**
     * `django-admin startapp wishes`
+    * `django-admin startapp accounts`
+
+* **Comandos [static]**
+    * `python manage.py collectstatic`
+
+* **Comandos [user]**
+    * `python manage.py createsuperuser`
 
 </details>
 
@@ -105,7 +113,7 @@
 
 <details>
 <summary>
-    <strong>Tecnologias</strong>
+    <strong>Pip List</strong>
 </summary>
 
 

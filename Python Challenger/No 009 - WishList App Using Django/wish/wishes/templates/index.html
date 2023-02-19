@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
     <!-- CSS [main] -->
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
 
     <!-- file card -->
     <meta name="description"
@@ -26,7 +26,7 @@
     <meta name="keywords"
     content="Python, Django">
 
-    <link rel="shortcut icon" href="{% static 'image/wish.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'admin/img/wish.ico' %}" type="image/x-icon">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -38,9 +38,15 @@
                 </a>
             </div>
             <div class="profile-content">
+                {% if user.is_authenticated %}
                 <span class="username">
-                    Nome do usuário aqui
+                    {{user}}
                 </span>
+                {% else%}
+                <span class="username">
+                    Faça seu login.
+                </span>
+                {% endif %}
             </div>
             <div class="button-content">
                 <button class="navbar-button">
@@ -48,20 +54,29 @@
                 </button>
             </div>
         </nav>
-        <div class="sidebar active">
+        <div class="sidebar">
             <div class="title-content">
                 <div class="col">
                     <h1 class="navbar-title">Wish List</h1>
                     <i class="bi bi-arrow-left-square-fill close-btn"></i>
                 </div>
+                {% if user.is_authenticated %}
                 <div class="col-12">
                     <span class="username">
-                        [nome do usuário aqui]
+                        {{user}}
                     </span>
                 </div>
+                {% else %}
+                <div class="col-12">
+                    <span class="username">
+                        Crie ou entre em uma conta
+                    </span>
+                </div>
+                {% endif %}
             </div>
 
             <ul class="side-items">
+                {% if user.is_authenticated %}
                 <li class="side-nav-link">
                     <i class="bi bi-list-task link-icon"></i>
                     <a href="/list/">Desejos</a>
@@ -75,17 +90,25 @@
                     <a href="https://github.com/Baku-Stark/pythonEXE/tree/main/Python%20Challenger/No%20009%20-%20WishList%20App%20Using%20Django" target="_blank">Projeto GitHub</a>
                 </li>
                 <li class="side-nav-link">
-                    <i class="devicon-python-plain link-icon"></i>
-                    <a href="https://www.python.org/" target="_blank">
-                        Python
+                    <i class="bi bi-x-square-fill"></i>
+                    <a href="/accounts/logout/">
+                        Logout
+                    </a>
+                </li>
+                {% else %}
+                <li class="side-nav-link">
+                    <i class="bi bi-grip-vertical"></i>
+                    <a href="/accounts/login/">
+                        LOGIN
                     </a>
                 </li>
                 <li class="side-nav-link">
-                    <i class="devicon-django-plain link-icon"></i>
-                    <a href="https://www.djangoproject.com/" target="_blank">
-                        Django
+                    <i class="bi bi-columns-gap"></i>
+                    <a href="/accounts/register/">
+                        REGISTER
                     </a>
                 </li>
+                {% endif %}
             </ul>
             <div class="title-content">
                 <div class="col-12">
@@ -104,7 +127,115 @@
             {% endblock %}
         </section>
     </main>
-    <footer></footer>
-    <script src="{% static 'js/index.js' %}"></script>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col content-top padding-basic">
+                    <div class="title-box">
+                        <h3>Baku-Stark</h3>
+                        <div class="divider-top"></div>
+                        <h3>Python</h3>
+                    </div>
+                    <div class="social-box">
+                        <span class="sb-text">
+                            Me siga nas redes sociais
+                        </span>
+                        <aside>
+                            <button class="button-port">
+                                <a
+                                    href="https://twitter.com/Walleemc2"
+                                    target="_blank"
+                                    class="twitter">
+                                    <i class="bi bi-twitter"></i>
+                                    <span class="social-media">Twitter</span>
+                                </a>
+                            </button>
+                            <button class="button-port">
+                                <a
+                                    href="https://www.instagram.com/wallace_emc2/"
+                                    target="_blank"
+                                    class="instagram">
+                                    <i class="bi bi-instagram"></i>
+                                    <span class="social-media">Instagram</span>
+                                </a>
+                            </button>
+                            <button class="button-port">
+                                <a
+                                    href="https://www.linkedin.com/in/wallace-freitas-92a2061b6/"
+                                    target="_blank"
+                                    class="linkedin">
+                                    <i class="bi bi-linkedin"></i>
+                                    <span class="social-media">LinkedIN</span>
+                                </a>
+                            </button>
+                            <button class="button-port">
+                                <a
+                                    href="https://github.com/Baku-Stark"
+                                    target="_blank"
+                                    class="github">
+                                    <i class="bi bi-github"></i>
+                                    <span class="social-media">GitHub</span>
+                                </a>
+                            </button>
+                        </aside>
+                    </div>
+                </div>
+
+                <hr class="mt-4 mb-4">
+
+                <div class="col content-mid padding-basic">
+                    <div class="col-md-3 items-box">
+                        <h6>
+                            <i>SOBRE O PROJETO</i>
+                        </h6>
+                        <ul>
+                            <li>
+                                Criador: Wallace De Freitas (Baku-Stark)
+                            </li>
+                            <li>
+                                <a href="https://github.com/Baku-Stark/pythonEXE/tree/main/Python%20Challenger/No%20009%20-%20WishList%20App%20Using%20Django">Andamaneto - Python</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 items-box">
+                        <h6>
+                            <i>CURSOS DE PYTHON</i>
+                        </h6>
+                        <ul>
+                            <li>
+                                <a href="https://www.cursoemvideo.com/cursos/"> Curso Em Vídeo (Gustavo Guanabara)</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 items-box">
+                        <h6>
+                            <i>CURSOS DE DJANGO</i>
+                        </h6>
+                        <ul>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=LZsjuSBW5YM&list=PLnDvRpP8BnewqnMzRnBT5LeTpld5bMvsj">Matheus Battisti - Hora de Codar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="mt-4 mb-4">
+
+                <div class="col content-bot padding-basic">
+                        <p>
+                            <i>
+                                Oi! Chegou até aqui, visitante? Eu agradeço e fico muito feliz de ler meu projeto portfólio.
+                            </i>
+                        </p>
+                        <p>
+                            <i>
+                                Me siga nas minhas redes sociais. Aceito todo tipo de ajuda para melhorar nas áreas Front e Back End.
+                            </i>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'admin/js/index.js' %}"></script>
 </body>
 </html>

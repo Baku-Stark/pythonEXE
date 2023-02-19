@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register | Wish List {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-content-block">
+            <div class="card auth-card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Criar uma conta na Wish List</h4>
+                    <form method="post" class="login-logout">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+    
+                        {{ form.as_table }}
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Registrar</button>
+                        <a href="/rules/" class="text-center">Diretrizes do Projeto</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

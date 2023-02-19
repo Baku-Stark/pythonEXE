@@ -1,4 +1,5 @@
-@import '_variables.scss', '_navbar.scss', '_sidebar.scss';
+@import '_variables.scss', '_navbar.scss', '_sidebar.scss', '_form.scss',
+        '_home.scss', '_footer.scss';
 
 *{
     margin: 0;
@@ -15,6 +16,10 @@ body{
     --letter-color: #f0eff5;
 }
 
+.padding-basic{
+    padding: 20px 10px;
+}
+
 div.mt-content-block{
     margin-top: 15vh;
 }
@@ -22,4 +27,9 @@ div.mt-content-block{
 div.title-block-content{
     margin-bottom: 5vh;
     text-align: center;
+}
+
+div.rules{
+    display: flex;
+    justify-content: center;
 }

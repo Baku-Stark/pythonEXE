@@ -3,7 +3,12 @@
 {% block title %}All Wishes{% endblock %}
 
 {% block content %}
-{% for name in names %}
-<h1>Todos os desejos aqui, {{name}}</h1>
-{% endfor %}
+<div class="container mt-content-block">
+    <div class="row">
+        {% for name in names %}
+        <h1>Todos os desejos aqui, {{name}}</h1>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}

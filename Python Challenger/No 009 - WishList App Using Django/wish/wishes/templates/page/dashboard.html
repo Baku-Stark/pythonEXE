@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block title %}Dashboard | DJANGO{% endblock %}
+
+{% block content %}
+<div class="container mt-content-block">
+    <div class="row">
+        <div class="col-12 title-block-content">
+            <h2>Dashboard do usuário [nome do usuário]</h2>
+        </div>
+        <div class="col-12">
+            <div class="box-dashboard-1">
+                <p>Quantidade De Desejos</p>
+                <span class="qtd-desejos">
+                    [numero de desejos aqui]
+                </span>
+            </div>
+            <div class="box-dashboard-2">
+                <p>Quantidade De Desejos</p>
+                <span class="qtd-desejos">
+                    [numero de desejos aqui]
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

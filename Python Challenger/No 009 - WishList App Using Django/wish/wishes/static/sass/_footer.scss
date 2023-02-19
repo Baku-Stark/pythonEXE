@@ -1,0 +1,154 @@
+footer{
+    color: var(--color-light);
+    background: #111111;
+
+    div.content-top{
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+        @include screenTablet{
+            align-items: center;
+            flex-direction: column;
+        }
+
+        div.title-box{
+            display: flex;
+            align-items: center;
+            @include screenTablet{
+                margin-bottom: 20px;
+            }
+
+            h3{
+                margin-bottom: 0 !important;
+                font-family: 'Impact', sans-serif;
+            }
+
+            div.divider-top{
+                width: 2px;
+                height: 50px;
+                margin: 0 15px;
+                background-color: #f0eff59f;
+            }
+        }
+
+        div.social-box{
+            display: grid;
+            grid-template-columns: 1fr;
+            @include screenTablet{
+                margin-bottom: 20px;
+            }
+
+            span.sb-text{
+                opacity: .7;
+                margin-bottom: 2vh;
+                color: #f0eff5;
+                @include screenTablet{
+                    margin-bottom: 12px;
+                }
+            }
+
+            aside{
+                display: grid;
+                grid-template-rows: 1fr;
+                grid-template-columns: 1fr 1fr;
+
+                button.button-port{
+                    padding: 10px 20px;
+                    background-color: #111111;
+
+                    span{
+                        font-family: 'Impact', sans-serif;
+                    }
+
+                    a{
+                        text-decoration: none;
+                        transition: .3s ease-in-out;
+                        color: var(--color-light);
+                        
+                    }
+
+                    a.twitter:hover{
+                        cursor: pointer;
+                        background-image: linear-gradient(to right, $twitter);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        color: transparent;
+                        transition: .3s ease-in-out;
+                    }
+                    a.instagram:hover{
+                        cursor: pointer;
+                        background-image: linear-gradient(to right, $instagram);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        color: transparent;
+                        transition: .3s ease-in-out;
+                    }
+                    a.linkedin:hover{
+                        cursor: pointer;
+                        background-image: linear-gradient(to right, $linkedin);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        color: transparent;
+                        transition: .3s ease-in-out;
+                    }
+                    a.github:hover{
+                        cursor: pointer;
+                        background-image: linear-gradient(to right, $github);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        color: transparent;
+                        transition: .3s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+
+    div.content-mid{
+        display: flex;
+        justify-content: center;
+        @include screenTablet-low{
+            flex-direction: column;
+        }
+
+        div.col-md-3.items-box {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            h6 > i{
+                font-family: 'Impact', sans-serif;
+            }
+
+            ul li, ul li > a{
+                opacity: .7;
+            }
+
+            ul{
+                list-style: none;
+
+                li{
+                    color: var(--color-light);
+
+                    a{
+                        text-decoration: none;
+                        color: var(--color-primary);
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    div.content-bot{
+        p{
+            text-align: center;
+
+            i{
+                opacity: .7;
+            }
+        }
+    }
+}
