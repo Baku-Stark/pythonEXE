@@ -7,6 +7,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Wish
 from .forms import WishForm
 
+# IMPORT json
+import os
+import json
+
 # Create your views here.
 def homePage(request):
     """
@@ -124,4 +128,8 @@ def statusWish(request, wish_id):
 
 @login_required
 def dashboard(request):
-    return render(request, 'page/dashboard.html')
+    wishAndamento = Wish.objects.filter(done='adn', user=request.user).count()
+    wishRealizados = Wish.objects.filter(done='rld', user=request.user).count()
+    wishContent = {'wish_adn': wishAndamento, 'wish_rld': wishRealizados}
+        
+    return render(request, 'page/dashboard.html', wishContent)

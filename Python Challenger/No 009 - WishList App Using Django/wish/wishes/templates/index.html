@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
     <!-- CSS [main] -->
-    <link rel="stylesheet" href="{% static 'admin/css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'admin/css/index.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
 
     <!-- file card -->
     <meta name="description"
@@ -242,7 +242,11 @@
             </div>
         </div>
     </footer>
-    <script src="{% static 'admin/script/index.js' %}"></script>
-    <script src="{% static 'admin/js/index.js' %}"></script>
+    <!-- Javascript [CHART.js > CDN] -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js" integrity="sha512-qKyIokLnyh6oSnWsc5h21uwMAQtljqMZZT17CIMXuCQNIfFSFF4tJdMOaJHL9fQdJUANid6OB6DRR0zdHrbWAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Javascript [main] -->
+    <script src="{% static 'admin/js/script.js' %}"></script>
 </body>
 </html>
