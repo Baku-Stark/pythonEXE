@@ -1,5 +1,5 @@
 "use strict";
-const statusCDN = '[Typescript Boos - ON]';
+const statusCDN = '[Typescript(SCRIPT) - ON]';
 const message = 'Ativação completa!';
 console.log(`%c ${statusCDN} %c ${message} `, 'background: #111111; color: #f0eff5; font-weight: bold;', 'background: #0274B3; color: #111111; font-weight: bold;');
 const navbarBTN = document.querySelector('.navbar-button');

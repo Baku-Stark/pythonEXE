@@ -1,0 +1,96 @@
+div.add-wish-block{
+    display: flex;
+    margin-bottom: 2.5vh;
+    
+    div.col-4{
+        margin: 0 auto;
+        text-align: center;
+
+        h4{
+            margin-bottom: 0 !important;
+        }
+
+        button.add-btn{
+            padding: 8px 15px;
+            border-radius: 5px;
+            &:hover{
+                transition: $tran-03;
+                color: #058005;
+                background-color: var(--color-gray-light);
+            }
+
+            i{
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+table.list-wish{
+    border-collapse: collapse;
+    @include screenPhone{
+        width: 100%;
+    }
+
+    thead > tr th{
+        color: var(--background);
+        background-color: var(--color-dark-light);
+    }
+
+    tbody > tr{
+        td{
+            font-weight: 500;
+        }
+
+        color: var(--color-dark-light);
+        background-color: var(--background);
+
+        &:nth-child(2n){
+            color: var(--color-dark);
+            background-color: var(--color-gray-dark);
+        }
+    }
+
+    tr{
+        text-align: center;
+
+        th, td{
+            padding: 10px 5px;
+            border: 2px solid var(--color-dark);
+
+            button{
+                padding: 8px 15px;
+                border-radius: 5px;
+                background-color: var(--color-dark);
+            }
+
+            button.update-btn{
+                color: var(--color-primary);
+                &:hover{
+                    color: var(--color-primary-light);
+                }
+            }
+
+            button.delete-btn{
+                color: var(--color-danger);
+                &:hover{
+                    color: var(--color-danger-light);
+                }
+            }
+
+            button.status-btn.st_adn{
+                color: var(--color-warning);
+                &:hover{
+                    color: var(--color-warning-light);
+                }
+            }
+
+            button.status-btn.st_rld{
+                color: var(--color-success);
+                &:hover{
+                    color: var(--color-success-light);
+                }
+            }
+        }
+    }
+}

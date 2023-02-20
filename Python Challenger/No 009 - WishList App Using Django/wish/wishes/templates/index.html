@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
     <!-- CSS [main] -->
-    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- file card -->
     <meta name="description"
@@ -232,10 +233,16 @@
                                 Me siga nas minhas redes sociais. Aceito todo tipo de ajuda para melhorar nas áreas Front e Back End.
                             </i>
                         </p>
+                        <p>
+                            <i>
+                                {% now "d-m-Y" %}
+                            </i>
+                        </p>
                 </div>
             </div>
         </div>
     </footer>
+    <script src="{% static 'admin/script/index.js' %}"></script>
     <script src="{% static 'admin/js/index.js' %}"></script>
 </body>
 </html>

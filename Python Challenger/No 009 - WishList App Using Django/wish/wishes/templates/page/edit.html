@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}EDIT | DJANGO{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div mt-content-block">
+    <h1>Editar o Desejo</h1>
+    <form method="post" class="wish-form-CE">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" class="btn btn-success" value="Criar Tarefa">
+    </form>
+</div>
+{% endblock %}

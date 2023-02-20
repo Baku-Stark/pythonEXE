@@ -1,5 +1,5 @@
 @import '_variables.scss', '_navbar.scss', '_sidebar.scss', '_form.scss',
-        '_home.scss', '_footer.scss';
+        '_home.scss', 'list.scss', '_footer.scss';
 
 *{
     margin: 0;
@@ -21,7 +21,7 @@ body{
 }
 
 div.mt-content-block{
-    margin-top: 15vh;
+    margin-top: 15vh !important;
 }
 
 div.title-block-content{
@@ -32,4 +32,23 @@ div.title-block-content{
 div.rules{
     display: flex;
     justify-content: center;
+}
+
+form.wish-form-CE{
+    display: grid;
+
+    label{
+        font-weight: bold;
+    }
+
+    input, textarea{
+        margin-bottom: 2vh;
+    }
+
+    textarea{
+        max-height: 200px !important;
+        @include screenPhone{
+            max-height: 237px !important;
+        }
+    }
 }

@@ -5,10 +5,96 @@
 {% block content %}
 <div class="container mt-content-block">
     <div class="row">
-        {% for name in names %}
-        <h1>Todos os desejos aqui, {{name}}</h1>
-        {% endfor %}
+        <div class="col-12 title-block-content">
+            <h2>Lista De Desejos</h2>
+        </div>
+        <div class="col-12 add-wish-block">
+            <div class="col-4">
+                <h4>Criar um novo desejo</h4>
+            </div>
+            <div class="col-4">
+                <a href="new-wish/">
+                    <button class="add-btn">
+                        <i class="bi bi-cloud-plus-fill"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="col-12">
+            <table class="ms-auto me-auto mb-5 list-wish">
+                <thead>
+                    <tr>
+                        <th colspan="1">Título</th>
+                        <th colspan="1">Descrição do desejo</th>
+                        <th colspan="2">Ação</th>
+                        <th colspan="1">Status do desejo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if wishes == "" %}
+                    <tr>
+                        <td class="wish-title">
+                            Sem nenhum desejo
+                        </td>
+                        <td>Sem nenhum desejo</td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            Sem nenhuma ação
+                        </td>
+                    </tr>
+                    {% else %}
+                    {% for wish in wishes %}
+                    <tr>
+                        <td class="wish-title">
+                            {{wish.title}}
+                        </td>
+                        <td>{{wish.description}}</td>
+                        <td>
+                            <a href="/list/update/{{wish.id}}">
+                                <abbr title="Atualizar informação do desejo">
+                                    <button class="update-btn" id="up_{{wish.id}}">
+                                        <i class="bi bi-pen-fill"></i>
+                                    </button>
+                                </abbr>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/list/delete/{{wish.id}}">
+                                <abbr title="Apagar desejo">
+                                    <button class="delete-btn" id="del_{{wish.id}}">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </button>
+                                </abbr>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/list/status/{{wish.id}}">
+                                {% if wish.done == 'adn' %}
+                                <abbr title="DESEJO EM ANDAMENTO...">
+                                    <button class="status-btn st_{{wish.done}}" id="st_{{wish.id}}">
+                                        <i class="bi bi-wrench-adjustable"></i>
+                                    </button>
+                                </abbr>
+                                {% else %}
+                                <abbr title="DESEJO REALIZADO!!!">
+                                    <button class="status-btn st_{{wish.done}}" id="st_{{wish.id}}">
+                                        <i class="bi bi-balloon-fill"></i>
+                                    </button>
+                                </abbr>
+                                {% endif %}
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 {% endblock %}
