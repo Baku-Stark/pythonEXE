@@ -1,41 +1,18 @@
-BoxLayoutExample:
+AnchorLayoutExample:
 
-<BoxLayoutExample>:
-    orientation: "vertical"
+<AnchorLayoutExample>:
+    # [anchor_x]: right, left, center
+    anchor_x: "right"
+
+    # [anchor_y]: bottom, top, center
+    anchor_y: 'top'
 
     Button:
         text: "B-1"
 
         # size_hint: width, height
-        size_hint: .8, .5
+        size_hint: .1, .1
 
-        # x, center_x, right
-        # y, center_y, top
-        pos_hint: { "x": .1 }
-
-    Button:
-        text: "B-2"
-        size_hint: .8, .5
-
-    Button:
-        text: "B-3"
-        size_hint: .8, .5
-
-    BoxLayout:
-        spacing: "10dp"
-        orientation: "horizontal"
-
-        Button:
-            text: "B-1"
-
-        Button:
-            text: "B-2"
-
-        Button:
-            text: "B-3"
-
-        Button:
-            text: "B-4"
 
 <MainWidget>:
     Button:
