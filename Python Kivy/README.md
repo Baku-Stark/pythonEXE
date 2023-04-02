@@ -10,6 +10,8 @@ Create Python Games and Mobile Apps
 
 [freeCodeCamp.org Video](https://www.youtube.com/watch?v=l8Imtec4ReQ&t=1860s&ab_channel=freeCodeCamp.org)
 
+`🐍 Update: Kivy Course`
+
 </div>
 
 ```py
