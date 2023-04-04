@@ -1,0 +1,21 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+
+    ToggleButton:
+        text:'Desligado'
+        width: "100dp"
+        size_hint: None, 1
+        on_state: root.onToggle(self)
+
+    Button:
+        text:'Count'
+        disabled: not root.count_status
+        on_press: root.Onclick()
+
+    Label:
+        text: root.number_text
+        color: '#0a7a64'
+        font_size: '100sp'
+        font_name: 'font/digital-7.ttf'
