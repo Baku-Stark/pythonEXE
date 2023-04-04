@@ -1,0 +1,26 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+
+    Slider:
+        id: slider
+        text:'text'
+        min:0
+        max:100
+        value:50
+        orientation: 'horizontal'
+        on_value: root.onSlider(self)
+
+    BoxLayout:
+        orientation:'vertical'
+
+        Label:
+            text: str(int(slider.value))
+            color: '#0a7a64'
+            font_size: '100sp'
+            font_name: 'font/digital-7.ttf'
+
+        ProgressBar:
+            max: 100
+            value: int(slider.value)
