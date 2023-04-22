@@ -8,7 +8,7 @@
 #                   - localhost/livros/id (PUT)
 #                   - localhost/livros/id (DELETE)
 
-#   3. Objetivo - Quais recursos [LIVROS]
+#   4. Objetivo - Quais recursos [LIVROS]
 
 # pip install flask
 from flask import Flask, jsonify, request
