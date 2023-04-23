@@ -128,3 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 Python API/API_Django/drf_course/
+Python API/API_Django/drf_course.zip
