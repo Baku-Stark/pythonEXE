@@ -54,3 +54,33 @@
 #       from core.models import Contact
 #       c = Contact.objects.last()
 # =========================== MODULE 4
+
+# =========================== MODULE 5
+# python manage.py startapp ecommerce
+
+# PEGANDO O TOKEN DO Django Rest
+    # INSERIR NO [/drf_course/settings.py]
+
+# python manage.py makemigrations
+# python manage.py migrate
+
+# CRIAR [/drf_course/signals.py]
+
+# python manage.py createsuperuser
+# =========================== MODULE 5
+
+# =========================== MODULE 6
+# CRIAR [serializers.py]
+# python manage.py makemigrations
+# python manage.py migrate
+# =========================== MODULE 6
+
+# =========================== MODULE 7
+# python manage.py makemigrations
+# python manage.py migrate
+# =========================== MODULE 7
+
+# =========================== MODULE 8
+# INSERIR CÓDIGO [/ecommerce/tests.py]
+# python manage.py test
+# =========================== MODULE 8
