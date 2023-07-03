@@ -1,0 +1,19 @@
+INSTALANDO O DJANGO REST-FRAMEWORK
+`-> pip install djangorestframework
+
+CRIANDO O PROJETO
+                              <PASTA DO PROJETO>
+`-> django-admin startproject library .
+    `-> django-admin startproject <PASTA DO PROJETO>
+
+CRIANDO UM APP
+`-> django-admin startapp books
+
+MOLDANDO A MIGRATE
+`-> python manage.py migrate
+
+MOLDANDO O NOVO MODELO DO BANCO DE DADOS
+`-> python manage.py makemigrations
+
+STARTANDO O SERVIDOR
+`-> python manage.py runserver
