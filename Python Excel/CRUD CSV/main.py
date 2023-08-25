@@ -18,7 +18,7 @@ except ModuleNotFoundError:
 class Format():
     def date(self):
         output = datetime.now()
-        return f"0{output.day}/{output.month}/{output.year}" if output.day < 10 else f"{output.day}/{output.month}/{output.year}"
+        return f"{output.month}/{output.day}/{output.year}"
 
     def table_list(self, title, status, date):
         table = Table(title="ToDo List")
@@ -37,20 +37,6 @@ class Format():
         # print(status)
         # print(date)
 
-    def table_options(self):
-        table = Table(title="OPTIONS")
-
-        table.add_column("Command", justify="center", style="cyan")
-        table.add_column("Descriptions", justify="center", style="blue")
-
-        table.add_row("- c", "Create a new ITEM")
-        table.add_row("- u", "Update a ITEM")
-        table.add_row("- d", "Delete a ITEM")
-        table.add_row("- exit", "Exit the program")
-
-        console = Console()
-        console.print(table)
-
 class Main(Format):
     """
         Main program.
@@ -63,7 +49,8 @@ class Main(Format):
             print(Colors.BLUE + MAIN_BANNER + Colors.END)
             self.read_output_csv()
             print('-' * 50)
-            self.table_options()
+            print(Colors.BLUE + "OPTIONS" + Colors.END)
+            print("[-c] > Create a new ITEM\n[-u] > Update a ITEM\n[-d] > Delete a ITEM\n[-e] > Exit the program\n")
             function_choice = str(input("Type your choice: ")).lower().strip()
             print('-' * 50)
 
@@ -93,10 +80,28 @@ class Main(Format):
         """
             Insert a new item in Excel file.
         """
+        CHECK = False
+        
+        while not CHECK:
+            task = str(input("Task you want to accomplish\nr: ")).strip()
+            print('')
+            status = "In Progress"
+            print('')
 
-        TempPrint(Colors.CYAN + "[+] Creating..." + Colors.END).TPrint()
-        print(Colors.BACK_CYAN + " CREATED " + Colors.END, end="")
-        print(Colors.CYAN + " [+] NEW ITEM INSERTED SUCCESSYFULLY" + Colors.END)
+            if len(task) > 0:
+                write_file = open('Assets/output.csv', 'a+', encoding="utf-8")
+                write_file.write(f"{task};{status};{self.date()}\n")
+
+                TempPrint(Colors.CYAN + "[+] Creating..." + Colors.END).TPrint()
+                print(Colors.BACK_CYAN + " CREATED " + Colors.END, end="")
+                print(Colors.CYAN + " [+] NEW ITEM INSERTED SUCCESSYFULLY" + Colors.END)
+                CHECK = True
+
+            else:
+                TempPrint(Colors.CYAN + "[+] Creating..." + Colors.END).TPrint()
+
+                print(Colors.BACK_RED + " ERROR " + Colors.END, end="")
+                print(Colors.RED + " [+] Try Again..." + Colors.END)
 
     def read_output_csv(self):
         """
@@ -135,9 +140,41 @@ class Main(Format):
             Update a item in Excel file.
         """
 
+        id_choice = int(input("Type title ID: "))
+        
         data = open('Assets/output.csv', 'r', encoding="utf-8")
-        print(data.read())
+        c_line = 1
+        replaced_content = ""
+
+        #looping through the file
+        for line in data:
+            if c_line > 1:
+                if id_choice == c_line-1:
+                    print(f"{c_line-1}. {line}")
+                    
+                    # line to list
+                    line = line.split(";")
+                    print(f"---> {c_line-1}. {line}")
+
+                    if line[1] == "In Progress":
+                        line[1] = "Check"
+                    else:
+                        line[1] = "In Progress"
+
+
+                    print(replaced_content)
+            replaced_content = f"{line[0]};{line[1]};{line[2]}"
+            c_line += 1
         data.close()
+
+        # #Open file in write mode
+        # write_file = open("note.txt", "w")
+
+        # #overwriting the old file contents with the new/replaced content
+        # write_file.write(replaced_content)
+
+        # #close the file
+        # write_file.close()
 
         TempPrint(Colors.CYAN + "[+] Updating..." + Colors.END).TPrint()
         print(Colors.BACK_CYAN + " UPDATED " + Colors.END, end="")
