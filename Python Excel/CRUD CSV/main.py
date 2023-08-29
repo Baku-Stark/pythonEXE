@@ -63,7 +63,7 @@ class Main(Format):
             elif(function_choice == "d"):
                 self.delete_output_csv()
 
-            elif(function_choice == "exit"):
+            elif(function_choice == "exit" or function_choice == "e"):
                 print('')
                 self.END = True
 
@@ -143,15 +143,14 @@ class Main(Format):
         id_choice = int(input("Type title ID: "))
         
         data = open('Assets/output.csv', 'r', encoding="utf-8")
+        replaced_content = []
         c_line = 1
-        replaced_content = ""
 
         #looping through the file
         for line in data:
             if c_line > 1:
+
                 if id_choice == c_line-1:
-                    print(f"{c_line-1}. {line}")
-                    
                     # line to list
                     line = line.split(";")
                     print(f"---> {c_line-1}. {line}")
@@ -161,20 +160,26 @@ class Main(Format):
                     else:
                         line[1] = "In Progress"
 
-
-                    print(replaced_content)
-            replaced_content = f"{line[0]};{line[1]};{line[2]}"
+                    print(f"Updated -> {line[0]};{line[1]};{line[2]}")
+                    line = f"{line[0]};{line[1]};{line[2]}"
+            
+            # print(line)
+            replaced_content.append(line)
             c_line += 1
+        
         data.close()
+        # print(replaced_content)
 
         # #Open file in write mode
-        # write_file = open("note.txt", "w")
+        write_file = open("Assets/output.csv", "w", encoding="utf-8")
 
         # #overwriting the old file contents with the new/replaced content
-        # write_file.write(replaced_content)
+        for content in replaced_content:
+            # print(content)
+            write_file.write(content)
 
         # #close the file
-        # write_file.close()
+        write_file.close()
 
         TempPrint(Colors.CYAN + "[+] Updating..." + Colors.END).TPrint()
         print(Colors.BACK_CYAN + " UPDATED " + Colors.END, end="")
@@ -185,9 +190,41 @@ class Main(Format):
             Delete a item in Excel file.
         """
 
+        id_choice = int(input("Type title ID: "))
+        
         data = open('Assets/output.csv', 'r', encoding="utf-8")
-        print(data.read())
+        replaced_content = []
+        c_line = 1
+
+        #looping through the file
+        for line in data:
+            if id_choice == c_line-1:
+                # line to list
+                line = line.split(";")
+                print(f"---> {c_line-1}. {line}")
+
+                print(f"Item Selected -> {line[0]};{line[1]};{line[2]}")
+                line = f"{line[0]};{line[1]};{line[2]}"
+            
+            else:
+                replaced_content.append(line)
+            
+            # print(line)
+            c_line += 1
+        
         data.close()
+        print(replaced_content)
+
+        # #Open file in write mode
+        write_file = open("Assets/output.csv", "w", encoding="utf-8")
+
+        # #overwriting the old file contents with the new/replaced content
+        for content in replaced_content:
+            # print(content)
+            write_file.write(content)
+
+        # #close the file
+        write_file.close()
 
         TempPrint(Colors.RED + "[+] Deleting..." + Colors.END).TPrint()
         print(Colors.BACK_CYAN + " DELETED " + Colors.END, end="")
