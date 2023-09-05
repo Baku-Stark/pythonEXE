@@ -1,0 +1,13 @@
+Primeiro Passo (instalação global)
+`-> npm install -g vercel
+
+Segundo Passo (login)
+`-> vercel login
+    `-> vercel .
+
+Configuração padrão
+    Set up and deploy “Diretório”? [Y/n] y
+    ? Which scope do you want to deploy to? <Nome do projeto>
+    ? Link to existing project? [y/N] n
+    ? What’s your project’s name? <Nome do projeto>
+    ? In which directory is your code located? ./
