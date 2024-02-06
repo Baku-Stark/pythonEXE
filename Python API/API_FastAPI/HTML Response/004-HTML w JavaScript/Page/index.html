@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>FastApi - HTML Response</title>
+</head>
+<body>
+    <main>
+        <h1>Hello, World!!!</h1>
+        <span class="test_js">Texto Teste</span>
+        <div>
+            <p>
+                <strong>Name:</strong> {{ name }}
+            </p>
+        </div>
+        <div>
+            <p>
+                <strong>Age:</strong> {{ data.age }}
+            </p>
+        </div>
+        <div>
+            <p>
+                <strong>Job(s):</strong>
+                <ul>
+                    <li>{{ data.job[0] }}</li>
+                    <li>{{ data.job[1] }}</li>
+                </ul>
+                <ul>
+                    
+                </ul>
+            </p>
+        </div>
+        <div>
+            <p>
+                <strong>Job(s) / With "For":</strong>
+                <ul>
+                    {% for item in data.job %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+                <ul>
+                    
+                </ul>
+            </p>
+        </div>
+    </main>
+
+    <!-- JS STATIC FILE -->
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

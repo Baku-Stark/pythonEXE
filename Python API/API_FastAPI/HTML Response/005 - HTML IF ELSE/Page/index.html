@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastApi - HTML Response</title>
+</head>
+<body>
+    <main>
+        <h1>Hello, World!!!</h1>
+        <div>
+            <p>
+                <strong>Name:</strong> {{ name }}
+            </p>
+        </div>
+        <div>
+            <p>
+                <strong>Age:</strong> {{ data.age }}
+            </p>
+        </div>
+
+        <div>
+            <!-- IF/ELSE -->
+            <p>
+                <strong>Job(s) / With "IF/ELSE":</strong>
+                <ul>
+                    {% for item in data.job %}
+                        {% if item == "Developer" %}
+                            <li>{{ item }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul>
+                    
+                </ul>
+            </p>
+        </div>
+
+    </main>
+</body>
+</html>
