@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP TRACK - PROJECT (FAST API)</title>
+</head>
+<body>
+    <main>
+        <h1>INFO</h1>
+        <p>IP Address (Public): <span class="set_ip">-</span></p>
+        <div class="user_info">
+            <article>
+                <p>
+                    <strong>Org. : </strong><span class="result_org">-</span>
+                </p>
+            </article>
+            <article>
+                <p>
+                    <strong>Continent: </strong><span class="result_continent">-</span>
+                </p>
+            </article>
+            <article>
+                <p>
+                    <strong>Country: </strong><span class="result_country">-</span>
+                </p>
+            </article>
+            <article>
+                <p>
+                    <strong>City: </strong><span class="result_city">-</span>
+                </p>
+            </article>
+            <article>
+                <p>
+                    <strong>Timezone: </strong><span class="result_tz">-</span>
+                </p>
+            </article>
+        </div>
+        <hr>
+        <div class="container_form">
+            <form method="POST" class="search_form">
+                <fieldset>
+                    <input
+                        type="search"
+                        name="search"
+                        id="search_ip"
+                        placeholder="User IP"
+                    >
+                </fieldset>
+                <fieldset>
+                    <input type="submit" value="Search IP">
+                </fieldset>
+            </form>
+        </div>
+    </main>
+    <script src="{{url_for('static', path='/js/script.js')}}"></script>
+</body>
+</html>
