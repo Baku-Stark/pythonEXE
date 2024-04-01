@@ -6,7 +6,19 @@ load_dotenv()
 
 from pymongo.mongo_client import MongoClient # python -m pip install "pymongo[srv]"==3.11
 
-class MongoDB_APP():
+class MongoDB_APP:
+    """
+        MongoDB class
+        ======
+        
+        *functions
+            create -> user : object (JSON)
+            read
+            update -> data_id: str, req: object
+            delete -> name : str
+            delete_db_by_id -> data_id : str
+    """
+
     mongo_acc = {
         'user': os.getenv("MONGODB_USER"),
         'password': os.getenv("MONGODB_PASSWORD")
@@ -25,10 +37,8 @@ class MongoDB_APP():
             self.client.admin.command('ping')
             print("Pinged your deployment. You successfully connected to MongoDB!")
             print('-=' * 35)
-            print('')
-            self.read_db()
-            print('-' * 20)
 
+            # self.read_db()
             # self.create_db()
             
             # self.delete_db()
@@ -38,7 +48,6 @@ class MongoDB_APP():
 
         except Exception as e:
             print(e)
-
 
     def create_db(self, req: object):
         """
