@@ -19,20 +19,20 @@ class MongoDB_APP:
             delete_db_by_id -> data_id : str
     """
 
-    mongo_acc = {
-        'user': os.getenv("MONGODB_USER"),
-        'password': os.getenv("MONGODB_PASSWORD")
-    }
-
-    uri = f"mongodb+srv://{mongo_acc['user']}:{mongo_acc['password']}@nodeapi.61bjodc.mongodb.net/?retryWrites=true&w=majority&appName=NodeAPI"
-
-    # Create a new client and connect to the server
-    client = MongoClient(uri)
-    dbname = client['myListUsers']
-    collections = dbname['users']
-
-    def __init__(self):
+    def __init__(self, app_db_name: str, app_collections: str):
         # Send a ping to confirm a successful connection
+        self.mongo_acc = {
+            'user': os.getenv("MONGODB_USER"),
+            'password': os.getenv("MONGODB_PASSWORD")
+        }
+
+        self.uri = f"mongodb+srv://{self.mongo_acc['user']}:{self.mongo_acc['password']}@nodeapi.61bjodc.mongodb.net/?retryWrites=true&w=majority&appName=NodeAPI"
+
+        # Create a new client and connect to the server
+        self.client = MongoClient(self.uri)
+        self.dbname = self.client[app_db_name]
+        self.collections = self.dbname[app_collections]
+
         try:
             self.client.admin.command('ping')
             print("Pinged your deployment. You successfully connected to MongoDB!")
@@ -107,3 +107,6 @@ class MongoDB_APP:
         except Exception as e:
             message = f"An Exception occured when inserting a document into `{self.collections}` Collection. "
             print(message, e)
+
+# mongo = MongoDB_APP('myListUsers', 'users')
+# mongo.read_db()
