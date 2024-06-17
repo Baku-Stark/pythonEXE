@@ -10,6 +10,7 @@ from platform import *
 from datetime import datetime
 
 from socket import *
+import concurrent.futures
   
 class Colors:
     BLACK =     '\033[1;30m'
@@ -49,7 +50,6 @@ class CurrentTime:
         _hora_atual = datetime.now().strftime("%H:%M")
         return f"{_data_atual} - {_hora_atual}"
 
-
 class Port_Scanner:
     def __init__(self) -> None:
         self.argparse_init()
@@ -68,24 +68,62 @@ class Port_Scanner:
         parser.add_argument(
             "--ports", "-p",
             dest="port_range",
-            default="1-65535",
+            default=1024,
             help="Port range to scan, default is 1-65535 (all ports)"
         )
 
         app_args = parser.parse_args()
 
-        start_port, end_port = app_args.port_range.split("-")
-        start_port, end_port = int(start_port), int(end_port)
-
-        if start_port < 1:
-            start_port = 1
-
-        if end_port > 65535:
-            end_port = 65535
-        
-        print(Colors.BACK_BLUE + f"== Your arguments | {CurrentTime.created_at()} ==" + Colors.END)
+        print(Colors.BACK_BLUE + f"== Port Scanner | {CurrentTime.created_at()} ==" + Colors.END)
         print(Colors.CYAN + f"├── Host : {app_args.host}" + Colors.END)
-        print(Colors.CYAN + f"└── Port Range : {start_port} - {end_port}" + Colors.END)
+        print(Colors.CYAN + f"└── Port Range : 1 - {app_args.port_range}" + Colors.END)
+        print('\n' * 2)
+
+        #65536
+        ports = self.port_scan(app_args.host, range(1, int(app_args.port_range) + 1))
+        if not ports:
+            print(Colors.RED + "Nenhuma porta aberta..." + Colors.END)
+
+        else:
+            for port_number in ports:
+                print(Colors.GREEN + "● " + Colors.END + f"Host ({app_args.host}) port - {port_number} : open")
+
+    def scan_port(self, host, port):
+        try:
+            sock = socket(AF_INET, SOCK_STREAM)
+
+            sock.settimeout(1)
+
+            result = sock.connect_ex((host, port))
+
+            if result == 0:
+                return port, True
+            
+            else:
+                return port, False
+        
+        except Exception as e:
+            return port, False
+
+    def port_scan(self, host, ports, workers=10):
+        open_ports = []
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+            # Mapeia a função scan_port para cada porta na lista de portas
+            future_to_port = {executor.submit(self.scan_port, host, port): port for port in ports}
+
+            for future in concurrent.futures.as_completed(future_to_port):
+                port = future_to_port[future]
+                
+                try:
+                    port_result = future.result()
+                    if port_result[1]:
+                        open_ports.append(port_result[0])
+                
+                except Exception as e:
+                    print(f"Erro ao escanear porta {port}: {e}")
+        
+        return open_ports
 
 # [test] python main.py 123 --ports 1-500
 # learn : https://thepythoncode.com/article/make-port-scanner-python

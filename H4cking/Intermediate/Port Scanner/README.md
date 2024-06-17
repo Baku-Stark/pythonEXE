@@ -1,5 +1,17 @@
 # Port Scanner
 
+### Observações:
+
+- Este é um exemplo básico e pode não ser eficiente para verificar um grande número de portas ou hosts devido ao uso de conexões síncronas e um loop simples;
+
+- Para projetos mais robustos, considere utilizar threads para escanear várias portas simultaneamente ou bibliotecas Python mais avançadas como `nmap`, `scapy`, ou `socket` com operações não-bloqueantes;
+
+- Este exemplo utiliza threads para paralelizar o escaneamento de portas, o que pode aumentar significativamente a velocidade de execução, especialmente ao escanear múltiplas portas ou hosts;
+
+- O número de workers (`max_workers` no `ThreadPoolExecutor`) pode ser ajustado conforme necessário para otimizar o desempenho, dependendo do número de portas que você está escaneando e da capacidade do sistema;
+
+- É importante considerar limitações e políticas de segurança ao realizar escaneamentos de portas em redes que não sejam de sua propriedade ou sem a devida autorização.
+
 ## </> O que é? 
 
 A varredura de portas é um método de varredura para determinar quais portas em um dispositivo de rede estão abertas, seja um servidor, um roteador ou uma máquina normal. Um scanner de porta é apenas um script ou programa projetado para sondar um host em busca de portas abertas.
