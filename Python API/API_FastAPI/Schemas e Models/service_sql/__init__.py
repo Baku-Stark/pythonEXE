@@ -7,7 +7,6 @@ DATABASE_URL = "./service_sql/db/todo.db"
 def get_db():
     conn = lite.connect(DATABASE_URL)
     try:
-        print("Table created")
         yield conn
         
     finally:
@@ -23,3 +22,19 @@ def init_db():
                 completed BOOLEAN NOT NULL DEFAULT 0
             )
         ''')
+
+        # completed BOOLEAN NOT NULL DEFAULT 0 [0 = false, 1 = true]
+
+def create_todo(todo : list):
+    with get_db() as conn:
+        try:
+            query = "INSERT INTO todo_items (title, description, completed) VALUES (?, ?, ?)"
+            conn.execute(query, todo)
+        
+        except lite.OperationalError as error_sqlite3:
+            print(error_sqlite3)
+            
+        finally:
+            print(f"** TAREFA '{todo[0]}' ADICIONADA **")
+            conn.commit()
+            conn.close()
