@@ -16,3 +16,22 @@ class TodoSchema(BaseModel):
 
 class TodoIn(TodoSchema):
     pass
+
+class TodoUpdate(BaseModel):
+    title : Annotated[str, Field(
+        description="Titulo da tarefa",
+        example="Futebol",
+        max_length="100",
+    )]
+    description : Annotated[str, Field(
+        description="Descrição da tarefa",
+        example="Jogar bola no sábado",
+        max_length="200"
+    )]
+
+class TodoStatus(BaseModel):
+    title : Annotated[str, Field(
+        description="Titulo da tarefa",
+        example="Futebol",
+        max_length="100",
+    )]
