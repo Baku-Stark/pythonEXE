@@ -34,9 +34,11 @@ def create_todo(todo : list):
         except lite.OperationalError as error_sqlite3:
             print(error_sqlite3)
             
-        finally:
+        else:
             print(f"** TAREFA '{todo[0]}' ADICIONADA **")
             conn.commit()
+        
+        finally:
             conn.close()
 
 def read_all_todo() -> list[list]:
@@ -45,21 +47,79 @@ def read_all_todo() -> list[list]:
         try:
             query = "SELECT * FROM todo_items"
             cursor.execute(query)
+
+        except lite.ProgrammingError as error:
+            print(error)
     
-        finally:
+        else:
             cursor_list = cursor.fetchall()
+        
+        finally:
+            conn.close()
 
     return cursor_list
 
-def read_id_todo(_id : int):
+def read_id_todo(_id : int) -> list:
     with get_db() as conn:
         cursor = conn.cursor()
         try:
             cursor.row_factory = lite.Row
             query = "SELECT * FROM todo_items WHERE id=?"
             cursor.execute(query, (_id,))
+
+        except lite.ProgrammingError as error:
+            print(error)
     
-        finally:
+        else:
             cursor_list = cursor.fetchone()
 
-    return cursor_list
+        finally:
+            conn.close()
+
+    return list(cursor_list)
+
+def update_status_todo(_id : int) -> list:
+    with get_db() as conn:
+        cursor = conn.cursor()
+        try:
+            todo_list= read_id_todo(_id)
+            
+            if todo_list[3] == 1:
+                query = "UPDATE todo_items SET completed=0 WHERE id=?"
+
+            else:
+                query = "UPDATE todo_items SET completed=1 WHERE id=?"
+            
+            cursor.execute(query, (_id))
+
+        except lite.ProgrammingError as error:
+            print(error)
+    
+        else:
+            conn.commit()
+            print(f"** TAREFA '{todo_list[1]}' ATUALIZADA **")
+
+        finally:
+            conn.close()
+
+    return read_id_todo(_id)
+
+def delete_status_todo(_id : int) -> list:
+    with get_db() as conn:
+        cursor = conn.cursor()
+        try:
+            todo_list = read_id_todo(_id)
+            
+            query = "DELETE FROM todo_items WHERE id=?"
+            
+        except lite.ProgrammingError as error:
+            print(error)
+    
+        else:
+            cursor.execute(query, (_id,))
+            print(f"** TAREFA '{todo_list[1]}' APAGADA **")
+            return read_id_todo(_id)
+        
+        finally:
+            conn.commit()
+            conn.close()
