@@ -104,6 +104,28 @@ def update_status_todo(_id : int) -> list:
 
     return read_id_todo(_id)
 
+def update_body_todo(_id : int, todo : list) -> list:
+    with get_db() as conn:
+        cursor = conn.cursor()
+        try:
+            todo_list= read_id_todo(_id)
+            
+            query = "UPDATE todo_items SET title=?, description=?, completed=? WHERE id=?"
+            
+            cursor.execute(query, (todo[0], todo[1], todo[2], _id))
+
+        except lite.ProgrammingError as error:
+            print(error)
+    
+        else:
+            conn.commit()
+            print(f"** TAREFA '{todo_list[1]}' ATUALIZADA PARA -> '{todo[0]}' **")
+
+        finally:
+            conn.close()
+
+    return read_id_todo(_id)
+
 def delete_status_todo(_id : int) -> list:
     with get_db() as conn:
         cursor = conn.cursor()
