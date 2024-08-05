@@ -28,3 +28,15 @@ class TodoUpdate(TodoSchema):
         example="Atualização de descrição",
         max_length="200"
     )]
+
+class TodoCompleted(BaseModel):
+    completed : bool
+
+    class config:
+        orm_mode = True
+
+class TodoItem(TodoSchema):
+    id : int
+
+    class config:
+        orm_mode = True
