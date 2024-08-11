@@ -1,11 +1,11 @@
 import sqlite3
 from sqlalchemy.orm import Session
 
-from fastapi import APIRouter, Body, HTTPException, Depends, status
+from fastapi import APIRouter, HTTPException, Depends, status
 router = APIRouter()
 
 from service_todo.schema import TodoIn, TodoUpdate
-from service_sql import create_todo, delete_status_todo, read_all_todo, read_id_todo, update_status_todo, update_body_todo
+#from service_sql import create_todo, delete_status_todo, read_all_todo, read_id_todo, update_status_todo, update_body_todo
 
 from . import model, schema
 import service_todo.database as database
@@ -49,9 +49,12 @@ async def post(todo_item : schema.TodoIn, db: Session = Depends(get_db)):
     return db_todo
 
 @router.get("/read_all_todo", summary="Adquirir todas as tarefas", status_code=status.HTTP_200_OK, response_model=list[schema.TodoSchema])
-async def get_all_todo(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)) -> list[object]:
+async def get_all_todo(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     try:
         todos = db.query(model.TodoItem).offset(skip).limit(limit).all()
+
+        if todos is None:
+            raise HTTPException(status_code=404, detail="Todo item not found")
 
     except Exception as error:
         raise HTTPException(
@@ -62,11 +65,14 @@ async def get_all_todo(skip: int = 0, limit: int = 10, db: Session = Depends(get
     return todos
 
 @router.get("/read_todo_={todo_id}", summary="Adquirir uma tarefa especifica", status_code=status.HTTP_200_OK, response_model=schema.TodoItem)
-async def get_id_todo(todo_id: int, db: Session = Depends(get_db)) -> object:
+async def get_id_todo(todo_id: int, db: Session = Depends(get_db)):
     #print(todo_id)
     try:
         #todo_list = read_id_todo(todo_id)
         todo = db.query(model.TodoItem).filter(model.TodoItem.id == todo_id).first()
+
+        if todo is None:
+            raise HTTPException(status_code=404, detail="Todo item not found")
 
     except sqlite3.ProgrammingError as error_sqlite3:
         raise HTTPException(
@@ -88,7 +94,7 @@ async def update_status(todo_id: int, completed: schema.TodoCompleted, db: Sessi
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(error_sqlite3)
         ) from error_sqlite3
-
+    
     finally:
         db_todo.completed = completed.completed
         db.commit()
@@ -121,7 +127,7 @@ async def update_todo(todo_id: int, todo: schema.TodoIn, db: Session = Depends(g
     return db_todo
 
 @router.delete("/delete_todo_={todo_id}", summary="Apagar uma tarefa pelo ID", status_code=status.HTTP_200_OK)
-async def delete(todo_id: int, db: Session = Depends(get_db)) -> object:
+async def delete(todo_id: int, db: Session = Depends(get_db)):
     #print(id_todo)
     try:
         #todo_list = delete_status_todo(id_todo)

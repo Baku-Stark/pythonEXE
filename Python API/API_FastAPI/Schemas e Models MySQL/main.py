@@ -4,9 +4,6 @@ from fastapi import FastAPI, status
 from routers import api_router
 app = FastAPI(title="Schemas e Models")
 
-from service_sql import init_db
-init_db()
-
 app.include_router(api_router)
 
 @app.get("/", status_code=status.HTTP_200_OK)
